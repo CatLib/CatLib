@@ -12,9 +12,11 @@
 
 > We are currently preparing to convert the comments in the code to the English version. We look forward to your joining.
 
+> CatLib基础框架源码请访问：[CatLib/Framework](https://github.com/CatLib/Framework)
+
 ## 关于CatLib
 
-CatLib是为Unity3D开发的全栈开发框架，我们通过集成常见的开发组件来减少开发者们不必要的工作，例如：
+CatLib for Unity 是为Unity3D开发的全栈开发框架，我们通过集成常见的开发组件来减少开发者们不必要的工作，例如：
 
 - [依赖注入容器](http://catlib.io/v1/guide/container.html).
 - [路由系统](http://catlib.io/v1/guide/routing.html).
