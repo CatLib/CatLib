@@ -12,7 +12,7 @@
 
 > CatLib基础框架源码请访问：[CatLib/Framework](https://github.com/CatLib/Framework)
 
-## 关于CatLib
+## 关于CatLib for Unity
 
 CatLib for Unity 是为Unity3D开发的全栈开发框架，我们通过集成常见的开发组件来减少开发者们不必要的工作，例如：
 
