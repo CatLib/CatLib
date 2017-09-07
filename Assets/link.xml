@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<linker>
+  <assembly fullname="CatLib" preserve="all"></assembly>
+  <assembly fullname="CatLib.API" preserve="all"></assembly>
+  <assembly fullname="CatLib.Unity" preserve="all"></assembly>
+  <assembly fullname="CatLib.Unity.API" preserve="all"></assembly>
+</linker>
