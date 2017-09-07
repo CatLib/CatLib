@@ -8,8 +8,6 @@
   <img src="https://codecov.io/gh/CatLib/CatLib/branch/master/graph/badge.svg" alt="Codecov" />
 </a>
 
-> English Document: [en.catlib.io](http://en.catlib.io)  / 中文文档: [catlib.io](http://catlib.io)
-
 > We are currently preparing to convert the comments in the code to the English version. We look forward to your joining.
 
 > CatLib基础框架源码请访问：[CatLib/Framework](https://github.com/CatLib/Framework)
@@ -32,7 +30,7 @@ CatLib提供了构建一个游戏所必备的基础组件 , 您可以通过接�
 
 ## 学习CatLib
 
-我们已经准备了各个组件的教程，您只需要进入 [CatLib 中文手册](http://catlib.io) 就可以看到她们。
+我们已经准备了各个组件的教程，您只需要进入 [中文文档](http://catlib.io) / [English Document](http://en.catlib.io) 就可以看到她们。
 
 ## 架构图
 ![](http://catlib.io/images/architecture-diagram.svg)
