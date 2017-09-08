@@ -12,7 +12,12 @@
 using CatLib.API.Time;
 using CatLib.Debugger.WebMonitor.Handler;
 using System;
+
+#if UNITY_5_5_OR_NEWER
 using UnityEngine.Profiling;
+#else
+using UnityEngine;
+#endif
 
 namespace CatLib.Debugger.WebMonitorContent
 {
@@ -36,6 +41,7 @@ namespace CatLib.Debugger.WebMonitorContent
                 () => Profiler.enabled));
             monitor.Monitor(new OnceRecordMonitorHandler("Profiler.enabledBinaryLog@file", string.Empty, new[] { "tag@Profiler" },
                 () => Profiler.enableBinaryLog? Profiler.logFile : "code.unenable"));
+#if UNITY_5_6_OR_NEWER
             monitor.Monitor(new SizeMonitorHandler("Profiler.GetMonoUsedSize@memory", new[] { "tag@Profiler" },
                 () => Profiler.GetMonoUsedSizeLong()));
             monitor.Monitor(new SizeMonitorHandler("Profiler.GetMonoHeapSize@memory", new[] { "tag@Profiler" },
@@ -46,8 +52,22 @@ namespace CatLib.Debugger.WebMonitorContent
                 () => Profiler.GetTotalReservedMemoryLong()));
             monitor.Monitor(new SizeMonitorHandler("Profiler.GetTotalUnusedReservedMemory", new[] { "tag@Profiler" },
                 () => Profiler.GetTotalUnusedReservedMemoryLong()));
-            monitor.Monitor(new SizeMonitorHandler("Profiler.GetTempAllocatorSize@memory", new[] { "tag@Profiler" },
-                () => (long)Profiler.GetTempAllocatorSize()));
+#else
+            monitor.Monitor(new SizeMonitorHandler("Profiler.GetMonoUsedSize@memory", new[] { "tag@Profiler" },
+                () => Profiler.GetMonoUsedSize()));
+            monitor.Monitor(new SizeMonitorHandler("Profiler.GetMonoHeapSize@memory", new[] { "tag@Profiler" },
+                () => Profiler.GetMonoHeapSize()));
+            monitor.Monitor(new SizeMonitorHandler("Profiler.GetTotalAllocatedMemory", new[] { "tag@Profiler" },
+                () => Profiler.GetTotalAllocatedMemory()));
+            monitor.Monitor(new SizeMonitorHandler("Profiler.GetTotalReservedMemory", new[] { "tag@Profiler" },
+                () => Profiler.GetTotalReservedMemory()));
+            monitor.Monitor(new SizeMonitorHandler("Profiler.GetTotalUnusedReservedMemory", new[] { "tag@Profiler" },
+                () => Profiler.GetTotalUnusedReservedMemory()));
+#endif
+#if UNITY_5_5_OR_NEWER
+            monitor.Monitor(new SizeMonitorHandler("Profiler.GetTempAllocatorSize@memory", new[] {"tag@Profiler"},
+                () => (long) Profiler.GetTempAllocatorSize()));
+#endif
             monitor.Monitor(new OnceRecordMonitorHandler("fps", "unit.second.pre", new[] { "tag@Profiler" },
                 () => Math.Floor(1.0f / time.SmoothDeltaTime)));
         }
