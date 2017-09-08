@@ -4,3 +4,6 @@ Temp/
 catlib.Editor.csproj
 catlib.sln
 catlib.csproj
+obj/
+Assembly-CSharp.csproj
+Assembly-CSharp-Editor.csproj

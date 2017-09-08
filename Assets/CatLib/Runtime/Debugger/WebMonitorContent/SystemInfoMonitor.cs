@@ -50,18 +50,24 @@ namespace CatLib.Debugger.WebMonitorContent
             monitor.Monitor(new OnceRecordMonitorHandler("SystemInfo.systemMemorySize", "MB",
                 new[] { "tag@SystemInfo" },
                 () => SystemInfo.systemMemorySize));
+#if UNITY_5_5_OR_NEWER
             monitor.Monitor(new OnceRecordMonitorHandler("SystemInfo.operatingSystemFamily", string.Empty,
                 new[] { "tag@SystemInfo" },
                 () => SystemInfo.operatingSystemFamily));
+#endif
+#if UNITY_5_6_OR_NEWER
             monitor.Monitor(new OnceRecordMonitorHandler("SystemInfo.batteryStatus", string.Empty,
                 new[] { "tag@SystemInfo" },
                 () => SystemInfo.batteryStatus));
             monitor.Monitor(new OnceRecordMonitorHandler("SystemInfo.batteryLevel", string.Empty,
                 new[] { "tag@SystemInfo" },
                 () => SystemInfo.batteryLevel < 0f ? "code.unavailable" : SystemInfo.batteryLevel.ToString("P0")));
+#endif
+#if UNITY_5_4_OR_NEWER
             monitor.Monitor(new OnceRecordMonitorHandler("SystemInfo.supportsAudio", string.Empty,
                 new[] { "tag@SystemInfo" },
                 () => SystemInfo.supportsAudio));
+#endif
             monitor.Monitor(new OnceRecordMonitorHandler("SystemInfo.supportsLocationService", string.Empty,
                 new[] { "tag@SystemInfo" },
                 () => SystemInfo.supportsLocationService));

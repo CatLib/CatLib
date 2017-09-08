@@ -46,20 +46,28 @@ namespace CatLib.Debugger.WebMonitorContent
                 () => SystemInfo.npotSupport));
             monitor.Monitor(new OnceRecordMonitorHandler("SystemInfo.maxTextureSize", "unit.px", new[] { "tag@Graphics" },
                 () => SystemInfo.maxTextureSize));
+#if UNITY_5_6_OR_NEWER
             monitor.Monitor(new OnceRecordMonitorHandler("SystemInfo.maxCubemapSize", "unit.px", new[] { "tag@Graphics" },
                 () => SystemInfo.maxCubemapSize));
+#endif
+#if UNITY_5_4_OR_NEWER
             monitor.Monitor(new OnceRecordMonitorHandler("SystemInfo.copyTextureSupport", string.Empty, new[] { "tag@Graphics" },
                 () => SystemInfo.copyTextureSupport));
+#endif
             monitor.Monitor(new OnceRecordMonitorHandler("SystemInfo.supportedRenderTargetCount", string.Empty, new[] { "tag@Graphics" },
                 () => SystemInfo.supportedRenderTargetCount));
             monitor.Monitor(new OnceRecordMonitorHandler("SystemInfo.supportsSparseTextures", string.Empty, new[] { "tag@Graphics" },
                 () => SystemInfo.supportsSparseTextures));
             monitor.Monitor(new OnceRecordMonitorHandler("SystemInfo.supports3DTextures", string.Empty, new[] { "tag@Graphics" },
                 () => SystemInfo.supports3DTextures));
+#if UNITY_5_6_OR_NEWER
             monitor.Monitor(new OnceRecordMonitorHandler("SystemInfo.supports3DRenderTextures", string.Empty, new[] { "tag@Graphics" },
                 () => SystemInfo.supports3DRenderTextures));
+#endif
+#if UNITY_5_4_OR_NEWER
             monitor.Monitor(new OnceRecordMonitorHandler("SystemInfo.supports2DArrayTextures", string.Empty, new[] { "tag@Graphics" },
                 () => SystemInfo.supports2DArrayTextures));
+#endif
             monitor.Monitor(new OnceRecordMonitorHandler("SystemInfo.supportsShadows", string.Empty, new[] { "tag@Graphics" },
                 () => SystemInfo.supportsShadows));
             monitor.Monitor(new OnceRecordMonitorHandler("SystemInfo.supportsRawShadowDepthSampling", string.Empty, new[] { "tag@Graphics" },
@@ -72,12 +80,18 @@ namespace CatLib.Debugger.WebMonitorContent
                 () => SystemInfo.supportsInstancing));
             monitor.Monitor(new OnceRecordMonitorHandler("SystemInfo.supportsImageEffects", string.Empty, new[] { "tag@Graphics" },
                 () => SystemInfo.supportsImageEffects));
+#if UNITY_5_5_OR_NEWER
             monitor.Monitor(new OnceRecordMonitorHandler("SystemInfo.supportsCubemapArrayTextures", string.Empty, new[] { "tag@Graphics" },
                 () => SystemInfo.supportsCubemapArrayTextures));
+#endif
+#if UNITY_5_6_OR_NEWER
             monitor.Monitor(new OnceRecordMonitorHandler("SystemInfo.graphicsUVStartsAtTop", string.Empty, new[] { "tag@Graphics" },
                 () => SystemInfo.graphicsUVStartsAtTop));
+#endif
+#if UNITY_5_5_OR_NEWER
             monitor.Monitor(new OnceRecordMonitorHandler("SystemInfo.usesReversedZBuffer", string.Empty, new[] { "tag@Graphics" },
                 () => SystemInfo.usesReversedZBuffer));
+#endif
         }
     }
 }
