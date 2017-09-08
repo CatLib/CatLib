@@ -376,7 +376,7 @@
             <param name="life">在几次后事件会被自动释放</param>
             <returns>事件句柄</returns>
         </member>
-        <member name="M:CatLib.API.Events.IDispatcher.Off(System.String,System.Func{System.Object,System.Object})">
+        <member name="M:CatLib.API.Events.IDispatcher.Off(System.String,System.Action{System.Object})">
             <summary>
             反注册一个事件
             </summary>
@@ -418,6 +418,18 @@
             Crc32
             </summary>
         </member>
+        <member name="M:CatLib.API.Hashing.Checksums.#ctor(System.String)">
+            <summary>
+            哈希算法类型
+            </summary>
+            <param name="name">哈希算法名字</param>
+        </member>
+        <member name="M:CatLib.API.Hashing.Checksums.op_Implicit(System.String)~CatLib.API.Hashing.Checksums">
+            <summary>
+            字符串转Checksums
+            </summary>
+            <param name="type">类型</param>
+        </member>
         <member name="T:CatLib.API.Hashing.Hashes">
             <summary>
             哈希算法
@@ -433,10 +445,29 @@
             Murmur Hash
             </summary>
         </member>
+        <member name="M:CatLib.API.Hashing.Hashes.#ctor(System.String)">
+            <summary>
+            哈希算法类型
+            </summary>
+            <param name="name">哈希算法名字</param>
+        </member>
+        <member name="M:CatLib.API.Hashing.Hashes.op_Implicit(System.String)~CatLib.API.Hashing.Hashes">
+            <summary>
+            字符串转Hashes
+            </summary>
+            <param name="type">类型</param>
+        </member>
         <member name="T:CatLib.API.Hashing.IHashing">
             <summary>
             哈希
             </summary>
+        </member>
+        <member name="M:CatLib.API.Hashing.IHashing.Checksum(System.Byte[])">
+            <summary>
+            计算校验和
+            </summary>
+            <param name="buffer">字节数组</param>
+            <returns>校验和</returns>
         </member>
         <member name="M:CatLib.API.Hashing.IHashing.Checksum(System.Byte[],CatLib.API.Hashing.Checksums)">
             <summary>
@@ -462,6 +493,13 @@
             <param name="hash">哈希值</param>
             <returns>是否匹配</returns>
         </member>
+        <member name="M:CatLib.API.Hashing.IHashing.HashString(System.String)">
+            <summary>
+            对输入值进行非加密哈希
+            </summary>
+            <param name="input">输入值</param>
+            <returns>哈希值</returns>
+        </member>
         <member name="M:CatLib.API.Hashing.IHashing.HashString(System.String,CatLib.API.Hashing.Hashes)">
             <summary>
             对输入值进行非加密哈希
@@ -477,6 +515,13 @@
             <param name="input">输入值</param>
             <param name="encoding">编码</param>
             <param name="hash">使用的哈希算法</param>
+            <returns>哈希值</returns>
+        </member>
+        <member name="M:CatLib.API.Hashing.IHashing.HashByte(System.Byte[])">
+            <summary>
+            对输入值进行非加密哈希
+            </summary>
+            <param name="input">输入值</param>
             <returns>哈希值</returns>
         </member>
         <member name="M:CatLib.API.Hashing.IHashing.HashByte(System.Byte[],CatLib.API.Hashing.Hashes)">
@@ -2103,7 +2148,7 @@
             <param name="life">在几次后事件会被自动释放</param>
             <returns>事件句柄</returns>
         </member>
-        <member name="M:CatLib.App.Off(System.String,System.Func{System.Object,System.Object})">
+        <member name="M:CatLib.App.Off(System.String,System.Action{System.Object})">
             <summary>
             反注册一个事件
             </summary>
