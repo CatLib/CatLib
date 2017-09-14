@@ -376,6 +376,13 @@
             <param name="life">在几次后事件会被自动释放</param>
             <returns>事件句柄</returns>
         </member>
+        <member name="M:CatLib.API.Events.IDispatcher.Off(System.String,System.Action{System.Object})">
+            <summary>
+            反注册一个事件
+            </summary>
+            <param name="eventName">事件名</param>
+            <param name="handler">事件句柄</param>
+        </member>
         <member name="T:CatLib.API.Events.IEventHandler">
             <summary>
             事件句柄
@@ -2141,6 +2148,13 @@
             <param name="life">在几次后事件会被自动释放</param>
             <returns>事件句柄</returns>
         </member>
+        <member name="M:CatLib.App.Off(System.String,System.Action{System.Object})">
+            <summary>
+            反注册一个事件
+            </summary>
+            <param name="eventName">事件名</param>
+            <param name="handler">事件句柄</param>
+        </member>
         <member name="M:CatLib.App.GetBind(System.String)">
             <summary>
             获取服务的绑定数据,如果绑定不存在则返回null
@@ -2307,7 +2321,7 @@
             以单例的形式绑定一个服务
             </summary>
             <typeparam name="TService">服务名</typeparam>
-            <typeparam name="TAlias">服务别名</typeparam>
+            <typeparam name="TConcrete">服务实现</typeparam>
             <returns>服务绑定数据</returns>
         </member>
         <member name="M:CatLib.App.Singleton``1">
@@ -2330,7 +2344,7 @@
             常规绑定一个服务
             </summary>
             <typeparam name="TService">服务名</typeparam>
-            <typeparam name="TAlias">服务别名</typeparam>
+            <typeparam name="TConcrete">服务实现</typeparam>
             <returns>服务绑定数据</returns>
         </member>
         <member name="M:CatLib.App.Bind``1">
@@ -2981,7 +2995,7 @@
             以单例的形式绑定一个服务
             </summary>
             <typeparam name="TService">服务名</typeparam>
-            <typeparam name="TAlias">服务别名</typeparam>
+            <typeparam name="TConcrete">服务实现</typeparam>
             <param name="container">服务容器</param>
             <returns>服务绑定数据</returns>
         </member>
@@ -3007,7 +3021,7 @@
             常规绑定一个服务
             </summary>
             <typeparam name="TService">服务名</typeparam>
-            <typeparam name="TAlias">服务别名</typeparam>
+            <typeparam name="TConcrete">服务实现</typeparam>
             <param name="container">服务容器</param>
             <returns>服务绑定数据</returns>
         </member>

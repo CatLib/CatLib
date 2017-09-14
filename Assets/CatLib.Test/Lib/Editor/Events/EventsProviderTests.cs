@@ -56,11 +56,6 @@ namespace CatLib.Tests.Events
             Assert.AreEqual(true, isCall);
         }
 
-        public void SimpleCallFunctionVoid(object payload)
-        {
-            
-        }
-
         [TestMethod]
         public void TestTriggerReturnResult()
         {

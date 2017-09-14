@@ -7447,31 +7447,6 @@
             当注册服务提供者
             </summary>
         </member>
-        <member name="T:CatLib.Facade.Compress">
-            <summary>
-            压缩器
-            </summary>
-        </member>
-        <member name="T:CatLib.Facade.Converters">
-            <summary>
-            转换器
-            </summary>
-        </member>
-        <member name="T:CatLib.Facade.Dispatcher">
-            <summary>
-            全局事件调度器
-            </summary>
-        </member>
-        <member name="T:CatLib.Facade.Encrypter">
-            <summary>
-            加密器
-            </summary>
-        </member>
-        <member name="T:CatLib.Facade.Hashing">
-            <summary>
-            随机数
-            </summary>
-        </member>
         <member name="T:CatLib.Facade.I18N">
             <summary>
             国际化I18N
@@ -7490,11 +7465,6 @@
         <member name="T:CatLib.Facade.FileSystem">
             <summary>
             文件系统管理器
-            </summary>
-        </member>
-        <member name="T:CatLib.Facade.Random">
-            <summary>
-            随机数
             </summary>
         </member>
         <member name="T:CatLib.Facade.Router">
@@ -7699,6 +7669,11 @@
             通配符事件句柄
             </summary>
         </member>
+        <member name="F:CatLib.Events.Dispatcher.actionMapping">
+            <summary>
+            Action对应Func映射
+            </summary>
+        </member>
         <member name="F:CatLib.Events.Dispatcher.syncRoot">
             <summary>
             同步锁
@@ -7756,6 +7731,20 @@
             <param name="handler">事件句柄</param>
             <param name="life">在几次后事件会被自动释放</param>
             <returns>事件句柄</returns>
+        </member>
+        <member name="M:CatLib.Events.Dispatcher.Off(System.String,System.Action{System.Object})">
+            <summary>
+            反注册一个事件
+            </summary>
+            <param name="eventName">事件名</param>
+            <param name="handler">事件句柄</param>
+        </member>
+        <member name="M:CatLib.Events.Dispatcher.WalkActionMapping(System.Action{System.Object},System.Action{System.Func{System.Object,System.Object}})">
+            <summary>
+            遍历行为映射
+            </summary>
+            <param name="handler">事件句柄</param>
+            <param name="callback">回调</param>
         </member>
         <member name="M:CatLib.Events.Dispatcher.Off(CatLib.Events.EventHandler)">
             <summary>
@@ -10699,6 +10688,13 @@
             <param name="handler">事件句柄</param>
             <param name="life">在几次后事件会被自动释放</param>
             <returns>事件句柄</returns>
+        </member>
+        <member name="M:CatLib.Application.Off(System.String,System.Action{System.Object})">
+            <summary>
+            反注册一个事件
+            </summary>
+            <param name="eventName">事件名</param>
+            <param name="handler">事件句柄</param>
         </member>
         <member name="P:CatLib.Application.Version">
             <summary>
