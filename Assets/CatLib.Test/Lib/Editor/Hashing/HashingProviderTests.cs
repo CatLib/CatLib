@@ -43,14 +43,18 @@ namespace CatLib.Tests.Hashing
         {
             var app = MakeEnv();
             var hash = app.Make<IHashing>();
+            var code0 = hash.Checksum(new byte[] { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 });
             var code = hash.Checksum(new byte[] {1, 2, 3, 4, 5, 6, 7, 8, 9, 10}, Checksums.Crc32);
             var code2 = hash.Checksum(new byte[] { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 }, Checksums.Crc32);
             var code3 = hash.Checksum(new byte[] { 0, 2, 3, 4, 5, 6, 7, 8, 9, 10 }, Checksums.Crc32);
             var code4 = hash.Checksum(System.Text.Encoding.Default.GetBytes("123"), Checksums.Crc32);
+            var code5 = hash.Checksum(System.Text.Encoding.Default.GetBytes("123"));
 
+            Assert.AreEqual(code, code0);
             Assert.AreEqual(code , code2);
             Assert.AreNotEqual(code2 , code3);
             Assert.AreEqual(2286445522, code4);
+            Assert.AreEqual(2286445522, code5);
         }
 
         [TestMethod]
@@ -102,12 +106,16 @@ namespace CatLib.Tests.Hashing
             var app = MakeEnv();
             var hash = app.Make<IHashing>();
 
+            var hash0 = hash.HashString("helloworld");
             var hash1 = hash.HashString("helloworld", Hashes.MurmurHash);
             var hash2 = hash.HashString("helloworld", Hashes.MurmurHash);
             var hash3 = hash.HashString("helloworl", Hashes.MurmurHash);
+            var hash4 = hash.HashByte(System.Text.Encoding.Default.GetBytes("helloworl"));
 
+            Assert.AreEqual(hash1, hash0);
             Assert.AreEqual(hash1, hash2);
             Assert.AreNotEqual(hash2, hash3);
+            Assert.AreEqual(hash3, hash4);
         }
 
         [TestMethod]

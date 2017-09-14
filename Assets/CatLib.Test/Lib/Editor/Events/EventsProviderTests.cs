@@ -56,41 +56,9 @@ namespace CatLib.Tests.Events
             Assert.AreEqual(true, isCall);
         }
 
-        [TestMethod]
-        public void TestOffEvents()
+        public void SimpleCallFunctionVoid(object payload)
         {
-            var app = MakeEnv();
-            var dispatcher = app.Make<IDispatcher>();
-
-            dispatcher.On("event.faild", SimpleCallFunctionNoResult);
-            dispatcher.Listen("event.name", SimpleCallFunction);
-            dispatcher.Listen("event.name", SimpleCallFunction);
-            dispatcher.Off("event.name", SimpleCallFunction);
-            Assert.AreEqual(null, dispatcher.TriggerHalt("event.name"));
-        }
-
-        [TestMethod]
-        public void TestOffRegexEvents()
-        {
-            var app = MakeEnv();
-            var dispatcher = app.Make<IDispatcher>();
-
-            dispatcher.On("event.faild", SimpleCallFunctionNoResult);
-            dispatcher.Listen("event.*", SimpleCallFunction);
-            dispatcher.Listen("event.*", SimpleCallFunction);
-            dispatcher.Off("event.*", SimpleCallFunction);
-            Assert.AreEqual(null, dispatcher.TriggerHalt("event.name"));
-            Assert.AreEqual(null, dispatcher.TriggerHalt("event.*"));
-        }
-
-        private void SimpleCallFunctionNoResult(object payload)
-        {
-            Assert.Fail();
-        }
-
-        private object SimpleCallFunction(object payload)
-        {
-            return "SimpleCallFunction";
+            
         }
 
         [TestMethod]

@@ -894,7 +894,7 @@ namespace CatLib.Tests.Stl
                 container.Make<TestMakeParamInjectAttrRequiredClass>();
             });
 
-            container.Bind<IMsg, MakeTestClassDependency>();
+            container.Bind<MakeTestClassDependency, IMsg>();
             var result = container.Make<TestMakeParamInjectAttrRequiredClass>();
             Assert.AreEqual("hello", result.GetMsg());
         }
@@ -1263,6 +1263,17 @@ namespace CatLib.Tests.Stl
             Assert.AreEqual(true, isCallTest);
             Assert.AreEqual(null, container.Make("TestInstance2"));
             Assert.AreEqual(null, container.Make("Test"));
+        }
+
+        [TestMethod]
+        public void TestSameAliaseServiceName()
+        {
+            var container = MakeContainer();
+
+            ExceptionAssert.Throws<RuntimeException>(() =>
+            {
+                container.Singleton<ContainerTest>().Alias<ContainerTest>();
+            });
         }
 
         public class TestParamsMakeClass

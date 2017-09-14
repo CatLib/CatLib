@@ -77,7 +77,7 @@ namespace CatLib.Tests
         {
             var container = MakeContainer();
             container.Singleton<TestClassService, ContainerHelperTestClass>();
-            var obj = container.Make(container.Type2Service(typeof(TestClassService)));
+            var obj = container.Make(container.Type2Service(typeof(ContainerHelperTestClass)));
             var obj2 = container.Make(container.Type2Service(typeof(TestClassService)));
 
             Assert.AreSame(obj, obj2);
