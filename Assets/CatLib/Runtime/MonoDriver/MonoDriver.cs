@@ -185,6 +185,8 @@ namespace CatLib.MonoDriver
 
             ConvertAndRemove(update, obj);
             ConvertAndRemove(lateUpdate, obj);
+            ConvertAndRemove(fixedUpdate, obj);
+            ConvertAndRemove(onGui, obj);
 
             if (ConvertAndRemove(destroy, obj))
             {
