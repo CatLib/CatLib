@@ -21,13 +21,6 @@ namespace YourNameSpace
     [Routed]
     public class Main
     {
-        [Routed("bootstrap://config")]
-        public void Config()
-        {
-            //可以在这里完成常规配置（如果有的话）。
-            UnityEngine.Debug.Log("config code here!");
-        }
-
         [Routed("bootstrap://start")]
         public void Bootstrap()
         {

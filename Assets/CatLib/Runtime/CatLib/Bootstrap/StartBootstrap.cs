@@ -28,7 +28,6 @@ namespace CatLib
             {
                 if (Router.Instance != null)
                 {
-                    Router.Instance.Dispatch("bootstrap://config");
                     Router.Instance.Dispatch("bootstrap://start");
                 }
             });

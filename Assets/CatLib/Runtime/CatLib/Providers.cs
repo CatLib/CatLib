@@ -10,11 +10,8 @@
  */
 
 using CatLib.Compress;
-using CatLib.Config;
-using CatLib.Converters;
 using CatLib.Debugger;
 using CatLib.Encryption;
-using CatLib.Events;
 using CatLib.FileSystem;
 using CatLib.Hashing;
 using CatLib.Json;
@@ -44,11 +41,8 @@ namespace CatLib
                 return new IServiceProvider[]
                 {
                     new CompressProvider(),
-                    new ConfigProvider(),
-                    new ConvertersProvider(),
                     new DebuggerProvider(),
                     new EncryptionProvider(),
-                    new EventsProvider(),
                     new FileSystemProvider(),
                     new HashingProvider(),
                     new JsonProvider(),

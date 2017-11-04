@@ -9,7 +9,6 @@
  * Document: http://catlib.io/
  */
 
-using CatLib.API.Config;
 using CatLib.API.Time;
 
 namespace CatLib.Time
@@ -22,7 +21,6 @@ namespace CatLib.Time
         /// <summary>
         /// 默认时间的名字
         /// </summary>
-        [Config]
         public string DefaultTime { get; set; }
 
         /// <summary>
@@ -58,13 +56,6 @@ namespace CatLib.Time
                 var timeManager = (TimeManager)obj;
 
                 timeManager.Extend(() => new UnityTime());
-
-                var config = App.Make<IConfig>();
-                config.SafeWatch("TimeProvider.DefaultTime", value =>
-                {
-                    timeManager.SetDefault(value.ToString());
-                });
-
                 timeManager.SetDefault(DefaultTime);
 
                 return timeManager;
