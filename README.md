@@ -11,6 +11,7 @@
 > We are currently preparing to convert the comments in the code to the English version. We look forward to your joining.
 
 > CatLib基础框架源码请访问：[CatLib/Framework](https://github.com/CatLib/Framework)
+> CatLib核心源码请访问：[CatLib/Core](https://github.com/CatLib/Core)
 
 ## 关于CatLib for Unity
 
