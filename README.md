@@ -11,6 +11,7 @@
 > We are currently preparing to convert the comments in the code to the English version. We look forward to your joining.
 
 > CatLib基础框架源码请访问：[CatLib/Framework](https://github.com/CatLib/Framework)
+
 > CatLib核心源码请访问：[CatLib/Core](https://github.com/CatLib/Core)
 
 ## 关于CatLib for Unity
@@ -24,6 +25,9 @@ CatLib for Unity 是为Unity3D开发的全栈开发框架，我们通过集成�
 - 抽象[文件系统](http://catlib.io/v1/guide/file-system.html).
 - 多功能[计时器](http://catlib.io/v1/guide/timer.html).
 - [哈希](http://catlib.io/v1/guide/hashing.html)，[加解密](http://catlib.io/v1/guide/encryption.html)，[Json](http://catlib.io/v1/guide/json.html).
+- [国际化](http://catlib.io/v1/guide/translation.html)
+- 基于Web的[远程调试控制台](http://catlib.io/v1/guide/console.html)
+- 支持Tcp,Kcp的[网络组件](http://catlib.io/v1/guide/network.html)
 
 CatLib提供了构建一个游戏所必备的基础组件 , 您可以通过接口简单的调用就可以访问这些组件的特性. 您也可以根据业务需求自由组合搭配这些组件，来构建一个完整的项目。
 
