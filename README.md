@@ -20,7 +20,6 @@ CatLib for Unity 是为Unity3D开发的全栈开发框架，我们通过集成�
 
 - [依赖注入容器](http://catlib.io/v1/guide/container.html).
 - [路由系统](http://catlib.io/v1/guide/routing.html).
-- 支持任意来源的[配置](http://catlib.io/v1/guide/config.html).
 - [标准库](http://catlib.io/v1/guide/support.html)
 - 抽象[文件系统](http://catlib.io/v1/guide/file-system.html).
 - 多功能[计时器](http://catlib.io/v1/guide/timer.html).
