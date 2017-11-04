@@ -9,8 +9,6 @@
  * Document: http://catlib.io/
  */
 
-using CatLib;
-using CatLib.API.Debugger;
 using CatLib.API.Routing;
 
 namespace YourNameSpace

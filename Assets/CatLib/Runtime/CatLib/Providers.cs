@@ -16,8 +16,11 @@ using CatLib.FileSystem;
 using CatLib.Hashing;
 using CatLib.Json;
 using CatLib.MonoDriver;
+using CatLib.Network;
 using CatLib.Random;
 using CatLib.Routing;
+using CatLib.Socket;
+using CatLib.Tick;
 using CatLib.Time;
 using CatLib.Timer;
 using CatLib.Translation;
@@ -52,6 +55,9 @@ namespace CatLib
                     new TimerProvider(),
                     new TranslationProvider(),
                     new RandomProvider(), 
+                    new NetworkProvider(), 
+                    new SocketProvider(), 
+                    new TickProvider(), 
                 };
             }
         }
