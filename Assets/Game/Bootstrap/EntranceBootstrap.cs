@@ -10,27 +10,32 @@
  */
 
 using CatLib;
+using CatLib.API.Routing;
 
 namespace Game
 {
     /// <summary>
-    /// 项目入口
+    /// 入口调度服务
     /// </summary>
-    public class Main : IBootstrap
+    public class EntranceBootstrap : IBootstrap
     {
         /// <summary>
-        /// 项目入口
+        /// 调度入口
         /// </summary>
-        [Priority]
+        public string dispatch;
+
+        /// <summary>
+        /// 引导程序接口
+        /// </summary>
+        [Priority(int.MaxValue - 1)]
         public void Bootstrap()
         {
             App.On(ApplicationEvents.OnStartCompleted, () =>
             {
-                // called this function after, use App.Make function to get service
-                // ex: App.Make<ILogger>().Debug("hello world");
-                // all can make service see : http://catlib.io/v1/guide/can-make.html
-
-                UnityEngine.Debug.Log("Hello CatLib");
+                if (!string.IsNullOrEmpty(dispatch) && App.HasInstance<IRouter>())
+                {
+                    App.Make<IRouter>().Dispatch(dispatch);
+                }
             });
         }
     }

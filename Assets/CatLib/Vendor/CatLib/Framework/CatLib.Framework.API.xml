@@ -1,0 +1,2098 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>CatLib.Framework.API</name>
+    </assembly>
+    <members>
+        <member name="T:CatLib.API.Compress.ICompress">
+            <summary>
+            压缩解压缩
+            </summary>
+        </member>
+        <member name="M:CatLib.API.Compress.ICompress.Compress(System.Byte[])">
+            <summary>
+            压缩
+            </summary>
+            <param name="bytes">需要压缩的字节流</param>
+            <returns>压缩后的结果</returns>
+        </member>
+        <member name="M:CatLib.API.Compress.ICompress.Decompress(System.Byte[])">
+            <summary>
+            解压缩
+            </summary>
+            <param name="bytes">需要解压缩的字节流</param>
+            <returns>解压缩的结果</returns>
+        </member>
+        <member name="T:CatLib.API.Compress.ICompressManager">
+            <summary>
+            压缩管理器
+            </summary>
+        </member>
+        <member name="M:CatLib.API.Compress.ICompressManager.Compress(System.Byte[],System.String)">
+            <summary>
+            压缩
+            </summary>
+            <param name="bytes">需要压缩的字节流</param>
+            <param name="name">使用的压缩解压缩名字</param>
+            <returns>压缩后的结果</returns>
+        </member>
+        <member name="M:CatLib.API.Compress.ICompressManager.Decomporess(System.Byte[],System.String)">
+            <summary>
+            解压缩
+            </summary>
+            <param name="bytes">需要解压缩的字节流</param>
+            <param name="name">使用的压缩解压缩名字</param>
+            <returns>解压缩的结果</returns>
+        </member>
+        <member name="T:CatLib.API.Encryption.EncryptionException">
+            <summary>
+            加解密异常
+            </summary>
+        </member>
+        <member name="M:CatLib.API.Encryption.EncryptionException.#ctor">
+            <summary>
+            加解密异常
+            </summary>
+        </member>
+        <member name="M:CatLib.API.Encryption.EncryptionException.#ctor(System.String)">
+            <summary>
+            加解密异常
+            </summary>
+            <param name="message">异常消息</param>
+        </member>
+        <member name="M:CatLib.API.Encryption.EncryptionException.#ctor(System.String,System.Exception)">
+            <summary>
+            加解密异常
+            </summary>
+            <param name="message">异常消息</param>
+            <param name="innerException">内部异常</param>
+        </member>
+        <member name="T:CatLib.API.Encryption.IEncrypter">
+            <summary>
+            加解密
+            </summary>
+        </member>
+        <member name="M:CatLib.API.Encryption.IEncrypter.Encrypt(System.Byte[])">
+            <summary>
+            加密(以Base64返回)
+            </summary>
+            <param name="content">加密数据</param>
+            <returns>加密后的数据</returns>
+        </member>
+        <member name="M:CatLib.API.Encryption.IEncrypter.Decrypt(System.String)">
+            <summary>
+            解密
+            </summary>
+            <param name="payload">被加密的内容</param>
+            <returns>解密内容</returns>
+        </member>
+        <member name="T:CatLib.API.Encryption.IEncryptionManager">
+            <summary>
+            加解密管理器
+            </summary>
+        </member>
+        <member name="M:CatLib.API.Encryption.IEncryptionManager.ExchangeSecret(System.Func{System.Byte[],System.Byte[]})">
+            <summary>
+            交换密钥
+            </summary>
+            <param name="exchange">交换流程(输入值是我方公钥，返回值是对端公钥)</param>
+            <returns>密钥</returns>
+        </member>
+        <member name="T:CatLib.API.Hashing.Checksums">
+            <summary>
+            使用的校验方法
+            </summary>
+        </member>
+        <member name="F:CatLib.API.Hashing.Checksums.Adler32">
+            <summary>
+            Adler32
+            </summary>
+        </member>
+        <member name="F:CatLib.API.Hashing.Checksums.Crc32">
+            <summary>
+            Crc32
+            </summary>
+        </member>
+        <member name="F:CatLib.API.Hashing.Checksums.Djb">
+            <summary>
+            Djb
+            </summary>
+        </member>
+        <member name="F:CatLib.API.Hashing.Checksums.Murmur32">
+            <summary>
+            Murmur32
+            </summary>
+        </member>
+        <member name="M:CatLib.API.Hashing.Checksums.#ctor(System.String)">
+            <summary>
+            哈希算法类型
+            </summary>
+            <param name="name">哈希算法名字</param>
+        </member>
+        <member name="M:CatLib.API.Hashing.Checksums.op_Implicit(System.String)~CatLib.API.Hashing.Checksums">
+            <summary>
+            字符串转Checksums
+            </summary>
+            <param name="type">类型</param>
+        </member>
+        <member name="T:CatLib.API.Hashing.Hashes">
+            <summary>
+            哈希算法
+            </summary>
+        </member>
+        <member name="F:CatLib.API.Hashing.Hashes.Djb">
+            <summary>
+            DJB Hash
+            </summary>
+        </member>
+        <member name="F:CatLib.API.Hashing.Hashes.MurmurHash">
+            <summary>
+            Murmur Hash
+            </summary>
+        </member>
+        <member name="M:CatLib.API.Hashing.Hashes.#ctor(System.String)">
+            <summary>
+            哈希算法类型
+            </summary>
+            <param name="name">哈希算法名字</param>
+        </member>
+        <member name="M:CatLib.API.Hashing.Hashes.op_Implicit(System.String)~CatLib.API.Hashing.Hashes">
+            <summary>
+            字符串转Hashes
+            </summary>
+            <param name="type">类型</param>
+        </member>
+        <member name="T:CatLib.API.Hashing.IHashing">
+            <summary>
+            哈希
+            </summary>
+        </member>
+        <member name="M:CatLib.API.Hashing.IHashing.Checksum(System.String)">
+            <summary>
+            使用默认的校验算法计算校验和
+            </summary>
+            <param name="input">输入</param>
+            <returns>校验和</returns>
+        </member>
+        <member name="M:CatLib.API.Hashing.IHashing.Checksum(System.String,CatLib.API.Hashing.Checksums)">
+            <summary>
+            使用默认的校验算法计算校验和
+            </summary>
+            <param name="input">输入</param>
+            <param name="checksum">使用校验类类型</param>
+            <returns>校验和</returns>
+        </member>
+        <member name="M:CatLib.API.Hashing.IHashing.Checksum(System.String,System.Text.Encoding,CatLib.API.Hashing.Checksums)">
+            <summary>
+            使用默认的校验算法计算校验和
+            </summary>
+            <param name="input">输入</param>
+            <param name="encoding">编码</param>
+            <param name="checksum">使用校验类类型</param>
+            <returns>校验和</returns>
+        </member>
+        <member name="M:CatLib.API.Hashing.IHashing.Checksum(System.Byte[])">
+            <summary>
+            计算校验和
+            </summary>
+            <param name="buffer">字节数组</param>
+            <returns>校验和</returns>
+        </member>
+        <member name="M:CatLib.API.Hashing.IHashing.Checksum(System.Byte[],CatLib.API.Hashing.Checksums)">
+            <summary>
+            计算校验和
+            </summary>
+            <param name="buffer">字节数组</param>
+            <param name="checksum">使用校验类类型</param>
+            <returns>校验和</returns>
+        </member>
+        <member name="M:CatLib.API.Hashing.IHashing.Checksum(System.Action{System.Action{System.Byte[],System.Int32,System.Int32}},CatLib.API.Hashing.Checksums)">
+            <summary>
+            将字节数组添加到数据校验和，闭包区间内校验器是专享的。
+            </summary>
+            <param name="callback">回调闭包(buffer , offset , count)</param>
+            <param name="checksum">使用校验类类型</param>
+            <returns>闭包区间内的总校验和</returns>
+        </member>
+        <member name="M:CatLib.API.Hashing.IHashing.HashPassword(System.String,System.Int32)">
+            <summary>
+            对输入值进行加密性Hash
+            </summary>
+            <param name="input">输入值</param>
+            <param name="factor">加密因子</param>
+            <returns>哈希值</returns>
+        </member>
+        <member name="M:CatLib.API.Hashing.IHashing.CheckPassword(System.String,System.String)">
+            <summary>
+            验证输入值和加密性哈希值是否匹配
+            </summary>
+            <param name="input">输入值</param>
+            <param name="hash">哈希值</param>
+            <returns>是否匹配</returns>
+        </member>
+        <member name="M:CatLib.API.Hashing.IHashing.HashString(System.String)">
+            <summary>
+            对输入值进行非加密哈希
+            </summary>
+            <param name="input">输入值</param>
+            <returns>哈希值</returns>
+        </member>
+        <member name="M:CatLib.API.Hashing.IHashing.HashString(System.String,CatLib.API.Hashing.Hashes)">
+            <summary>
+            对输入值进行非加密哈希
+            </summary>
+            <param name="input">输入值</param>
+            <param name="hash">使用的哈希算法</param>
+            <returns>哈希值</returns>
+        </member>
+        <member name="M:CatLib.API.Hashing.IHashing.HashString(System.String,System.Text.Encoding,CatLib.API.Hashing.Hashes)">
+            <summary>
+            对输入值进行非加密哈希
+            </summary>
+            <param name="input">输入值</param>
+            <param name="encoding">编码</param>
+            <param name="hash">使用的哈希算法</param>
+            <returns>哈希值</returns>
+        </member>
+        <member name="M:CatLib.API.Hashing.IHashing.HashByte(System.Byte[])">
+            <summary>
+            对输入值进行非加密哈希
+            </summary>
+            <param name="input">输入值</param>
+            <returns>哈希值</returns>
+        </member>
+        <member name="M:CatLib.API.Hashing.IHashing.HashByte(System.Byte[],CatLib.API.Hashing.Hashes)">
+            <summary>
+            对输入值进行非加密哈希
+            </summary>
+            <param name="input">输入值</param>
+            <param name="hash">使用的哈希算法</param>
+            <returns>哈希值</returns>
+        </member>
+        <member name="T:CatLib.API.Network.INetworkChannel">
+            <summary>
+            网络频道
+            </summary>
+        </member>
+        <member name="E:CatLib.API.Network.INetworkChannel.OnConnected">
+            <summary>
+            当网络链接完成时
+            </summary>
+        </member>
+        <member name="E:CatLib.API.Network.INetworkChannel.OnError">
+            <summary>
+            当网络出现异常时
+            </summary>
+        </member>
+        <member name="E:CatLib.API.Network.INetworkChannel.OnMessage">
+            <summary>
+            当收到数据包时
+            </summary>
+        </member>
+        <member name="E:CatLib.API.Network.INetworkChannel.OnDisconnect">
+            <summary>
+            当网络断开链接
+            </summary>
+        </member>
+        <member name="E:CatLib.API.Network.INetworkChannel.OnClosed">
+            <summary>
+            当网络链接关闭时
+            </summary>
+        </member>
+        <member name="E:CatLib.API.Network.INetworkChannel.OnSent">
+            <summary>
+            当数据发送完成
+            </summary>
+        </member>
+        <member name="E:CatLib.API.Network.INetworkChannel.OnMissHeartBeat">
+            <summary>
+            当丢失心跳时
+            </summary>
+        </member>
+        <member name="P:CatLib.API.Network.INetworkChannel.Name">
+            <summary>
+            网络频道名字
+            </summary>
+        </member>
+        <member name="P:CatLib.API.Network.INetworkChannel.Socket">
+            <summary>
+            基础网络套接字
+            </summary>
+        </member>
+        <member name="M:CatLib.API.Network.INetworkChannel.SetHeartBeat(System.Int32)">
+            <summary>
+            设定心跳包(毫秒)
+            </summary>
+            <param name="intervalMillisecond">心跳包间隔(毫秒)</param>
+        </member>
+        <member name="M:CatLib.API.Network.INetworkChannel.Connect">
+            <summary>
+            链接到服务器
+            </summary>
+        </member>
+        <member name="M:CatLib.API.Network.INetworkChannel.Connect(System.String,System.Int32)">
+            <summary>
+            链接到服务器
+            </summary>
+            <param name="hostname">服务器名</param>
+            <param name="port">端口</param>
+        </member>
+        <member name="M:CatLib.API.Network.INetworkChannel.Disconnect">
+            <summary>
+            断开链接
+            </summary>
+        </member>
+        <member name="M:CatLib.API.Network.INetworkChannel.Disconnect(System.Exception)">
+            <summary>
+            断开链接,并给定一个断开链接的异常
+            </summary>
+            <param name="ex">由于什么异常导致断开链接</param>
+        </member>
+        <member name="M:CatLib.API.Network.INetworkChannel.Send(System.Object)">
+            <summary>
+            发送数据
+            </summary>
+            <param name="packet">网络数据包</param>
+        </member>
+        <member name="T:CatLib.API.Network.INetworkManager">
+            <summary>
+            网络管理器
+            </summary>
+        </member>
+        <member name="E:CatLib.API.Network.INetworkManager.OnReleased">
+            <summary>
+            当释放时
+            </summary>
+        </member>
+        <member name="E:CatLib.API.Network.INetworkManager.OnConnected">
+            <summary>
+            当网络链接完成时
+            </summary>
+        </member>
+        <member name="E:CatLib.API.Network.INetworkManager.OnError">
+            <summary>
+            当网络出现异常时
+            </summary>
+        </member>
+        <member name="E:CatLib.API.Network.INetworkManager.OnMessage">
+            <summary>
+            当收到数据包时
+            </summary>
+        </member>
+        <member name="E:CatLib.API.Network.INetworkManager.OnDisconnect">
+            <summary>
+            当网络断开链接
+            </summary>
+        </member>
+        <member name="E:CatLib.API.Network.INetworkManager.OnClosed">
+            <summary>
+            当网络链接关闭时
+            </summary>
+        </member>
+        <member name="E:CatLib.API.Network.INetworkManager.OnSent">
+            <summary>
+            当数据发送完成
+            </summary>
+        </member>
+        <member name="E:CatLib.API.Network.INetworkManager.OnMissHeartBeat">
+            <summary>
+            当丢失心跳时
+            </summary>
+        </member>
+        <member name="M:CatLib.API.Network.INetworkManager.Make(System.String,System.String)">
+            <summary>
+            建立链接
+            </summary>
+            <param name="nsp">网络服务提供商</param>
+            <param name="name">名字</param>
+            <returns>网络频道</returns>
+        </member>
+        <member name="M:CatLib.API.Network.INetworkManager.Make(System.String,CatLib.API.Network.IPacker,System.String)">
+            <summary>
+            建立链接
+            </summary>
+            <param name="nsp">网络服务提供商</param>
+            <param name="packer">打包解包器</param>
+            <param name="name">名字</param>
+            <returns>网络频道</returns>
+        </member>
+        <member name="T:CatLib.API.Network.IPacker">
+            <summary>
+            打包解包器
+            </summary>
+        </member>
+        <member name="M:CatLib.API.Network.IPacker.Input(System.Byte[],System.Exception@)">
+            <summary>
+            <para>检查包的完整性。</para>
+            <para>如果能够得到包长，则返回包的在buffer中的长度(包含包头)，否则返回0继续等待数据。</para>
+            <para>如果协议有问题，则填入ex参数，当前连接会因此断开。</para>
+            </summary>
+            <param name="source">需要检查完整性的数据</param>
+            <param name="ex">用户自定义异常</param>
+            <returns>如果能够得到包长，则返回包的在buffer中的长度(包含包头)，否则返回0继续等待数据。</returns>
+        </member>
+        <member name="M:CatLib.API.Network.IPacker.Encode(System.Object,System.Exception@)">
+            <summary>
+            序列化消息包。
+            <para>如果协议有问题，则填入ex参数，当前连接会因此断开。</para>
+            </summary>
+            <param name="packet">需要序列化的消息包。</param>
+            <param name="ex">用户自定义异常。</param>
+            <returns>序列化后的消息包字节流。如果需要抛弃数据包则返回null。</returns>
+        </member>
+        <member name="M:CatLib.API.Network.IPacker.Decode(System.Byte[],System.Exception@)">
+            <summary>
+            反序列化消息包(包体)。
+            <para>如果协议有问题，则填入ex参数，当前连接会因此断开。</para>
+            </summary>
+            <param name="source">需要反序列化的数据。</param>
+            <param name="ex">用户自定义异常。</param>
+            <returns>反序列化后的消息包。如果需要抛弃数据包则返回null。</returns>
+        </member>
+        <member name="T:CatLib.API.Random.IRandomFactory">
+            <summary>
+            随机算法生成器
+            </summary>
+        </member>
+        <member name="M:CatLib.API.Random.IRandomFactory.Make">
+            <summary>
+            生成随机算法
+            </summary>
+            <returns>随机数算法</returns>
+        </member>
+        <member name="M:CatLib.API.Random.IRandomFactory.Make(CatLib.API.Random.RandomTypes)">
+            <summary>
+            生成随机算法
+            </summary>
+            <param name="type">算法类型</param>
+            <returns>随机数算法</returns>
+        </member>
+        <member name="M:CatLib.API.Random.IRandomFactory.Make(System.Int32,CatLib.API.Random.RandomTypes)">
+            <summary>
+            生成随机算法
+            </summary>
+            <returns>随机数算法</returns>
+        </member>
+        <member name="M:CatLib.API.Random.IRandomFactory.Next(CatLib.API.Random.RandomTypes)">
+            <summary>
+            返回一个随机数
+            </summary>
+            <param name="type">使用的随机算法类型</param>
+            <returns>随机数</returns>
+        </member>
+        <member name="M:CatLib.API.Random.IRandomFactory.Next(System.Int32,CatLib.API.Random.RandomTypes)">
+            <summary>
+            返回一个随机数
+            </summary>
+            <param name="maxValue">最大值(不包含)</param>
+            <param name="type">使用的随机算法类型</param>
+            <returns>随机数</returns>
+        </member>
+        <member name="M:CatLib.API.Random.IRandomFactory.Next(System.Int32,System.Int32,CatLib.API.Random.RandomTypes)">
+            <summary>
+            返回一个随机数
+            </summary>
+            <param name="minValue">最小值(包含)</param>
+            <param name="maxValue">最大值(不包含)</param>
+            <param name="type">使用的随机算法类型</param>
+            <returns>随机数</returns>
+        </member>
+        <member name="M:CatLib.API.Random.IRandomFactory.NextBytes(System.Byte[],CatLib.API.Random.RandomTypes)">
+            <summary>
+            生成随机数填充流
+            </summary>
+            <param name="buffer">流</param>
+            <param name="type">使用的随机算法类型</param>
+        </member>
+        <member name="M:CatLib.API.Random.IRandomFactory.NextDouble(CatLib.API.Random.RandomTypes)">
+            <summary>
+            返回一个介于0(包含)到1(不包含)之间的随机数
+            </summary>
+            <param name="type">使用的随机算法类型</param>
+            <returns>随机数</returns>
+        </member>
+        <member name="T:CatLib.API.Random.IRandom">
+            <summary>
+            随机算法
+            </summary>
+        </member>
+        <member name="M:CatLib.API.Random.IRandom.Next">
+            <summary>
+            返回一个随机数
+            </summary>
+            <returns>随机数</returns>
+        </member>
+        <member name="M:CatLib.API.Random.IRandom.Next(System.Int32)">
+            <summary>
+            返回一个随机数
+            </summary>
+            <param name="maxValue">最大值(不包含)</param>
+            <returns>随机数</returns>
+        </member>
+        <member name="M:CatLib.API.Random.IRandom.Next(System.Int32,System.Int32)">
+            <summary>
+            返回一个随机数
+            </summary>
+            <param name="minValue">最小值(包含)</param>
+            <param name="maxValue">最大值(不包含)</param>
+            <returns>随机数</returns>
+        </member>
+        <member name="M:CatLib.API.Random.IRandom.NextBytes(System.Byte[])">
+            <summary>
+            生成随机数填充流
+            </summary>
+            <param name="buffer">流</param>
+        </member>
+        <member name="M:CatLib.API.Random.IRandom.NextDouble">
+            <summary>
+            返回一个介于0(包含)到1(不包含)之间的随机数
+            </summary>
+            <returns>随机数</returns>
+        </member>
+        <member name="T:CatLib.API.Random.RandomTypes">
+            <summary>
+            随机算法类型
+            </summary>
+        </member>
+        <member name="F:CatLib.API.Random.RandomTypes.MersenneTwister">
+            <summary>
+            马特赛特旋转演算法
+            </summary>
+        </member>
+        <member name="F:CatLib.API.Random.RandomTypes.Xorshift">
+            <summary>
+            Xorshift
+            </summary>
+        </member>
+        <member name="F:CatLib.API.Random.RandomTypes.WH2006">
+            <summary>
+            Wichmann-Hill
+            </summary>
+        </member>
+        <member name="F:CatLib.API.Random.RandomTypes.Mrg32k3a">
+            <summary>
+            均匀随机数发生器(产数效率较低)
+            </summary>
+        </member>
+        <member name="M:CatLib.API.Random.RandomTypes.#ctor(System.String)">
+            <summary>
+            随机算法类型
+            </summary>
+            <param name="name">随机算法名字</param>
+        </member>
+        <member name="M:CatLib.API.Random.RandomTypes.op_Implicit(System.String)~CatLib.API.Random.RandomTypes">
+            <summary>
+            字符串转RandomTypes
+            </summary>
+            <param name="type">类型</param>
+        </member>
+        <member name="T:CatLib.API.Socket.ISocket">
+            <summary>
+            套接字服务
+            </summary>
+        </member>
+        <member name="P:CatLib.API.Socket.ISocket.Connected">
+            <summary>
+            是否已经链接远端主机
+            </summary>
+        </member>
+        <member name="M:CatLib.API.Socket.ISocket.Connect">
+            <summary>
+            建立链接
+            </summary>
+            <returns>异步等待接口</returns>
+        </member>
+        <member name="M:CatLib.API.Socket.ISocket.Connect(System.String,System.Int32)">
+            <summary>
+            建立链接
+            </summary>
+            <param name="hostname">服务器地址</param>
+            <param name="port">服务器端口</param>
+            <returns>异步等待接口</returns>
+        </member>
+        <member name="M:CatLib.API.Socket.ISocket.Send(System.Byte[])">
+            <summary>
+            异步发送
+            </summary>
+            <param name="data">发送数据</param>
+            <returns>异步等待接口</returns>
+        </member>
+        <member name="M:CatLib.API.Socket.ISocket.Disconnect">
+            <summary>
+            断开链接
+            </summary>
+        </member>
+        <member name="M:CatLib.API.Socket.ISocket.On(CatLib.API.Socket.SocketEvents,System.Action{System.Object})">
+            <summary>
+            注册一条事件
+            </summary>
+            <param name="socketEvent">Socket事件</param>
+            <param name="callback">回调函数</param>
+        </member>
+        <member name="M:CatLib.API.Socket.ISocket.Off(CatLib.API.Socket.SocketEvents,System.Action{System.Object})">
+            <summary>
+            反注册一条事件
+            </summary>
+            <param name="socketEvent">Socket事件</param>
+            <param name="callback">回调函数</param>
+        </member>
+        <member name="M:CatLib.API.Socket.ISocket.Trigger(CatLib.API.Socket.SocketEvents,System.Object)">
+            <summary>
+            触发一个Socket事件
+            </summary>
+            <param name="socketEvent">Socket事件</param>
+            <param name="payload">载荷</param>
+        </member>
+        <member name="T:CatLib.API.Socket.ISocketManager">
+            <summary>
+            Socket管理器
+            </summary>
+        </member>
+        <member name="M:CatLib.API.Socket.ISocketManager.Make(System.String,System.String)">
+            <summary>
+            建立链接
+            </summary>
+            <param name="nsp">
+            网络服务提供商
+            <para>tcp://localhost:9999</para>
+            <para>kcp://localhost:9999</para>
+            <para>ws://localhost:9999</para>
+            <para>wss://localhost:9999</para>
+            </param>
+            <param name="name">名字</param>
+            <returns>Socket链接</returns>
+        </member>
+        <member name="T:CatLib.API.Socket.SocketEvents">
+            <summary>
+            套接字事件
+            </summary>
+        </member>
+        <member name="F:CatLib.API.Socket.SocketEvents.EventConnect">
+            <summary>
+            消息
+            </summary>
+        </member>
+        <member name="F:CatLib.API.Socket.SocketEvents.EventDiconnect">
+            <summary>
+            断开链接
+            </summary>
+        </member>
+        <member name="F:CatLib.API.Socket.SocketEvents.EventMessage">
+            <summary>
+            消息
+            </summary>
+        </member>
+        <member name="F:CatLib.API.Socket.SocketEvents.EventSent">
+            <summary>
+            当发送完成
+            </summary>
+        </member>
+        <member name="F:CatLib.API.Socket.SocketEvents.EventClosed">
+            <summary>
+            关闭后
+            </summary>
+        </member>
+        <member name="F:CatLib.API.Socket.SocketEvents.EventError">
+            <summary>
+            关闭后
+            </summary>
+        </member>
+        <member name="F:CatLib.API.Socket.SocketEvents.Connect">
+            <summary>
+            当链接成功时
+            </summary>
+        </member>
+        <member name="F:CatLib.API.Socket.SocketEvents.Disconnect">
+            <summary>
+            断开链接时
+            </summary>
+        </member>
+        <member name="F:CatLib.API.Socket.SocketEvents.Message">
+            <summary>
+            当收到消息时
+            </summary>
+        </member>
+        <member name="F:CatLib.API.Socket.SocketEvents.Sent">
+            <summary>
+            当发送完成时
+            </summary>
+        </member>
+        <member name="F:CatLib.API.Socket.SocketEvents.Closed">
+            <summary>
+            当关闭后
+            </summary>
+        </member>
+        <member name="F:CatLib.API.Socket.SocketEvents.Error">
+            <summary>
+            当出现异常时
+            </summary>
+        </member>
+        <member name="M:CatLib.API.Socket.SocketEvents.#ctor(System.String)">
+            <summary>
+            构造一个枚举
+            </summary>
+        </member>
+        <member name="M:CatLib.API.Socket.SocketEvents.op_Implicit(System.String)~CatLib.API.Socket.SocketEvents">
+            <summary>
+            字符串转RandomTypes
+            </summary>
+            <param name="type">类型</param>
+        </member>
+        <member name="T:CatLib.API.Debugger.InvalidArgumentException">
+            <summary>
+            无效的参数异常
+            </summary>
+        </member>
+        <member name="M:CatLib.API.Debugger.InvalidArgumentException.#ctor">
+            <summary>
+            无效的参数
+            </summary>
+        </member>
+        <member name="M:CatLib.API.Debugger.InvalidArgumentException.#ctor(System.String)">
+            <summary>
+            无效的参数
+            </summary>
+            <param name="message">异常消息</param>
+        </member>
+        <member name="M:CatLib.API.Debugger.InvalidArgumentException.#ctor(System.String,System.Exception)">
+            <summary>
+            无效的参数
+            </summary>
+            <param name="message">异常消息</param>
+            <param name="innerException">异常结构</param>
+        </member>
+        <member name="M:CatLib.API.Debugger.InvalidArgumentException.#ctor(System.String,System.String,System.Exception)">
+            <summary>
+            无效的参数
+            </summary>
+            <param name="message">异常消息</param>
+            <param name="paramName">诱发异常的参数</param>
+            <param name="innerException">异常结构</param>
+        </member>
+        <member name="M:CatLib.API.Debugger.InvalidArgumentException.#ctor(System.String,System.String)">
+            <summary>
+            无效的参数
+            </summary>
+            <param name="message">异常消息</param>
+            <param name="paramName">诱发异常的参数</param>
+        </member>
+        <member name="T:CatLib.API.Debugger.ILogger">
+            <summary>
+            日志接口
+            </summary>
+        </member>
+        <member name="M:CatLib.API.Debugger.ILogger.Log(CatLib.API.Debugger.LogLevels,System.Object,System.Object[])">
+            <summary>
+            输出一条日志，日志级别为传入的等级
+            </summary>
+            <param name="level">日志等级</param>
+            <param name="message">日志内容</param>
+            <param name="context">上下文,用于替换占位符</param>
+            <exception cref="T:CatLib.API.Debugger.InvalidArgumentException">当传入的日志等级无效</exception>
+        </member>
+        <member name="M:CatLib.API.Debugger.ILogger.Debug(System.Object,System.Object[])">
+            <summary>
+            输出一条调试级日志
+            </summary>
+            <param name="message">日志内容</param>
+            <param name="context">上下文,用于替换占位符</param>
+        </member>
+        <member name="M:CatLib.API.Debugger.ILogger.Info(System.Object,System.Object[])">
+            <summary>
+            输出一条信息级日志
+            </summary>
+            <param name="message">日志内容</param>
+            <param name="context">上下文,用于替换占位符</param>
+        </member>
+        <member name="M:CatLib.API.Debugger.ILogger.Notice(System.Object,System.Object[])">
+            <summary>
+            输出一条通知级日志
+            </summary>
+            <param name="message">日志内容</param>
+            <param name="context">上下文,用于替换占位符</param>
+        </member>
+        <member name="M:CatLib.API.Debugger.ILogger.Warning(System.Object,System.Object[])">
+            <summary>
+            输出一条警告级日志
+            </summary>
+            <param name="message">日志内容</param>
+            <param name="context">上下文,用于替换占位符</param>
+        </member>
+        <member name="M:CatLib.API.Debugger.ILogger.Error(System.Object,System.Object[])">
+            <summary>
+            输出一条错误级日志
+            </summary>
+            <param name="message">日志内容</param>
+            <param name="context">上下文,用于替换占位符</param>
+        </member>
+        <member name="M:CatLib.API.Debugger.ILogger.Critical(System.Object,System.Object[])">
+            <summary>
+            输出一条关键级日志
+            </summary>
+            <param name="message">日志内容</param>
+            <param name="context">上下文,用于替换占位符</param>
+        </member>
+        <member name="M:CatLib.API.Debugger.ILogger.Alert(System.Object,System.Object[])">
+            <summary>
+            输出一条警报级日志
+            </summary>
+            <param name="message">日志内容</param>
+            <param name="context">上下文,用于替换占位符</param>
+        </member>
+        <member name="M:CatLib.API.Debugger.ILogger.Emergency(System.Object,System.Object[])">
+            <summary>
+            输出一条紧急级日志
+            </summary>
+            <param name="message">日志内容</param>
+            <param name="context">上下文,用于替换占位符</param>
+        </member>
+        <member name="T:CatLib.API.Debugger.LogLevels">
+            <summary>
+            日志等级
+            细节见：https://tools.ietf.org/html/rfc5424
+            </summary>
+        </member>
+        <member name="F:CatLib.API.Debugger.LogLevels.Emergency">
+            <summary>
+            紧急(系统不可用)
+            </summary>
+        </member>
+        <member name="F:CatLib.API.Debugger.LogLevels.Alert">
+            <summary>
+            警报(必须立即采取行动)
+            </summary>
+        </member>
+        <member name="F:CatLib.API.Debugger.LogLevels.Critical">
+            <summary>
+            关键（关键日志）
+            </summary>
+        </member>
+        <member name="F:CatLib.API.Debugger.LogLevels.Error">
+            <summary>
+            错误
+            </summary>
+        </member>
+        <member name="F:CatLib.API.Debugger.LogLevels.Warning">
+            <summary>
+            警告
+            </summary>
+        </member>
+        <member name="F:CatLib.API.Debugger.LogLevels.Notice">
+            <summary>
+            通知
+            </summary>
+        </member>
+        <member name="F:CatLib.API.Debugger.LogLevels.Info">
+            <summary>
+            信息
+            </summary>
+        </member>
+        <member name="F:CatLib.API.Debugger.LogLevels.Debug">
+            <summary>
+            调试级消息
+            </summary>
+        </member>
+        <member name="T:CatLib.API.FileSystem.IFileSystemManager">
+            <summary>
+            文件系统管理器
+            </summary>
+        </member>
+        <member name="M:CatLib.API.FileSystem.IFileSystemManager.Disk(System.String)">
+            <summary>
+            获取一个文件系统解决方案(磁盘)
+            </summary>
+            <param name="name">解决方案名</param>
+            <returns>文件系统</returns>
+        </member>
+        <member name="T:CatLib.API.FileSystem.IDirectory">
+            <summary>
+            文件夹
+            </summary>
+        </member>
+        <member name="M:CatLib.API.FileSystem.IDirectory.GetList">
+            <summary>
+            获取文件夹下的文件/文件夹列表（不会迭代子文件夹）
+            </summary>
+            <returns>指定目录下的文件夹句柄和文件句柄列表</returns>
+        </member>
+        <member name="T:CatLib.API.FileSystem.IFile">
+            <summary>
+            文件
+            </summary>
+        </member>
+        <member name="M:CatLib.API.FileSystem.IFile.Write(System.Byte[])">
+            <summary>
+            写入数据
+            如果数据已经存在则覆盖
+            </summary>
+            <param name="contents">写入数据</param>
+        </member>
+        <member name="M:CatLib.API.FileSystem.IFile.Read">
+            <summary>
+            读取文件
+            </summary>
+            <returns>读取的数据</returns>
+        </member>
+        <member name="T:CatLib.API.FileSystem.IFileSystem">
+            <summary>
+            文件系统
+            </summary>
+        </member>
+        <member name="M:CatLib.API.FileSystem.IFileSystem.Exists(System.String)">
+            <summary>
+            文件或文件夹是否存在
+            </summary>
+            <param name="path">文件或文件夹是否存在</param>
+            <returns>是否存在</returns>
+        </member>
+        <member name="M:CatLib.API.FileSystem.IFileSystem.Write(System.String,System.Byte[])">
+            <summary>
+            写入数据
+            如果数据已经存在则覆盖
+            </summary>
+            <param name="path">路径</param>
+            <param name="contents">写入数据</param>
+        </member>
+        <member name="M:CatLib.API.FileSystem.IFileSystem.Read(System.String)">
+            <summary>
+            读取文件
+            </summary>
+            <param name="path">路径</param>
+            <returns>读取的数据</returns>
+        </member>
+        <member name="M:CatLib.API.FileSystem.IFileSystem.Move(System.String,System.String)">
+            <summary>
+            移动文件到指定目录
+            </summary>
+            <param name="path">旧的文件/文件夹路径</param>
+            <param name="newPath">新的文件/文件夹路径</param>
+        </member>
+        <member name="M:CatLib.API.FileSystem.IFileSystem.Copy(System.String,System.String)">
+            <summary>
+            复制文件或文件夹到指定路径
+            </summary>
+            <param name="path">文件或文件夹路径(应该包含文件夹或者文件名)</param>
+            <param name="copyPath">复制到的路径(不应该包含文件夹或者文件名)</param>
+        </member>
+        <member name="M:CatLib.API.FileSystem.IFileSystem.Delete(System.String)">
+            <summary>
+            删除文件或者文件夹
+            </summary>
+            <param name="path">路径</param>
+        </member>
+        <member name="M:CatLib.API.FileSystem.IFileSystem.MakeDir(System.String)">
+            <summary>
+            创建文件夹
+            </summary>
+            <param name="path">文件夹路径</param>
+        </member>
+        <member name="M:CatLib.API.FileSystem.IFileSystem.GetHandler``1(System.String)">
+            <summary>
+            获取文件/文件夹句柄
+            </summary>
+            <param name="path">文件/文件夹路径</param>
+            <returns>文件/文件夹句柄</returns>
+        </member>
+        <member name="M:CatLib.API.FileSystem.IFileSystem.GetSize(System.String)">
+            <summary>
+            获取文件/文件夹的大小(字节)
+            </summary>
+            <param name="path">文件/文件夹路径</param>
+            <returns>文件/文件夹的大小</returns>
+        </member>
+        <member name="M:CatLib.API.FileSystem.IFileSystem.GetAttributes(System.String)">
+            <summary>
+            获取文件/文件夹属性
+            </summary>
+            <param name="path">文件/文件夹路径</param>
+            <returns>文件/文件夹属性</returns>
+        </member>
+        <member name="M:CatLib.API.FileSystem.IFileSystem.GetList(System.String)">
+            <summary>
+            获取列表（不会迭代子文件夹）
+            </summary>
+            <param name="path">要获取列表的文件夹路径(如果传入的是一个文件那么将会返回文件自身路径)</param>
+            <returns>指定目录下的文件夹句柄和文件句柄列表</returns>
+        </member>
+        <member name="T:CatLib.API.FileSystem.IHandler">
+            <summary>
+            句柄
+            </summary>
+        </member>
+        <member name="P:CatLib.API.FileSystem.IHandler.Path">
+            <summary>
+            文件/文件夹路径
+            </summary>
+        </member>
+        <member name="P:CatLib.API.FileSystem.IHandler.IsExists">
+            <summary>
+            文件/文件夹是否存在
+            </summary>
+        </member>
+        <member name="M:CatLib.API.FileSystem.IHandler.Rename(System.String)">
+            <summary>
+            重命名
+            </summary>
+            <param name="newName">新的文件/文件夹名字</param>
+        </member>
+        <member name="M:CatLib.API.FileSystem.IHandler.Move(System.String)">
+            <summary>
+            将文件/文件夹移动到指定路径
+            </summary>
+            <param name="newPath">移动到的目标路径</param>
+        </member>
+        <member name="M:CatLib.API.FileSystem.IHandler.Copy(System.String)">
+            <summary>
+            复制文件或文件夹到指定路径
+            </summary>
+            <param name="copyPath">复制到的路径(不应该包含文件夹或者文件名)</param>
+        </member>
+        <member name="M:CatLib.API.FileSystem.IHandler.Delete">
+            <summary>
+            删除文件或者文件夹
+            </summary>
+        </member>
+        <member name="M:CatLib.API.FileSystem.IHandler.GetAttributes">
+            <summary>
+            获取文件/文件夹属性
+            </summary>
+            <returns>文件/文件夹属性</returns>
+        </member>
+        <member name="P:CatLib.API.FileSystem.IHandler.IsDir">
+            <summary>
+            是否是文件夹
+            </summary>
+            <returns>是否是文件夹</returns>
+        </member>
+        <member name="M:CatLib.API.FileSystem.IHandler.GetSize">
+            <summary>
+            文件/文件夹大小
+            </summary>
+        </member>
+        <member name="T:CatLib.API.Json.IJson">
+            <summary>
+            Json 工具
+            </summary>
+        </member>
+        <member name="M:CatLib.API.Json.IJson.Decode``1(System.String)">
+            <summary>
+            反序列化
+            </summary>
+            <typeparam name="T">反序列化的类型</typeparam>
+            <param name="json">json数据</param>
+            <returns>反序列化的结果</returns>
+        </member>
+        <member name="M:CatLib.API.Json.IJson.Decode(System.String,System.Type)">
+            <summary>
+            反序列化
+            </summary>
+            <param name="json">json数据</param>
+            <param name="type">反序列化的类型</param>
+            <returns>反序列化的结果</returns>
+        </member>
+        <member name="M:CatLib.API.Json.IJson.Encode(System.Object)">
+            <summary>
+            序列化
+            </summary>
+            <param name="item">需要序列化的对象</param>
+            <returns>json数据</returns>
+        </member>
+        <member name="T:CatLib.API.Json.IJsonAware">
+            <summary>
+            Json实例接口
+            </summary>
+        </member>
+        <member name="M:CatLib.API.Json.IJsonAware.SetJson(CatLib.API.Json.IJson)">
+            <summary>
+            设定json处理器实例接口
+            </summary>
+            <param name="handler">json处理器</param>
+        </member>
+        <member name="T:CatLib.API.Routing.DispatchEventArgs">
+            <summary>
+            调度事件
+            </summary>
+        </member>
+        <member name="P:CatLib.API.Routing.DispatchEventArgs.Router">
+            <summary>
+            路由器
+            </summary>
+        </member>
+        <member name="P:CatLib.API.Routing.DispatchEventArgs.Route">
+            <summary>
+            异常
+            </summary>
+        </member>
+        <member name="P:CatLib.API.Routing.DispatchEventArgs.Request">
+            <summary>
+            请求
+            </summary>
+        </member>
+        <member name="M:CatLib.API.Routing.DispatchEventArgs.#ctor(CatLib.API.Routing.IRouter,CatLib.API.Routing.IRoute,CatLib.API.Routing.IRequest)">
+            <summary>
+            请求
+            </summary>
+            <param name="router">路由器</param>
+            <param name="route">路由</param>
+            <param name="request">请求</param>
+        </member>
+        <member name="T:CatLib.API.Routing.DomainException">
+            <summary>
+            参数范围及域异常
+            </summary>
+        </member>
+        <member name="M:CatLib.API.Routing.DomainException.#ctor(System.String)">
+            <summary>
+            创建一个参数范围及域异常
+            </summary>
+            <param name="message">错误描述</param>
+        </member>
+        <member name="T:CatLib.API.Routing.NotFoundRouteException">
+            <summary>
+            未能找到路由条目
+            </summary>
+        </member>
+        <member name="M:CatLib.API.Routing.NotFoundRouteException.#ctor(System.String)">
+            <summary>
+            未能找到路由条目
+            </summary>
+            <param name="message">异常消息</param>
+        </member>
+        <member name="T:CatLib.API.Routing.UndefinedDefaultSchemeException">
+            <summary>
+            未定义默认的Scheme
+            </summary>
+        </member>
+        <member name="M:CatLib.API.Routing.UndefinedDefaultSchemeException.#ctor(System.String)">
+            <summary>
+            未定义默认的Scheme
+            </summary>
+            <param name="message">异常消息</param>
+        </member>
+        <member name="T:CatLib.API.Routing.IMiddleware">
+            <summary>
+            中间件
+            </summary>
+        </member>
+        <member name="P:CatLib.API.Routing.IMiddleware.Middleware">
+            <summary>
+            路由请求过滤链
+            </summary>
+        </member>
+        <member name="T:CatLib.API.Routing.RoutedAttribute">
+            <summary>
+            路由标记
+            </summary>
+        </member>
+        <member name="P:CatLib.API.Routing.RoutedAttribute.Group">
+            <summary>
+            路由组
+            </summary>
+        </member>
+        <member name="P:CatLib.API.Routing.RoutedAttribute.Where">
+            <summary>
+            条件
+            </summary>
+        </member>
+        <member name="P:CatLib.API.Routing.RoutedAttribute.Defaults">
+            <summary>
+            默认值
+            </summary>
+        </member>
+        <member name="P:CatLib.API.Routing.RoutedAttribute.Path">
+            <summary>
+            路径
+            </summary>
+        </member>
+        <member name="M:CatLib.API.Routing.RoutedAttribute.#ctor">
+            <summary>
+            路由
+            </summary>
+        </member>
+        <member name="M:CatLib.API.Routing.RoutedAttribute.#ctor(System.String)">
+            <summary>
+            路由路径
+            </summary>
+            <param name="path"></param>
+        </member>
+        <member name="T:CatLib.API.Routing.IRequest">
+            <summary>
+            请求
+            </summary>
+        </member>
+        <member name="P:CatLib.API.Routing.IRequest.Uri">
+            <summary>
+            Uri
+            </summary>
+        </member>
+        <member name="M:CatLib.API.Routing.IRequest.GetContext">
+            <summary>
+            上下文
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:CatLib.API.Routing.IRequest.Segment(System.Int32,System.String)">
+            <summary>
+            构成uri路径段的数组
+            </summary>
+            <param name="index">下标</param>
+            <param name="defaultValue">默认值</param>
+            <returns></returns>
+        </member>
+        <member name="M:CatLib.API.Routing.IRequest.Get(System.String,System.String)">
+            <summary>
+            获取字符串附加物
+            </summary>
+            <param name="key">键</param>
+            <param name="defaultValue">默认值</param>
+            <returns></returns>
+        </member>
+        <member name="M:CatLib.API.Routing.IRequest.ReplaceParameter(System.String,System.String)">
+            <summary>
+            替换参数
+            </summary>
+            <param name="key">键</param>
+            <param name="value">值</param>
+        </member>
+        <member name="M:CatLib.API.Routing.IRequest.ReplaceContext(System.Object)">
+            <summary>
+            替换上下文
+            </summary>
+            <param name="context">上下文</param>
+        </member>
+        <member name="P:CatLib.API.Routing.IRequest.Item(System.String)">
+            <summary>
+            获取字符串附加物
+            </summary>
+            <param name="key"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CatLib.API.Routing.IRequest.GetString(System.String,System.String)">
+            <summary>
+            获取字符串附加物
+            </summary>
+            <param name="key"></param>
+            <param name="defaultValue"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CatLib.API.Routing.IRequest.GetInt(System.String,System.Int32)">
+            <summary>
+            获取整型的附加物
+            </summary>
+            <param name="key"></param>
+            <param name="defaultValue"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CatLib.API.Routing.IRequest.GetLong(System.String,System.Int64)">
+            <summary>
+            获取长整型的附加物
+            </summary>
+            <param name="key"></param>
+            <param name="defaultValue"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CatLib.API.Routing.IRequest.GetShort(System.String,System.Int16)">
+            <summary>
+            获取短整型的附加物
+            </summary>
+            <param name="key"></param>
+            <param name="defaultValue"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CatLib.API.Routing.IRequest.GetChar(System.String,System.Char)">
+            <summary>
+            获取字符的附加物
+            </summary>
+            <param name="key"></param>
+            <param name="defaultValue"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CatLib.API.Routing.IRequest.GetFloat(System.String,System.Single)">
+            <summary>
+            获取浮点数的附加物
+            </summary>
+            <param name="key"></param>
+            <param name="defaultValue"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CatLib.API.Routing.IRequest.GetDouble(System.String,System.Double)">
+            <summary>
+            获取双精度浮点数的附加物
+            </summary>
+            <param name="key"></param>
+            <param name="defaultValue"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CatLib.API.Routing.IRequest.GetBoolean(System.String,System.Boolean)">
+            <summary>
+            获取布尔值的附加物
+            </summary>
+            <param name="key"></param>
+            <param name="defaultValue"></param>
+            <returns></returns>
+        </member>
+        <member name="T:CatLib.API.Routing.IResponse">
+            <summary>
+            响应
+            </summary>
+        </member>
+        <member name="M:CatLib.API.Routing.IResponse.GetContext">
+            <summary>
+            获取上下文
+            </summary>
+            <returns>上下文</returns>
+        </member>
+        <member name="M:CatLib.API.Routing.IResponse.SetContext(System.Object)">
+            <summary>
+            设定上下文
+            </summary>
+            <param name="context"></param>
+        </member>
+        <member name="T:CatLib.API.Routing.IRoute">
+            <summary>
+            路由条目
+            </summary>
+        </member>
+        <member name="M:CatLib.API.Routing.IRoute.Group(System.String)">
+            <summary>
+            将当前路由条目追加到指定路由组中
+            </summary>
+            <param name="name">名字</param>
+            <returns>路由条目实例</returns>
+        </member>
+        <member name="M:CatLib.API.Routing.IRoute.Defaults(System.String,System.String,System.Boolean)">
+            <summary>
+            设定默认值
+            </summary>
+            <param name="name">参数名</param>
+            <param name="val">默认值</param>
+            <param name="overrided">是否覆盖</param>
+            <returns>路由条目实例</returns>
+        </member>
+        <member name="M:CatLib.API.Routing.IRoute.Where(System.String,System.String,System.Boolean)">
+            <summary>
+            约束指定参数必须符合指定模式才会被路由
+            </summary>
+            <param name="name">名字</param>
+            <param name="pattern">约束参数</param>
+            <param name="overrided">是否覆盖</param>
+            <returns>路由条目实例</returns>
+        </member>
+        <member name="M:CatLib.API.Routing.IRoute.Middleware(System.Action{CatLib.API.Routing.IRequest,CatLib.API.Routing.IResponse,System.Action{CatLib.API.Routing.IRequest,CatLib.API.Routing.IResponse}},System.Int32)">
+            <summary>
+            路由中间件
+            </summary>
+            <param name="middleware">执行的处理函数</param>
+            <param name="priority">优先级(值越小越优先)</param>
+            <returns>路由条目实例</returns>
+        </member>
+        <member name="M:CatLib.API.Routing.IRoute.OnError(System.Action{CatLib.API.Routing.IRequest,CatLib.API.Routing.IResponse,System.Exception,System.Action{CatLib.API.Routing.IRequest,CatLib.API.Routing.IResponse,System.Exception}},System.Int32)">
+            <summary>
+            当路由出现错误时
+            </summary>
+            <param name="onError">执行的处理函数</param>
+            <param name="priority">优先级(值越小越优先)</param>
+            <returns>路由条目实例</returns>
+        </member>
+        <member name="T:CatLib.API.Routing.IRouteGroup">
+            <summary>
+            路由组
+            </summary>
+        </member>
+        <member name="M:CatLib.API.Routing.IRouteGroup.AddRoute(CatLib.API.Routing.IRoute)">
+            <summary>
+            增加路由条目到路由组中
+            </summary>
+            <param name="route">路由条目</param>
+            <returns>当前路由组实例</returns>
+        </member>
+        <member name="M:CatLib.API.Routing.IRouteGroup.Defaults(System.String,System.String)">
+            <summary>
+            设定参数的默认值
+            </summary>
+            <param name="name">参数名</param>
+            <param name="val">参数值</param>
+            <returns>当前路由组实例</returns>
+        </member>
+        <member name="M:CatLib.API.Routing.IRouteGroup.Where(System.String,System.String)">
+            <summary>
+            约束指定参数必须符合正则表达式
+            </summary>
+            <param name="name">参数名</param>
+            <param name="pattern">约束的正则表达式</param>
+            <returns>当前路由组实例</returns>
+        </member>
+        <member name="M:CatLib.API.Routing.IRouteGroup.Middleware(System.Action{CatLib.API.Routing.IRequest,CatLib.API.Routing.IResponse,System.Action{CatLib.API.Routing.IRequest,CatLib.API.Routing.IResponse}},System.Int32)">
+            <summary>
+            添加路由中间件
+            </summary>
+            <param name="middleware">中间件</param>
+            <param name="priority">优先级(值越小越优先)</param>
+            <returns>当前路由组实例</returns>
+        </member>
+        <member name="M:CatLib.API.Routing.IRouteGroup.OnError(System.Action{CatLib.API.Routing.IRequest,CatLib.API.Routing.IResponse,System.Exception,System.Action{CatLib.API.Routing.IRequest,CatLib.API.Routing.IResponse,System.Exception}},System.Int32)">
+            <summary>
+            当路由出现错误时
+            </summary>
+            <param name="onError">错误处理函数</param>
+            <param name="priority">优先级(值越小越优先)</param>
+            <returns>当前路由组实例</returns>
+        </member>
+        <member name="T:CatLib.API.Routing.IRouter">
+            <summary>
+            路由接口
+            </summary>
+        </member>
+        <member name="M:CatLib.API.Routing.IRouter.Reg(System.String,System.Action)">
+            <summary>
+            根据回调行为注册一个路由
+            </summary>
+            <param name="uri">统一资源标识符</param>
+            <param name="action">行为</param>
+            <returns>当前实例</returns>
+        </member>
+        <member name="M:CatLib.API.Routing.IRouter.Reg``1(System.String,System.Action{``0})">
+            <summary>
+            根据回调行为注册一个路由
+            </summary>
+            <param name="uri">统一资源标识符</param>
+            <param name="action">行为</param>
+            <returns>当前实例</returns>
+        </member>
+        <member name="M:CatLib.API.Routing.IRouter.Reg``2(System.String,System.Action{``0,``1})">
+            <summary>
+            根据回调行为注册一个路由
+            </summary>
+            <param name="uri">统一资源标识符</param>
+            <param name="action">行为</param>
+            <returns>当前实例</returns>
+        </member>
+        <member name="M:CatLib.API.Routing.IRouter.Reg``3(System.String,System.Action{``0,``1,``2})">
+            <summary>
+            根据回调行为注册一个路由
+            </summary>
+            <param name="uri">统一资源标识符</param>
+            <param name="action">行为</param>
+            <returns>当前实例</returns>
+        </member>
+        <member name="M:CatLib.API.Routing.IRouter.Reg``4(System.String,System.Action{``0,``1,``2,``3})">
+            <summary>
+            根据回调行为注册一个路由
+            </summary>
+            <param name="uri">统一资源标识符</param>
+            <param name="action">行为</param>
+            <returns>当前实例</returns>
+        </member>
+        <member name="M:CatLib.API.Routing.IRouter.Reg(System.String,System.Object,System.Reflection.MethodInfo)">
+            <summary>
+            根据
+            </summary>
+            <param name="uris">统一资源标识符</param>
+            <param name="target">行为调度目标</param>
+            <param name="methodInfo">调度方法</param>
+        </member>
+        <member name="M:CatLib.API.Routing.IRouter.Reg(System.String,System.Type,System.String)">
+            <summary>
+            根据控制器的type和调用的方法名字注册一个路由
+            </summary>
+            <param name="uri">uri</param>
+            <param name="controller">控制器类型</param>
+            <param name="method">调用的方法名</param>
+            <returns>当前实例</returns>
+        </member>
+        <member name="M:CatLib.API.Routing.IRouter.SetDefaultScheme(System.String)">
+            <summary>
+            设定默认的scheme
+            </summary>
+            <param name="scheme">默认的scheme</param>
+            <returns>当前实例</returns>
+        </member>
+        <member name="M:CatLib.API.Routing.IRouter.OnNotFound(System.Action{CatLib.API.Routing.IRequest,System.Action{CatLib.API.Routing.IRequest}},System.Int32)">
+            <summary>
+            当路由没有找到时
+            </summary>
+            <param name="middleware">中间件</param>
+            <param name="priority">优先级(值越小越优先)</param>
+            <returns>当前实例</returns>
+        </member>
+        <member name="M:CatLib.API.Routing.IRouter.Middleware(System.Action{CatLib.API.Routing.IRequest,CatLib.API.Routing.IResponse,System.Action{CatLib.API.Routing.IRequest,CatLib.API.Routing.IResponse}},System.Int32)">
+            <summary>
+            全局路由中间件
+            </summary>
+            <param name="middleware">中间件</param>
+            <param name="priority">优先级(值越小越优先)</param>
+            <returns>当前路由器实例</returns>
+        </member>
+        <member name="M:CatLib.API.Routing.IRouter.OnError(System.Action{CatLib.API.Routing.IRequest,CatLib.API.Routing.IResponse,System.Exception,System.Action{CatLib.API.Routing.IRequest,CatLib.API.Routing.IResponse,System.Exception}},System.Int32)">
+            <summary>
+            当路由出现错误时
+            </summary>
+            <param name="middleware">错误处理函数</param>
+            <param name="priority">优先级(值越小越优先)</param>
+            <returns>当前实例</returns>
+        </member>
+        <member name="M:CatLib.API.Routing.IRouter.Dispatch(System.String,System.Object)">
+            <summary>
+            调度路由
+            </summary>
+            <param name="uri">路由地址</param>
+            <param name="context">上下文</param>
+            <returns>请求响应</returns>
+        </member>
+        <member name="M:CatLib.API.Routing.IRouter.Group(System.String)">
+            <summary>
+            建立或者获取一个已经建立的路由组
+            </summary>
+            <param name="name">路由组名字</param>
+            <returns>当前实例</returns>
+        </member>
+        <member name="M:CatLib.API.Routing.IRouter.Group(System.Action,System.String)">
+            <summary>
+            建立匿名路由组，调用的闭包内为路由组有效范围, 允许给定一个名字来显示命名路由组
+            </summary>
+            <param name="area">区域</param>
+            <param name="name">路由组名字</param>
+            <returns>当前实例</returns>
+        </member>
+        <member name="T:CatLib.API.Translation.ITranslateResources">
+            <summary>
+            翻译映射
+            </summary>
+        </member>
+        <member name="M:CatLib.API.Translation.ITranslateResources.TryGetValue(System.String,System.String,System.String@)">
+            <summary>
+            获取映射
+            </summary>
+            <param name="locale">语言</param>
+            <param name="key">键</param>
+            <param name="str">返回的值</param>
+            <returns>是否成功获取</returns>
+        </member>
+        <member name="T:CatLib.API.Translation.ITranslator">
+            <summary>
+            国际化(I18N)
+            语言代码使用 ISO 639, ISO 639-1, ISO 639-2, ISO 639-3 标准
+            </summary>
+        </member>
+        <member name="M:CatLib.API.Translation.ITranslator.SetResources(CatLib.API.Translation.ITranslateResources)">
+            <summary>
+            设定翻译资源
+            </summary>
+            <param name="map">翻译资源</param>
+        </member>
+        <member name="M:CatLib.API.Translation.ITranslator.Get(System.String,System.String[])">
+            <summary>
+            在当前语言环境下翻译内容，如果没有命中则使用替补语言
+            </summary>
+            <param name="key">键</param>
+            <param name="replace">替换翻译内容的占位符</param>
+            <returns>翻译的值</returns>
+        </member>
+        <member name="M:CatLib.API.Translation.ITranslator.Get(System.String,System.Int32,System.String[])">
+            <summary>
+            在当前语言环境下翻译带有数量的内容，如果没有命中则使用替补语言
+            </summary>
+            <param name="key">键</param>
+            <param name="number">数值</param>
+            <param name="replace">替换翻译内容的占位符</param>
+            <returns>翻译的值</returns>
+        </member>
+        <member name="M:CatLib.API.Translation.ITranslator.GetBy(System.String,System.String[],System.String[])">
+            <summary>
+            依次遍历给定的语言获取翻译,如果都没有命中则使用替补语言
+            </summary>
+            <param name="key">键</param>
+            <param name="locales">多语言</param>
+            <param name="replace">替换翻译内容的占位符</param>
+            <returns>翻译的内容</returns>
+        </member>
+        <member name="M:CatLib.API.Translation.ITranslator.GetBy(System.String,System.Int32,System.String[],System.String[])">
+            <summary>
+            依次遍历给定的语言获取翻译,翻译根据传入数量使用指定复数形式,如果都没有命中则使用替补语言
+            </summary>
+            <param name="key">键</param>
+            <param name="number">数量</param>
+            <param name="locales">遍历的语言</param>
+            <param name="replace">替换翻译内容的占位符</param>
+            <returns>翻译后的内容</returns>
+        </member>
+        <member name="M:CatLib.API.Translation.ITranslator.GetBy(System.String,System.String,System.String[])">
+            <summary>
+            从指定的语言获取翻译,如果没有命中则使用替补语言
+            </summary>
+            <param name="key">键</param>
+            <param name="locale">语言</param>
+            <param name="replace">替换翻译内容的占位符</param>
+            <returns>翻译的内容</returns>
+        </member>
+        <member name="M:CatLib.API.Translation.ITranslator.GetBy(System.String,System.Int32,System.String,System.String[])">
+            <summary>
+            从指定的语言获取翻译,翻译根据传入数量使用指定复数形式,如果没有命中则使用替补语言
+            </summary>
+            <param name="key">键</param>
+            <param name="number">语言</param>
+            <param name="locale">指定语言</param>
+            <param name="replace">替换翻译内容的占位符</param>
+            <returns>翻译后的内容</returns>
+        </member>
+        <member name="M:CatLib.API.Translation.ITranslator.GetLocale">
+            <summary>
+            获取当前语言环境
+            </summary>
+            <returns>当前语言</returns>
+        </member>
+        <member name="M:CatLib.API.Translation.ITranslator.SetLocale(System.String)">
+            <summary>
+            设定当前语言环境
+            </summary>
+            <param name="locale">当前语言(语言代码使用 ISO 639, ISO 639-1, ISO 639-2, ISO 639-3 标准)</param>
+        </member>
+        <member name="M:CatLib.API.Translation.ITranslator.SetFallback(System.String)">
+            <summary>
+            设定替补语言
+            </summary>
+            <param name="fallback">替补语言(语言代码使用 ISO 639, ISO 639-1, ISO 639-2, ISO 639-3 标准)</param>
+        </member>
+        <member name="T:CatLib.API.Translation.Languages">
+            <summary>
+            语言代码(ISO 639, ISO 639-1, ISO 639-2, ISO 639-3)
+            </summary>
+        </member>
+        <member name="F:CatLib.API.Translation.Languages.Azerbaijani">
+            <summary>
+            阿塞拜疆
+            </summary>
+        </member>
+        <member name="F:CatLib.API.Translation.Languages.Afrikaans">
+            <summary>
+            南非荷兰语
+            </summary>
+        </member>
+        <member name="F:CatLib.API.Translation.Languages.Albanian">
+            <summary>
+            阿尔巴尼亚人
+            </summary>
+        </member>
+        <member name="F:CatLib.API.Translation.Languages.Amharic">
+            <summary>
+            阿姆哈拉语
+            </summary>
+        </member>
+        <member name="F:CatLib.API.Translation.Languages.Arabic">
+            <summary>
+            阿拉伯语
+            </summary>
+        </member>
+        <member name="F:CatLib.API.Translation.Languages.Armenian">
+            <summary>
+            亚美尼亚
+            </summary>
+        </member>
+        <member name="F:CatLib.API.Translation.Languages.Basque">
+            <summary>
+            巴斯克语
+            </summary>
+        </member>
+        <member name="F:CatLib.API.Translation.Languages.Byelorussian">
+            <summary>
+            白俄罗斯
+            </summary>
+        </member>
+        <member name="F:CatLib.API.Translation.Languages.Bengali">
+            <summary>
+            孟加拉
+            </summary>
+        </member>
+        <member name="F:CatLib.API.Translation.Languages.Bhutani">
+            <summary>
+            不丹
+            </summary>
+        </member>
+        <member name="F:CatLib.API.Translation.Languages.Bihari">
+            <summary>
+            比哈里
+            </summary>
+        </member>
+        <member name="F:CatLib.API.Translation.Languages.Bulgarian">
+            <summary>
+            保加利亚语
+            </summary>
+        </member>
+        <member name="F:CatLib.API.Translation.Languages.Cambodian">
+            <summary>
+            柬埔寨
+            </summary>
+        </member>
+        <member name="F:CatLib.API.Translation.Languages.Catalan">
+            <summary>
+            加泰罗尼亚
+            </summary>
+        </member>
+        <member name="F:CatLib.API.Translation.Languages.Chinese">
+            <summary>
+            中文
+            </summary>
+        </member>
+        <member name="F:CatLib.API.Translation.Languages.ChineseTw">
+            <summary>
+            中文(繁体)
+            </summary>
+        </member>
+        <member name="F:CatLib.API.Translation.Languages.Croatian">
+            <summary>
+            克罗地亚
+            </summary>
+        </member>
+        <member name="F:CatLib.API.Translation.Languages.Czech">
+            <summary>
+            捷克语
+            </summary>
+        </member>
+        <member name="F:CatLib.API.Translation.Languages.Danish">
+            <summary>
+            丹麦语
+            </summary>
+        </member>
+        <member name="F:CatLib.API.Translation.Languages.Dutch">
+            <summary>
+            荷兰语
+            </summary>
+        </member>
+        <member name="F:CatLib.API.Translation.Languages.English">
+            <summary>
+            英语
+            </summary>
+        </member>
+        <member name="F:CatLib.API.Translation.Languages.Esperanto">
+            <summary>
+            世界语
+            </summary>
+        </member>
+        <member name="F:CatLib.API.Translation.Languages.Estonian">
+            <summary>
+            爱沙尼亚语
+            </summary>
+        </member>
+        <member name="F:CatLib.API.Translation.Languages.Faeroese">
+            <summary>
+            法罗语
+            </summary>
+        </member>
+        <member name="F:CatLib.API.Translation.Languages.Farsi">
+            <summary>
+            波斯语
+            </summary>
+        </member>
+        <member name="F:CatLib.API.Translation.Languages.Finnish">
+            <summary>
+            芬兰语
+            </summary>
+        </member>
+        <member name="F:CatLib.API.Translation.Languages.French">
+            <summary>
+            法语
+            </summary>
+        </member>
+        <member name="F:CatLib.API.Translation.Languages.Frisian">
+            <summary>
+            弗里斯兰
+            </summary>
+        </member>
+        <member name="F:CatLib.API.Translation.Languages.Galician">
+            <summary>
+            加利西亚
+            </summary>
+        </member>
+        <member name="F:CatLib.API.Translation.Languages.Georgian">
+            <summary>
+            格鲁吉亚
+            </summary>
+        </member>
+        <member name="F:CatLib.API.Translation.Languages.German">
+            <summary>
+            德语
+            </summary>
+        </member>
+        <member name="F:CatLib.API.Translation.Languages.Greek">
+            <summary>
+            希腊语
+            </summary>
+        </member>
+        <member name="F:CatLib.API.Translation.Languages.Gujarati">
+            <summary>
+            古吉拉特语
+            </summary>
+        </member>
+        <member name="F:CatLib.API.Translation.Languages.Hausa">
+            <summary>
+            豪萨语
+            </summary>
+        </member>
+        <member name="F:CatLib.API.Translation.Languages.Hebrew">
+            <summary>
+            希伯来语
+            </summary>
+        </member>
+        <member name="F:CatLib.API.Translation.Languages.Hindi">
+            <summary>
+            印地语
+            </summary>
+        </member>
+        <member name="F:CatLib.API.Translation.Languages.Hungarian">
+            <summary>
+            匈牙利
+            </summary>
+        </member>
+        <member name="F:CatLib.API.Translation.Languages.Icelandic">
+            <summary>
+            冰岛语
+            </summary>
+        </member>
+        <member name="F:CatLib.API.Translation.Languages.Indonesian">
+            <summary>
+            印度尼西亚语
+            </summary>
+        </member>
+        <member name="F:CatLib.API.Translation.Languages.Irish">
+            <summary>
+            爱尔兰
+            </summary>
+        </member>
+        <member name="F:CatLib.API.Translation.Languages.Italian">
+            <summary>
+            意大利语
+            </summary>
+        </member>
+        <member name="F:CatLib.API.Translation.Languages.Japanese">
+            <summary>
+            日语
+            </summary>
+        </member>
+        <member name="F:CatLib.API.Translation.Languages.Javanese">
+            <summary>
+            爪哇
+            </summary>
+        </member>
+        <member name="F:CatLib.API.Translation.Languages.Kannada">
+            <summary>
+            卡纳达语
+            </summary>
+        </member>
+        <member name="F:CatLib.API.Translation.Languages.Korean">
+            <summary>
+            朝鲜语
+            </summary>
+        </member>
+        <member name="F:CatLib.API.Translation.Languages.Kurdish">
+            <summary>
+            库尔德
+            </summary>
+        </member>
+        <member name="F:CatLib.API.Translation.Languages.Latvian">
+            <summary>
+            拉脱维亚
+            </summary>
+        </member>
+        <member name="F:CatLib.API.Translation.Languages.Lingala">
+            <summary>
+            林加拉语
+            </summary>
+        </member>
+        <member name="F:CatLib.API.Translation.Languages.Lithuanian">
+            <summary>
+            立陶宛语
+            </summary>
+        </member>
+        <member name="F:CatLib.API.Translation.Languages.Macedonian">
+            <summary>
+            马其顿
+            </summary>
+        </member>
+        <member name="F:CatLib.API.Translation.Languages.Malagasy">
+            <summary>
+            马尔加什
+            </summary>
+        </member>
+        <member name="F:CatLib.API.Translation.Languages.Malay">
+            <summary>
+            马来语
+            </summary>
+        </member>
+        <member name="F:CatLib.API.Translation.Languages.Malayalam">
+            <summary>
+            马拉雅拉姆语
+            </summary>
+        </member>
+        <member name="F:CatLib.API.Translation.Languages.Maltese">
+            <summary>
+            马耳他语
+            </summary>
+        </member>
+        <member name="F:CatLib.API.Translation.Languages.Marathi">
+            <summary>
+            马拉语
+            </summary>
+        </member>
+        <member name="F:CatLib.API.Translation.Languages.Mongolian">
+            <summary>
+            蒙古语
+            </summary>
+        </member>
+        <member name="F:CatLib.API.Translation.Languages.Nepali">
+            <summary>
+            尼泊尔
+            </summary>
+        </member>
+        <member name="F:CatLib.API.Translation.Languages.Norwegian">
+            <summary>
+            挪威语
+            </summary>
+        </member>
+        <member name="F:CatLib.API.Translation.Languages.Oriya">
+            <summary>
+            奥里亚语
+            </summary>
+        </member>
+        <member name="F:CatLib.API.Translation.Languages.Oromo">
+            <summary>
+            奥罗莫
+            </summary>
+        </member>
+        <member name="F:CatLib.API.Translation.Languages.Pashto">
+            <summary>
+            普什图语
+            </summary>
+        </member>
+        <member name="F:CatLib.API.Translation.Languages.Polish">
+            <summary>
+            波兰语
+            </summary>
+        </member>
+        <member name="F:CatLib.API.Translation.Languages.Portuguese">
+            <summary>
+            葡萄牙语
+            </summary>
+        </member>
+        <member name="F:CatLib.API.Translation.Languages.Punjabi">
+            <summary>
+            旁遮普
+            </summary>
+        </member>
+        <member name="F:CatLib.API.Translation.Languages.Romanian">
+            <summary>
+            罗马尼亚语
+            </summary>
+        </member>
+        <member name="F:CatLib.API.Translation.Languages.Russian">
+            <summary>
+            俄语
+            </summary>
+        </member>
+        <member name="F:CatLib.API.Translation.Languages.Serbian">
+            <summary>
+            塞尔维亚克罗地亚语
+            </summary>
+        </member>
+        <member name="F:CatLib.API.Translation.Languages.Slovak">
+            <summary>
+            斯洛伐克语
+            </summary>
+        </member>
+        <member name="F:CatLib.API.Translation.Languages.Slovenian">
+            <summary>
+            斯洛文尼亚语
+            </summary>
+        </member>
+        <member name="F:CatLib.API.Translation.Languages.Somali">
+            <summary>
+            索马里
+            </summary>
+        </member>
+        <member name="F:CatLib.API.Translation.Languages.Spanish">
+            <summary>
+            西班牙语
+            </summary>
+        </member>
+        <member name="F:CatLib.API.Translation.Languages.Swahili">
+            <summary>
+            斯瓦希里
+            </summary>
+        </member>
+        <member name="F:CatLib.API.Translation.Languages.Swedish">
+            <summary>
+            瑞典语
+            </summary>
+        </member>
+        <member name="F:CatLib.API.Translation.Languages.Tamil">
+            <summary>
+            泰米尔人
+            </summary>
+        </member>
+        <member name="F:CatLib.API.Translation.Languages.Telugu">
+            <summary>
+            泰卢固语
+            </summary>
+        </member>
+        <member name="F:CatLib.API.Translation.Languages.Thai">
+            <summary>
+            泰语
+            </summary>
+        </member>
+        <member name="F:CatLib.API.Translation.Languages.Tibetan">
+            <summary>
+            藏语
+            </summary>
+        </member>
+        <member name="F:CatLib.API.Translation.Languages.Tigrinya">
+            <summary>
+            提格雷语
+            </summary>
+        </member>
+        <member name="F:CatLib.API.Translation.Languages.Turkish">
+            <summary>
+            土耳其语
+            </summary>
+        </member>
+        <member name="F:CatLib.API.Translation.Languages.Turkmen">
+            <summary>
+            土库曼
+            </summary>
+        </member>
+        <member name="F:CatLib.API.Translation.Languages.Ukrainian">
+            <summary>
+            乌克兰语
+            </summary>
+        </member>
+        <member name="F:CatLib.API.Translation.Languages.Urdu">
+            <summary>
+            乌尔都语
+            </summary>
+        </member>
+        <member name="F:CatLib.API.Translation.Languages.Vietnamese">
+            <summary>
+            越南语
+            </summary>
+        </member>
+        <member name="F:CatLib.API.Translation.Languages.Welsh">
+            <summary>
+            威尔士语
+            </summary>
+        </member>
+        <member name="F:CatLib.API.Translation.Languages.Zulu">
+            <summary>
+            祖鲁
+            </summary>
+        </member>
+        <member name="T:CatLib.ITick">
+            <summary>
+            滴答
+            </summary>
+        </member>
+        <member name="M:CatLib.ITick.Tick(System.Int32)">
+            <summary>
+            滴答间流逝的时间
+            </summary>
+            <param name="elapseMillisecond">滴答间流逝的时间(MS)</param>
+        </member>
+    </members>
+</doc>
