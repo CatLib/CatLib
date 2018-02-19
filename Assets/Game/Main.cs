@@ -10,13 +10,15 @@
  */
 
 using CatLib;
+using UnityEngine;
 
 namespace Game
 {
     /// <summary>
     /// 项目入口
     /// </summary>
-    public class Main : IBootstrap
+    [DisallowMultipleComponent]
+    public class Main : Framework, IBootstrap
     {
         /// <summary>
         /// 项目入口
@@ -30,7 +32,7 @@ namespace Game
                 // ex: App.Make<ILogger>().Debug("hello world");
                 // all can make service see : http://catlib.io/v1/guide/can-make.html
 
-                UnityEngine.Debug.Log("Hello CatLib");
+                Debug.Log("Hello CatLib");
             });
         }
     }

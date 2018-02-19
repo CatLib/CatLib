@@ -54,7 +54,6 @@ namespace CatLib
                 return;
             }
 
-            var unityObject = typeof(Object);
             var providers = root.GetComponentsInChildren<IServiceProvider>();
             foreach (var provider in providers)
             {
@@ -64,11 +63,6 @@ namespace CatLib
                 }
 
                 App.Register(provider);
-
-                if (unityObject.IsInstanceOfType(provider))
-                {
-                    Object.Destroy((Object)provider);
-                }
             }
         }
     }

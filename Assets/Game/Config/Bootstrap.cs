@@ -28,7 +28,6 @@ namespace Game
                 return new IBootstrap[]
                 {
                     new EntranceBootstrap { /*dispatch = "game://start"*/ },
-                    new Main(), 
 
                     // todo: 请在此处增加您项目的引导程序
                 };

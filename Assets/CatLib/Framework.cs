@@ -17,29 +17,28 @@ namespace CatLib
     /// 框架入口
     /// </summary>
     [DisallowMultipleComponent]
-    [AddComponentMenu("CatLib/Framework")]
-    public sealed class CatLib : MonoBehaviour
+    public class Framework : MonoBehaviour
     {
         /// <summary>
         /// CatLib Unity Framework
         /// </summary>
-        private UnityApplication framework;
+        protected Application application;
 
         /// <summary>
         /// Unity Start
         /// </summary>
-        private void Start()
+        protected virtual void Start()
         {
-            framework = new UnityApplication(this);
-            framework.Init();
+            application = new UnityApplication(this);
+            application.Init();
         }
 
         /// <summary>
         /// 当被释放时
         /// </summary>
-        private void OnDestroy()
+        protected virtual void OnDestroy()
         {
-            framework.Terminate();
+            application.Terminate();
         }
     }
 }
