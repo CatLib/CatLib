@@ -42,7 +42,7 @@ namespace CatLib
             App.On(ApplicationEvents.OnBootstraped, OnBootstraped);
             App.On<IServiceProvider>(ApplicationEvents.OnIniting, OnIniting);
             App.On(ApplicationEvents.OnTerminate, OnTerminate);
-            App.On(ApplicationEvents.OnTerminate, OnTerminated);
+            App.On(ApplicationEvents.OnTerminated, OnTerminated);
         }
 
         /// <summary>
