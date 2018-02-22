@@ -17,7 +17,7 @@ namespace CatLib
     /// 默认提供者引导
     /// </summary>
     [ExcludeFromCodeCoverage]
-    internal class ProviderBootstrap : IBootstrap
+    internal class ProviderFinder : IBootstrap
     {
         /// <summary>
         /// 引导程序接口

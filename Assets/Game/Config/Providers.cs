@@ -42,6 +42,7 @@ namespace Game
             {
                 return new IServiceProvider[]
                 {
+                    // 由框架提供的服务（这些不是必须的）
                     new CompressProvider(),
                     new DebuggerProvider(),
                     new EncryptionProvider(),
