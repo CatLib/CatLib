@@ -51,9 +51,9 @@ namespace CatLib
         protected abstract void OnStartCompleted();
 
         /// <summary>
-        /// Unity Start
+        /// Unity Awake
         /// </summary>
-        protected virtual void Start()
+        protected virtual void Awake()
         {
             application = new UnityApplication(this);
             application.Bootstrap(GetBootstraps());
