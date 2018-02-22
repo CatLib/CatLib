@@ -32,16 +32,6 @@ namespace CatLib
             this.component = component;
             Instance(Type2Service(typeof(MonoBehaviour)), component);
             Instance(Type2Service(typeof(Component)), component);
-            Bootstrap(GetBootstraps());
-        }
-
-        /// <summary>
-        /// 获取引导程序
-        /// </summary>
-        /// <returns>引导脚本</returns>
-        private IBootstrap[] GetBootstraps()
-        {
-            return Arr.Merge(component.GetComponents<IBootstrap>(), global::CatLib.Bootstrap.Bootstraps);
         }
     }
 }
