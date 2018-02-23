@@ -11,6 +11,7 @@
 
 using CatLib;
 using UnityEngine;
+using ILogger = CatLib.API.Debugger.ILogger;
 
 namespace Game
 {
