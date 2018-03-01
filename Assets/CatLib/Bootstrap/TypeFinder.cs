@@ -25,6 +25,11 @@ namespace CatLib
         [Priority(10)]
         public void Bootstrap()
         {
+            if (Assemblys.Assembly == null || Assemblys.Assembly.Count <= 0)
+            {
+                return;
+            }
+
             foreach (var assembly in AppDomain.CurrentDomain.GetAssemblies())
             {
                 int sort;
