@@ -55,6 +55,7 @@ namespace CatLib
         /// </summary>
         protected virtual void Awake()
         {
+            DontDestroyOnLoad(gameObject);
             application = new UnityApplication(this);
             application.Bootstrap(GetBootstraps());
             application.Init();
