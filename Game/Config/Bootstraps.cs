@@ -16,20 +16,15 @@ namespace Game
     /// <summary>
     /// 项目注册的引导程序
     /// </summary>
-    public class Bootstraps
+    public static class Bootstraps
     {
         /// <summary>
         /// 项目注册的引导程序
         /// </summary>
-        public static IBootstrap[] Bootstrap
+        public static IBootstrap[] Bootstrap => new IBootstrap[]
         {
-            get
-            {
-                return new IBootstrap[]
-                {
-                    // todo: 请在此处增加您项目的引导程序
-                };
-            }
-        }
+            new TypeBootstrap(Assemblys.Assembly),
+            new ProviderBootstrap(Providers.ServiceProviders),
+        };
     }
 }

@@ -16,20 +16,14 @@ namespace Game
     /// <summary>
     /// 项目注册的服务提供者
     /// </summary>
-    public class Providers
+    public static class Providers
     {
         /// <summary>
         /// 项目注册的服务提供者
         /// </summary>
-        public static IServiceProvider[] ServiceProviders
+        public static IServiceProvider[] ServiceProviders => new IServiceProvider[]
         {
-            get
-            {
-                return new IServiceProvider[]
-                {
-                    // todo: 在此处增加您项目的服务提供者
-                };
-            }
-        }
+            // todo: 在此处增加您项目的服务提供者
+        };
     }
 }

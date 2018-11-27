@@ -33,15 +33,6 @@ namespace Game
         }
 
         /// <summary>
-        /// 当引导完成后
-        /// </summary>
-        protected override void OnBootstraped()
-        {
-            base.OnBootstraped();
-            Debug.Log("OnBootstraped");
-        }
-
-        /// <summary>
         /// 当服务提供者初始化之前
         /// </summary>
         /// <param name="provider">准备初始化的服务提供者</param>
@@ -57,7 +48,7 @@ namespace Game
         protected override void OnTerminate()
         {
             base.OnTerminate();
-            Debug.Log("OnTerminate");
+            Debug.Log("<color=#00ffff>OnTerminate</color>");
         }
 
         /// <summary>
@@ -66,7 +57,16 @@ namespace Game
         protected override void OnTerminated()
         {
             base.OnTerminated();
-            Debug.Log("OnTerminated");
+            Debug.Log("<color=#ff0000>OnTerminated</color>");
+        }
+
+        /// <summary>
+        /// 获取引导程序
+        /// </summary>
+        /// <returns>引导脚本</returns>
+        protected override IBootstrap[] GetBootstraps()
+        {
+            return Arr.Merge(base.GetBootstraps(), Bootstraps.Bootstrap);
         }
     }
 }

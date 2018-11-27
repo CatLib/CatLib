@@ -27,10 +27,7 @@ namespace CatLib
         /// <summary>
         /// CatLib Unity Application
         /// </summary>
-        protected IApplication Application
-        {
-            get { return application; }
-        }
+        protected IApplication Application => application;
 
         /// <summary>
         /// 入口引导
@@ -62,7 +59,7 @@ namespace CatLib
         {
             DontDestroyOnLoad(gameObject);
             application = new UnityApplication(this);
-            application.Bootstrap(GetBootstraps());
+            application.Bootstrap(Arr.Reverse(GetBootstraps()));
         }
 
         /// <summary>
@@ -152,7 +149,7 @@ namespace CatLib
         /// <returns>引导脚本</returns>
         protected virtual IBootstrap[] GetBootstraps()
         {
-            return Arr.Reverse(Arr.Merge(GetComponents<IBootstrap>(), Bootstraps.Bootstrap));
+            return Arr.Merge(GetComponents<IBootstrap>(), Bootstraps.Bootstrap);
         }
 
         /// <summary>
