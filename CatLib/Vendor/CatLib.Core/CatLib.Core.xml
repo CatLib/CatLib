@@ -1288,7 +1288,7 @@
             <para>输入版本等于当前版本则返回<code>0</code></para>
             <para>输入版本小于当前版本则返回<code>1</code></para>
             </summary>
-            <param name="version">版本号</param>
+            <param name="comparison">版本号</param>
             <returns>比较结果</returns>
         </member>
         <member name="M:CatLib.Application.GuardConstruct(System.String)">
@@ -1828,33 +1828,6 @@
             <summary>
             是否是主线程
             </summary>
-        </member>
-        <member name="P:CatLib.IApplication.Version">
-            <summary>
-            CatLib版本(遵循semver)
-            </summary>
-        </member>
-        <member name="M:CatLib.IApplication.Compare(System.Int32,System.Int32,System.Int32)">
-            <summary>
-            比较CatLib版本(遵循semver)
-            <para>输入版本大于当前版本则返回<code>-1</code></para>
-            <para>输入版本等于当前版本则返回<code>0</code></para>
-            <para>输入版本小于当前版本则返回<code>1</code></para>
-            </summary>
-            <param name="major">主版本号</param>
-            <param name="minor">次版本号</param>
-            <param name="revised">修订版本号</param>
-            <returns>比较结果</returns>
-        </member>
-        <member name="M:CatLib.IApplication.Compare(System.String)">
-            <summary>
-            比较CatLib版本(遵循semver)
-            <para>输入版本大于当前版本则返回<code>-1</code></para>
-            <para>输入版本等于当前版本则返回<code>0</code></para>
-            <para>输入版本小于当前版本则返回<code>1</code></para>
-            </summary>
-            <param name="version">版本号</param>
-            <returns>比较结果</returns>
         </member>
         <member name="M:CatLib.IApplication.GetPriority(System.Type,System.String)">
             <summary>

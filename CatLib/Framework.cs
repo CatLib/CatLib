@@ -20,6 +20,12 @@ namespace CatLib
     public abstract class Framework : MonoBehaviour, IBootstrap
     {
         /// <summary>
+        /// 调试等级
+        /// </summary>
+        [HideInInspector]
+        public DebugLevels DebugLevel = DebugLevels.Production;
+
+        /// <summary>
         /// CatLib Unity Application
         /// </summary>
         private UnityApplication application;
@@ -58,7 +64,10 @@ namespace CatLib
         protected virtual void Awake()
         {
             DontDestroyOnLoad(gameObject);
-            application = new UnityApplication(this);
+            application = new UnityApplication(this)
+            {
+                DebugLevel = DebugLevel
+            };
             application.Bootstrap(Arr.Reverse(GetBootstraps()));
         }
 

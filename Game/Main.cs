@@ -18,7 +18,7 @@ namespace Game
     /// 项目入口
     /// </summary>
     [DisallowMultipleComponent]
-    public class Main : Framework
+    public sealed class Main : Framework
     {
         /// <summary>
         /// 项目入口
@@ -28,8 +28,7 @@ namespace Game
             // Application entry, Your code starts writing here
             // called this function after, use App.Make function to get service
             // ex: App.Make<IYourService>().Debug("hello world");
-
-            Debug.Log("Hello CatLib");
+            Debug.Log($"Hello CatLib, Debug Level:{App.Make<DebugLevels>()}");
         }
 
         /// <summary>
