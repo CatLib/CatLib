@@ -20,17 +20,9 @@ namespace CatLib
         /// <summary>
         /// 引导程序
         /// </summary>
-        public static IBootstrap[] Bootstrap
+        public static IBootstrap[] Bootstrap => new IBootstrap[]
         {
-            get
-            {
-                // 请不要手动修改这里的内容
-                return Arr.Merge(new IBootstrap[]
-                {
-                    new TypeFinder(),
-                    new ProviderFinder(),
-                }, Game.Bootstraps.Bootstrap);
-            }
-        }
+
+        };
     }
 }
