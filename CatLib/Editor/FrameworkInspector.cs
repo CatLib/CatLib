@@ -69,9 +69,14 @@ namespace CatLib.Editor
                     EditorStyles.popup);
             GUILayout.EndHorizontal();
 
-            if (old != debugLevel.enumValueIndex)
+            if (old == debugLevel.enumValueIndex)
             {
-                framework.Application.DebugLevel = (DebugLevels) debugLevel.enumValueIndex;
+                return;
+            }
+
+            if (framework.Application != null)
+            {
+                framework.Application.DebugLevel = (DebugLevels)debugLevel.enumValueIndex;
             }
         }
     }
