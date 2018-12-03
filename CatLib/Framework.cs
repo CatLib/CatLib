@@ -70,7 +70,7 @@ namespace CatLib
             {
                 DebugLevel = DebugLevel
             };
-            application.Bootstrap(Arr.Reverse(GetBootstraps()));
+            application.Bootstrap(GetBootstraps());
         }
 
         /// <summary>
