@@ -28,7 +28,12 @@ namespace Game
             // Application entry, Your code starts writing here
             // called this function after, use App.Make function to get service
             // ex: App.Make<IYourService>().Debug("hello world");
+
             Debug.Log($"Hello CatLib, Debug Level:{App.Make<DebugLevels>()}");
+            App.Watch<DebugLevels>(newLevel =>
+            {
+                Debug.Log("Change debug level: " + newLevel);
+            });
         }
 
         /// <summary>

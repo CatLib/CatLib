@@ -22,7 +22,6 @@ namespace CatLib
         /// <summary>
         /// 调试等级
         /// </summary>
-        [HideInInspector]
         public DebugLevels DebugLevel = DebugLevels.Production;
 
         /// <summary>
@@ -33,7 +32,7 @@ namespace CatLib
         /// <summary>
         /// CatLib Unity Application
         /// </summary>
-        protected IApplication Application => application;
+        public IApplication Application => application;
 
         /// <summary>
         /// 入口引导

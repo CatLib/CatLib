@@ -30,9 +30,10 @@ namespace CatLib.Editor
         /// </summary>
         public override void OnInspectorGUI()
         {
+            var framework = (Framework)target;
             serializedObject.Update();
             DrawLogo();
-            DrawDebugLevels();
+            DrawDebugLevels(framework);
             serializedObject.ApplyModifiedProperties();
         }
 
@@ -59,13 +60,19 @@ namespace CatLib.Editor
         /// <summary>
         /// 绘制调试等级
         /// </summary>
-        private void DrawDebugLevels()
+        private void DrawDebugLevels(Framework framework)
         {
+            var old = debugLevel.enumValueIndex;
             GUILayout.BeginHorizontal();
             debugLevel.enumValueIndex =
                 (int) (DebugLevels) EditorGUILayout.EnumPopup("Debug Level", (DebugLevels) debugLevel.enumValueIndex,
                     EditorStyles.popup);
             GUILayout.EndHorizontal();
+
+            if (old != debugLevel.enumValueIndex)
+            {
+                framework.Application.DebugLevel = (DebugLevels) debugLevel.enumValueIndex;
+            }
         }
     }
 }
