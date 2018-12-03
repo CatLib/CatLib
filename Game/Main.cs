@@ -18,7 +18,7 @@ namespace Game
     /// 项目入口
     /// </summary>
     [DisallowMultipleComponent]
-    public class Main : Framework
+    public sealed class Main : Framework
     {
         /// <summary>
         /// 项目入口
@@ -28,17 +28,7 @@ namespace Game
             // Application entry, Your code starts writing here
             // called this function after, use App.Make function to get service
             // ex: App.Make<IYourService>().Debug("hello world");
-
-            Debug.Log("Hello CatLib");
-        }
-
-        /// <summary>
-        /// 当引导完成后
-        /// </summary>
-        protected override void OnBootstraped()
-        {
-            base.OnBootstraped();
-            Debug.Log("OnBootstraped");
+            Debug.Log($"Hello CatLib, Debug Level:{App.Make<DebugLevels>()}");
         }
 
         /// <summary>
@@ -57,7 +47,7 @@ namespace Game
         protected override void OnTerminate()
         {
             base.OnTerminate();
-            Debug.Log("OnTerminate");
+            Debug.Log("<color=#00ffff>OnTerminate</color>");
         }
 
         /// <summary>
@@ -66,7 +56,16 @@ namespace Game
         protected override void OnTerminated()
         {
             base.OnTerminated();
-            Debug.Log("OnTerminated");
+            Debug.Log("<color=#ff0000>OnTerminated</color>");
+        }
+
+        /// <summary>
+        /// 获取引导程序
+        /// </summary>
+        /// <returns>引导脚本</returns>
+        protected override IBootstrap[] GetBootstraps()
+        {
+            return Arr.Merge(base.GetBootstraps(), Bootstraps.Bootstrap);
         }
     }
 }

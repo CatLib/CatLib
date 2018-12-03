@@ -22,17 +22,9 @@ namespace CatLib
         /// <summary>
         /// 框架会自动添加的程序集自动加载方案
         /// </summary>
-        public static IDictionary<string, int> Assembly
+        public static IDictionary<string, int> Assembly => new Dictionary<string, int>
         {
-            get
-            {
-                // 请不要手动修改这里的内容
-                var result = new Dictionary<string, int>
-                {
-                };
-                Dict.AddRange(result, Game.Assemblys.Assembly);
-                return result;
-            }
-        }
+
+        };
     }
 }

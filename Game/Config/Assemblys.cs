@@ -16,20 +16,15 @@ namespace Game
     /// <summary>
     /// 项目自动添加的程序集自动加载方案
     /// </summary>
-    public class Assemblys
+    public static class Assemblys
     {
         /// <summary>
         /// 项目自动添加的程序集自动加载方案
+        /// <para>分数值越小越优先</para>
         /// </summary>
-        public static IDictionary<string, int> Assembly
+        public static IDictionary<string, int> Assembly => new Dictionary<string, int>
         {
-            get
-            {
-                return new Dictionary<string, int>
-                {
-                    //{ "Assembly-CSharp" , 0 },
-                };
-            }
-        }
+            //{ "Assembly-CSharp" , 0 },
+        };
     }
 }
