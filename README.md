@@ -20,6 +20,14 @@ CatLib提供了构建一个游戏所必备的基础组件 , 您可以通过接�
 
 无论您是一个新的项目还是一个正在被开发的项目，您都可以轻松的嵌入CatLib。绝大多数的CatLib的组件都可以被单独使用和无感知替换的，我们也欢迎其他的框架开发者来使用这些组件。
 
+## 快速开始
+
+- 解压`unitypackage`到unity项目。
+- 创建一个GameObject。
+- 将`Game/Main.cs`入口文件拖拽到GameObject上。
+
+> Game文件夹下的内容（或文件夹的命名）可以由您进行修改。
+
 ## 学习CatLib
 
 CatLib拥有完整的文档支持，您可以访问 [CatLib文档](http://catlib.io) 进行学习。
