@@ -40,7 +40,7 @@ namespace CatLib
         /// <summary>
         /// 入口引导
         /// </summary>
-        [Priority]
+        [Priority(0)]
         public virtual void Bootstrap()
         {
             App.On<IServiceProvider>(ApplicationEvents.OnRegisterProvider, OnRegisterProvider);
