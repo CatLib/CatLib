@@ -168,7 +168,10 @@ namespace CatLib
         /// </summary>
         protected virtual void OnDestroy()
         {
-            application.Terminate();
+            if (application != null)
+            {
+                application.Terminate();
+            }
         }
     }
 }
