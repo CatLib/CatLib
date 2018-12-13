@@ -1136,6 +1136,11 @@
             事件系统
             </summary>
         </member>
+        <member name="F:CatLib.Application.debugLevel">
+            <summary>
+            调试等级
+            </summary>
+        </member>
         <member name="M:CatLib.Application.#ctor">
             <summary>
             构建一个CatLib实例
@@ -1184,6 +1189,14 @@
             </summary>
             <param name="provider">注册服务提供者</param>
             <exception cref="T:CatLib.LogicException">服务提供者被重复注册时触发</exception>
+        </member>
+        <member name="M:CatLib.Application.AddSortedList``1(System.Collections.Generic.SortedList{System.Int32,System.Collections.Generic.List{``0}},``0,System.String)">
+            <summary>
+            增加到排序列表
+            </summary>
+            <param name="list">列表</param>
+            <param name="insert">需要插入的记录</param>
+            <param name="priorityMethod">优先级函数</param>
         </member>
         <member name="M:CatLib.Application.InitProvider(CatLib.IServiceProvider)">
             <summary>
@@ -1940,6 +1953,12 @@
             当前服务需求某个服务时可以指定给与什么服务
             </summary>
         </member>
+        <member name="F:CatLib.Bindable.contextualClosure">
+            <summary>
+            服务上下文闭包
+            当前服务需求某个服务时给定的闭包
+            </summary>
+        </member>
         <member name="F:CatLib.Bindable.SyncRoot">
             <summary>
             同步锁
@@ -1970,12 +1989,26 @@
             <param name="given">给与什么服务</param>
             <returns>服务绑定数据</returns>
         </member>
+        <member name="M:CatLib.Bindable.AddContextual(System.String,System.Func{System.Object})">
+            <summary>
+            为服务增加上下文
+            </summary>
+            <param name="needs">需求什么服务</param>
+            <param name="given">给与什么服务</param>
+        </member>
         <member name="M:CatLib.Bindable.GetContextual(System.String)">
             <summary>
             获取上下文的需求关系
             </summary>
             <param name="needs">需求的服务</param>
             <returns>给与的服务</returns>
+        </member>
+        <member name="M:CatLib.Bindable.GetContextualClosure(System.String)">
+            <summary>
+            获取上下文关系闭包实现
+            </summary>
+            <param name="needs">需求的服务</param>
+            <returns>给与的闭包</returns>
         </member>
         <member name="M:CatLib.Bindable.ReleaseBind">
             <summary>
@@ -2369,6 +2402,18 @@
             <param name="key">参数名</param>
             <param name="value">参数值</param>
             <returns>是否成功获取</returns>
+        </member>
+        <member name="T:CatLib.TypeExtend">
+            <summary>
+            Type类型扩展函数
+            </summary>
+        </member>
+        <member name="M:CatLib.TypeExtend.ToService(System.Type)">
+            <summary>
+            将类型转为服务名
+            </summary>
+            <param name="type">类型</param>
+            <returns>服务名</returns>
         </member>
         <member name="T:CatLib.UnresolvableException">
             <summary>
@@ -4214,6 +4259,13 @@
             <typeparam name="T">给与的服务名或别名</typeparam>
             <returns>服务绑定数据</returns>
         </member>
+        <member name="M:CatLib.GivenData`1.Given(System.Func{System.Object})">
+            <summary>
+            给与什么服务
+            </summary>
+            <param name="closure">给与的服务生成闭包</param>
+            <returns>服务绑定数据</returns>
+        </member>
         <member name="T:CatLib.IContainer">
             <summary>
             依赖注入容器
@@ -4569,6 +4621,13 @@
             给与什么服务
             </summary>
             <typeparam name="T">给与的服务名或别名</typeparam>
+            <returns>服务绑定数据</returns>
+        </member>
+        <member name="M:CatLib.IGivenData`1.Given(System.Func{System.Object})">
+            <summary>
+            给与什么服务
+            </summary>
+            <param name="closure">给定的服务</param>
             <returns>服务绑定数据</returns>
         </member>
         <member name="T:CatLib.Dispatcher">
