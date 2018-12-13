@@ -21,10 +21,16 @@ namespace Game
         /// <summary>
         /// 项目注册的引导程序
         /// </summary>
-        public static IBootstrap[] Bootstrap => new IBootstrap[]
+        public static IBootstrap[] Bootstrap
         {
-            new TypeBootstrap(Assemblys.Assembly),
-            new ProviderBootstrap(Providers.ServiceProviders),
-        };
+            get
+            {
+                return new IBootstrap[]
+                {
+                    new TypeBootstrap(Assemblys.Assembly),
+                    new ProviderBootstrap(Providers.ServiceProviders),
+                };
+            }
+        }
     }
 }

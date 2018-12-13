@@ -21,9 +21,15 @@ namespace CatLib
         /// <summary>
         /// 服务提供者
         /// </summary>
-        public static IServiceProvider[] ServiceProviders => new IServiceProvider[]
+        public static IServiceProvider[] ServiceProviders
         {
-                    
-        };
+            get
+            {
+                return new IServiceProvider[]
+                {
+
+                };
+            }
+        }
     }
 }

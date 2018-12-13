@@ -32,12 +32,15 @@ namespace CatLib
         /// <summary>
         /// CatLib Unity Application
         /// </summary>
-        public IApplication Application => application;
+        public IApplication Application
+        {
+            get { return application; }
+        }
 
         /// <summary>
         /// 入口引导
         /// </summary>
-        [Priority]
+        [Priority(0)]
         public virtual void Bootstrap()
         {
             App.On<IServiceProvider>(ApplicationEvents.OnRegisterProvider, OnRegisterProvider);
@@ -67,7 +70,7 @@ namespace CatLib
             {
                 DebugLevel = DebugLevel
             };
-            application.Bootstrap(Arr.Reverse(GetBootstraps()));
+            application.Bootstrap(GetBootstraps());
         }
 
         /// <summary>
@@ -165,7 +168,10 @@ namespace CatLib
         /// </summary>
         protected virtual void OnDestroy()
         {
-            application.Terminate();
+            if (application != null)
+            {
+                application.Terminate();
+            }
         }
     }
 }

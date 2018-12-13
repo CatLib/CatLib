@@ -20,9 +20,15 @@ namespace CatLib
         /// <summary>
         /// 引导程序
         /// </summary>
-        public static IBootstrap[] Bootstrap => new IBootstrap[]
+        public static IBootstrap[] Bootstrap
         {
+            get
+            {
+                return new IBootstrap[]
+                {
 
-        };
+                };
+            }
+        }
     }
 }
