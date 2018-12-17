@@ -1,2 +1,3 @@
 *.meta
 .vs
+CatLib/Vendor/*.mdb

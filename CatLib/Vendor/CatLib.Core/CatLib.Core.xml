@@ -9,6 +9,11 @@
             CatLib实例
             </summary>
         </member>
+        <member name="E:CatLib.App.onNewApplication">
+            <summary>
+            当新建Application时
+            </summary>
+        </member>
         <member name="E:CatLib.App.OnNewApplication">
             <summary>
             当新建Application时
@@ -17,6 +22,11 @@
         <member name="F:CatLib.App.instance">
             <summary>
             CatLib实例
+            </summary>
+        </member>
+        <member name="P:CatLib.App.AutoInstance">
+            <summary>
+            自动生成Application
             </summary>
         </member>
         <member name="P:CatLib.App.Handler">
@@ -272,6 +282,13 @@
             服务是否已经被解决过
             </summary>
             <typeparam name="TService">服务名</typeparam>
+            <returns>是否已经被解决过</returns>
+        </member>
+        <member name="M:CatLib.App.IsResolved(System.String)">
+            <summary>
+            服务是否已经被解决过
+            </summary>
+            <param name="service">服务名</param>
             <returns>是否已经被解决过</returns>
         </member>
         <member name="M:CatLib.App.CanMake(System.String)">
@@ -567,7 +584,7 @@
             常规绑定一个服务
             </summary>
             <typeparam name="TService">服务名</typeparam>
-            <typeparam name="TAlias">服务别名</typeparam>
+            <typeparam name="TConcrete">服务实现</typeparam>
             <returns>服务绑定数据</returns>
         </member>
         <member name="M:CatLib.App.Bind``1(System.Func{CatLib.IContainer,System.Object[],System.Object})">
@@ -599,7 +616,7 @@
             如果服务不存在那么则绑定服务
             </summary>
             <typeparam name="TService">服务名</typeparam>
-            <typeparam name="TAlias">服务别名</typeparam>
+            <typeparam name="TConcrete">服务实现</typeparam>
             <param name="bindData">如果绑定失败则返回历史绑定对象</param>
             <returns>是否完成绑定</returns>
         </member>
@@ -643,7 +660,7 @@
             以单例的形式绑定一个服务
             </summary>
             <typeparam name="TService">服务名</typeparam>
-            <typeparam name="TAlias">服务别名</typeparam>
+            <typeparam name="TConcrete">服务实现</typeparam>
             <returns>服务绑定数据</returns>
         </member>
         <member name="M:CatLib.App.Singleton``1">
@@ -682,7 +699,7 @@
             如果服务不存在那么则绑定服务
             </summary>
             <typeparam name="TService">服务名</typeparam>
-            <typeparam name="TAlias">服务别名</typeparam>
+            <typeparam name="TConcrete">服务实现</typeparam>
             <param name="bindData">如果绑定失败则返回历史绑定对象</param>
             <returns>是否完成绑定</returns>
         </member>
@@ -1136,6 +1153,11 @@
             事件系统
             </summary>
         </member>
+        <member name="F:CatLib.Application.debugLevel">
+            <summary>
+            调试等级
+            </summary>
+        </member>
         <member name="M:CatLib.Application.#ctor">
             <summary>
             构建一个CatLib实例
@@ -1184,6 +1206,14 @@
             </summary>
             <param name="provider">注册服务提供者</param>
             <exception cref="T:CatLib.LogicException">服务提供者被重复注册时触发</exception>
+        </member>
+        <member name="M:CatLib.Application.AddSortedList``1(System.Collections.Generic.SortedList{System.Int32,System.Collections.Generic.List{``0}},``0,System.String)">
+            <summary>
+            增加到排序列表
+            </summary>
+            <param name="list">列表</param>
+            <param name="insert">需要插入的记录</param>
+            <param name="priorityMethod">优先级函数</param>
         </member>
         <member name="M:CatLib.Application.InitProvider(CatLib.IServiceProvider)">
             <summary>
@@ -2390,6 +2420,18 @@
             <param name="value">参数值</param>
             <returns>是否成功获取</returns>
         </member>
+        <member name="T:CatLib.TypeExtend">
+            <summary>
+            Type类型扩展函数
+            </summary>
+        </member>
+        <member name="M:CatLib.TypeExtend.ToService(System.Type)">
+            <summary>
+            将类型转为服务名
+            </summary>
+            <param name="type">类型</param>
+            <returns>服务名</returns>
+        </member>
         <member name="T:CatLib.UnresolvableException">
             <summary>
             未能解决异常
@@ -3057,14 +3099,6 @@
             <param name="service">服务名或者别名</param>
             <returns>服务实例，如果构造失败那么返回null</returns>
         </member>
-        <member name="M:CatLib.Container.Factory(System.String,System.Object[])">
-            <summary>
-            获取一个回调，当执行回调可以生成指定的服务
-            </summary>
-            <param name="service">服务名或别名</param>
-            <param name="userParams">用户传入的参数</param>
-            <returns>回调方案</returns>
-        </member>
         <member name="M:CatLib.Container.Extend(System.String,System.Func{System.Object,CatLib.IContainer,System.Object})">
             <summary>
             扩展容器中的服务
@@ -3090,11 +3124,12 @@
             <exception cref="T:CatLib.LogicException"><paramref name="service"/>的服务在绑定设置中不是静态的</exception>
             <returns>被修饰器处理后的新的实例</returns>
         </member>
-        <member name="M:CatLib.Container.Release(System.String)">
+        <member name="M:CatLib.Container.Release(System.Object)">
             <summary>
             释放静态化实例
             </summary>
-            <param name="service">服务名或别名</param>
+            <param name="mixed">服务名或别名或单例化的对象</param>
+            <returns>是否完成了释放</returns>
         </member>
         <member name="M:CatLib.Container.OnFindType(System.Func{System.String,System.Type},System.Int32)">
             <summary>
@@ -3394,6 +3429,13 @@
             <param name="userParams">用户传入的构造参数</param>
             <returns>构造函数参数</returns>
         </member>
+        <member name="M:CatLib.Container.GetServiceWithInstanceObject(System.Object)">
+            <summary>
+            通过对象反向获取服务名
+            </summary>
+            <param name="instance">对象</param>
+            <returns>服务名</returns>
+        </member>
         <member name="M:CatLib.Container.GuardConstruct(System.String)">
             <summary>
             验证构建状态
@@ -3653,7 +3695,7 @@
             常规绑定一个服务
             </summary>
             <typeparam name="TService">服务名</typeparam>
-            <typeparam name="TAlias">服务别名</typeparam>
+            <typeparam name="TConcrete">服务实现</typeparam>
             <param name="container">服务容器</param>
             <returns>服务绑定数据</returns>
         </member>
@@ -3689,7 +3731,7 @@
             如果服务不存在那么则绑定服务
             </summary>
             <typeparam name="TService">服务名</typeparam>
-            <typeparam name="TAlias">服务别名</typeparam>
+            <typeparam name="TConcrete">服务实现</typeparam>
             <param name="container">服务容器</param>
             <param name="bindData">如果绑定失败则返回历史绑定对象</param>
             <returns>是否完成绑定</returns>
@@ -3747,7 +3789,7 @@
             以单例的形式绑定一个服务
             </summary>
             <typeparam name="TService">服务名</typeparam>
-            <typeparam name="TAlias">服务别名</typeparam>
+            <typeparam name="TConcrete">服务实现</typeparam>
             <param name="container">服务容器</param>
             <returns>服务绑定数据</returns>
         </member>
@@ -3782,7 +3824,7 @@
             如果服务不存在那么则绑定服务
             </summary>
             <typeparam name="TService">服务名</typeparam>
-            <typeparam name="TAlias">服务别名</typeparam>
+            <typeparam name="TConcrete">服务实现</typeparam>
             <param name="container">服务容器</param>
             <param name="bindData">如果绑定失败则返回历史绑定对象</param>
             <returns>是否完成绑定</returns>
@@ -4186,6 +4228,15 @@
             <param name="container">服务容器</param>
             <returns>服务名</returns>
         </member>
+        <member name="M:CatLib.ContainerExtend.Factory(CatLib.IContainer,System.String,System.Object[])">
+            <summary>
+            获取一个回调，当执行回调可以生成指定的服务
+            </summary>
+            <param name="container">服务容器</param>
+            <param name="service">服务名或别名</param>
+            <param name="userParams">用户传入的参数</param>
+            <returns>回调方案</returns>
+        </member>
         <member name="T:CatLib.GivenData`1">
             <summary>
             绑定关系临时数据,用于支持链式调用
@@ -4381,11 +4432,11 @@
             <param name="instance">服务实例</param>
             <returns>被修饰器处理后的新的实例</returns>
         </member>
-        <member name="M:CatLib.IContainer.Release(System.String)">
+        <member name="M:CatLib.IContainer.Release(System.Object)">
             <summary>
-            释放某个静态化实例
+            释放某个单例化的对象
             </summary>
-            <param name="service">服务名或别名</param>
+            <param name="mixed">服务名或别名或单例对象</param>
         </member>
         <member name="M:CatLib.IContainer.Flush">
             <summary>
@@ -4423,14 +4474,6 @@
             </summary>
             <param name="service">服务名或者别名</param>
             <returns>服务实例，如果构造失败那么返回null</returns>
-        </member>
-        <member name="M:CatLib.IContainer.Factory(System.String,System.Object[])">
-            <summary>
-            获取一个回调，当执行回调可以生成指定的服务
-            </summary>
-            <param name="service">服务名或别名</param>
-            <param name="userParams">用户传入的参数</param>
-            <returns>回调方案</returns>
         </member>
         <member name="M:CatLib.IContainer.Alias(System.String,System.String)">
             <summary>
