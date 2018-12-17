@@ -29,8 +29,8 @@ namespace CatLib
         /// <param name="behaviour">驱动器</param>
         public UnityApplication(MonoBehaviour behaviour)
         {
-            this.Instance<MonoBehaviour>(behaviour);
-            this.Alias<Component, MonoBehaviour>();
+            this.Singleton<MonoBehaviour>(() => behaviour)
+                .Alias<Component>();
             this.behaviour = behaviour;
         }
 
