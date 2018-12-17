@@ -18,7 +18,7 @@ namespace CatLib
     /// 类型查询器引导
     /// </summary>
     [ExcludeFromCodeCoverage]
-    public sealed class TypeBootstrap : IBootstrap
+    public sealed class BootstrapTypeFinder : IBootstrap
     {
         /// <summary>
         /// 程序集列表
@@ -29,7 +29,7 @@ namespace CatLib
         /// 构建一个类型查询器引导
         /// </summary>
         /// <param name="assembly">需要添加的程序集</param>
-        public TypeBootstrap(IDictionary<string, int> assembly = null)
+        public BootstrapTypeFinder(IDictionary<string, int> assembly = null)
         {
             assemblies = new Dictionary<string, int>();
             Dict.AddRange(assemblies, Assemblys.Assembly);

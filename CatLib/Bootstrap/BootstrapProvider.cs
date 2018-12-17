@@ -19,7 +19,7 @@ namespace CatLib
     /// </summary>
     [ExcludeFromCodeCoverage]
     [Priority(20)]
-    public sealed class ProviderBootstrap : IBootstrap
+    public sealed class BootstrapProvider : IBootstrap
     {
         /// <summary>
         /// 允许从组件列表加载
@@ -35,7 +35,7 @@ namespace CatLib
         /// 构建一个服务提供者引导程序
         /// </summary>
         /// <param name="serviceProviders">服务提供者列表</param>
-        public ProviderBootstrap(IServiceProvider[] serviceProviders = null)
+        public BootstrapProvider(IServiceProvider[] serviceProviders = null)
         {
             providers = Arr.Merge(Providers.ServiceProviders, serviceProviders);
             LoadFromComponents = true;
