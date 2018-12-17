@@ -40,7 +40,7 @@ namespace CatLib
         /// <summary>
         /// 入口引导
         /// </summary>
-        [Priority]
+        [Priority(0)]
         public virtual void Bootstrap()
         {
             App.On<IServiceProvider>(ApplicationEvents.OnRegisterProvider, OnRegisterProvider);
@@ -168,7 +168,10 @@ namespace CatLib
         /// </summary>
         protected virtual void OnDestroy()
         {
-            application.Terminate();
+            if (application != null)
+            {
+                application.Terminate();
+            }
         }
     }
 }
