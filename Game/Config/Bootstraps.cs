@@ -28,7 +28,7 @@ namespace Game
                 return new IBootstrap[]
                 {
                     new BootstrapTypeFinder(Assemblys.Assembly),
-                    new BootstrapProvider(Providers.ServiceProviders),
+                    new BootstrapProviderRegister(Providers.ServiceProviders),
                 };
             }
         }
