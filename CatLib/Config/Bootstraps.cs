@@ -14,7 +14,6 @@ namespace CatLib
     /// <summary>
     /// 框架默认的引导程序
     /// </summary>
-    [ExcludeFromCodeCoverage]
     internal class Bootstraps
     {
         /// <summary>

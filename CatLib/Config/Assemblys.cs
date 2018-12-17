@@ -16,7 +16,6 @@ namespace CatLib
     /// <summary>
     /// 框架会自动添加的程序集自动加载方案
     /// </summary>
-    [ExcludeFromCodeCoverage]
     internal class Assemblys
     {
         /// <summary>

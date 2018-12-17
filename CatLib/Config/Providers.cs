@@ -15,7 +15,6 @@ namespace CatLib
     /// 框架默认的服务提供者
     /// <para>这里的提供者在框架启动时必定会被加载</para>
     /// </summary>
-    [ExcludeFromCodeCoverage]
     internal class Providers
     {
         /// <summary>
