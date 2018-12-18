@@ -1380,11 +1380,6 @@
             当初始化开始之前
             </summary>
         </member>
-        <member name="F:CatLib.ApplicationEvents.OnIniting">
-            <summary>
-            当初始化进行时
-            </summary>
-        </member>
         <member name="F:CatLib.ApplicationEvents.OnProviderInit">
             <summary>
             当服务提供者初始化进行前
@@ -1420,11 +1415,6 @@
             调试等级
             </summary>
         </member>
-        <member name="F:CatLib.DebugLevels.Prod">
-            <summary>
-            生产环境
-            </summary>
-        </member>
         <member name="F:CatLib.DebugLevels.Production">
             <summary>
             生产环境
@@ -1433,11 +1423,6 @@
         <member name="F:CatLib.DebugLevels.Staging">
             <summary>
             仿真环境
-            </summary>
-        </member>
-        <member name="F:CatLib.DebugLevels.Dev">
-            <summary>
-            开发者模式
             </summary>
         </member>
         <member name="F:CatLib.DebugLevels.Development">
@@ -3253,6 +3238,53 @@
             <param name="baseParam">当前正在解决的变量</param>
             <returns>需求的服务名</returns>
         </member>
+        <member name="M:CatLib.Container.GetContextualClosure(CatLib.Bindable,System.String,System.String)">
+            <summary>
+            根据上下文获取相关的构建闭包
+            </summary>
+            <param name="makeServiceBindData">请求注入操作的服务绑定数据</param>
+            <param name="service">构建的服务名</param>
+            <param name="paramName">目标参数的名字</param>
+            <returns>构建闭包</returns>
+        </member>
+        <member name="M:CatLib.Container.GetContextualService(CatLib.Bindable,System.String,System.String)">
+            <summary>
+            根据上下文获取相关的需求服务
+            </summary>
+            <param name="makeServiceBindData">请求注入操作的服务绑定数据</param>
+            <param name="service">构建的服务名</param>
+            <param name="paramName">目标参数的名字</param>
+            <returns>需求的服务名</returns>
+        </member>
+        <member name="M:CatLib.Container.MakeFromContextualClosure(System.Func{System.Object},System.Type,System.Object@)">
+            <summary>
+            从上下文闭包中进行构建获得实例
+            </summary>
+            <param name="closure">上下文闭包</param>
+            <param name="needType">参数需求的类型</param>
+            <param name="ouput">构建的实例</param>
+            <returns>是否成功构建</returns>
+        </member>
+        <member name="M:CatLib.Container.MakeFromContextualService(System.String,System.Type,System.Object@)">
+            <summary>
+            从上下文关系的服务名获取服务实现
+            </summary>
+            <param name="service">上下文关系的服务名</param>
+            <param name="needType">参数需求类型</param>
+            <param name="output">构建的实例</param>
+            <returns>是否成功构建</returns>
+        </member>
+        <member name="M:CatLib.Container.ResloveFromContextual(CatLib.Bindable,System.String,System.String,System.Type,System.Object@)">
+            <summary>
+            根据上下文来解决指定需求的服务
+            </summary>
+            <param name="makeServiceBindData">请求注入操作的服务绑定数据</param>
+            <param name="service">构建的服务名字</param>
+            <param name="paramName">目标参数的名字</param>
+            <param name="paramType">目标参数的类型</param>
+            <param name="output">构建的实例</param>
+            <returns>是否成功通过上下文解决</returns>
+        </member>
         <member name="M:CatLib.Container.ResolveAttrPrimitive(CatLib.Bindable,System.String,System.Reflection.PropertyInfo)">
             <summary>
             解决基本类型
@@ -3289,16 +3321,7 @@
             <param name="baseParam">当前正在解决的变量</param>
             <returns>解决结果</returns>
         </member>
-        <member name="M:CatLib.Container.SpeculationServiceByParamName(CatLib.Bindable,System.String,System.Type)">
-            <summary>
-            根据参数名字来推测服务
-            </summary>
-            <param name="makeServiceBindData">请求注入操作的服务绑定数据</param>
-            <param name="paramName">参数名</param>
-            <param name="paramType">参数类型</param>
-            <returns>推测的服务</returns>
-        </member>
-        <member name="M:CatLib.Container.GetVariableTags">
+        <member name="M:CatLib.Container.GetVariableTag">
             <summary>
             获取变量标签
             </summary>
@@ -3585,6 +3608,14 @@
             <param name="makeServiceType">服务类型</param>
             <param name="userParams">用户传入的构造参数</param>
             <returns>服务实例</returns>
+        </member>
+        <member name="M:CatLib.Container.CreateInstance(System.Type,System.Object[])">
+            <summary>
+            通过指定的类型构建服务实现
+            </summary>
+            <param name="makeServiceType">指定的服务类型</param>
+            <param name="userParams">用户自定义参数</param>
+            <returns>构建的服务实现</returns>
         </member>
         <member name="M:CatLib.Container.GetBindFillable(System.String)">
             <summary>
@@ -4547,22 +4578,6 @@
         <member name="T:CatLib.InjectAttribute">
             <summary>
             注入标记
-            </summary>
-        </member>
-        <member name="P:CatLib.InjectAttribute.Alias">
-            <summary>
-            注入服务的别名或者服务名
-            </summary>
-        </member>
-        <member name="M:CatLib.InjectAttribute.#ctor(System.String)">
-            <summary>
-            声明注入
-            </summary>
-            <param name="alias">依赖服务的别名或者服务名</param>
-        </member>
-        <member name="M:CatLib.InjectAttribute.#ctor">
-            <summary>
-            声明注入
             </summary>
         </member>
         <member name="T:CatLib.IBindData">
@@ -7652,12 +7667,6 @@
             <param name="builder">扩展构建器</param>
             <param name="name">扩展名</param>
         </member>
-        <member name="M:CatLib.IManaged`1.ReleaseExtend(System.String)">
-            <summary>
-            释放指定扩展的构建器
-            </summary>
-            <param name="name">扩展名</param>
-        </member>
         <member name="M:CatLib.IManaged`1.RemoveExtend(System.String)">
             <summary>
             释放指定扩展的构建器
@@ -7767,12 +7776,6 @@
             自定义一个扩展构建器
             </summary>
             <param name="builder">扩展构建器</param>
-            <param name="name">扩展名</param>
-        </member>
-        <member name="M:CatLib.Managed`1.ReleaseExtend(System.String)">
-            <summary>
-            释放指定扩展的构建器
-            </summary>
             <param name="name">扩展名</param>
         </member>
         <member name="M:CatLib.Managed`1.RemoveExtend(System.String)">
