@@ -24,21 +24,10 @@
             CatLib实例
             </summary>
         </member>
-        <member name="P:CatLib.App.AutoInstance">
-            <summary>
-            自动生成Application
-            </summary>
-        </member>
         <member name="P:CatLib.App.Handler">
             <summary>
             CatLib实例
             </summary>
-        </member>
-        <member name="M:CatLib.App.New">
-            <summary>
-            创建CatLib实例
-            </summary>
-            <returns>CatLib实例</returns>
         </member>
         <member name="M:CatLib.App.Terminate">
             <summary>
@@ -1158,15 +1147,17 @@
             调试等级
             </summary>
         </member>
-        <member name="M:CatLib.Application.#ctor">
+        <member name="M:CatLib.Application.#ctor(System.Boolean)">
             <summary>
             构建一个CatLib实例
             </summary>
+            <param name="global">是否将当前实例应用到全局</param>
         </member>
-        <member name="M:CatLib.Application.New">
+        <member name="M:CatLib.Application.New(System.Boolean)">
             <summary>
             构建一个新的Application实例
             </summary>
+            <param name="global">是否将当前实例应用到全局</param>
             <returns>Application实例</returns>
         </member>
         <member name="M:CatLib.Application.Terminate">
@@ -4641,6 +4632,7 @@
             <summary>
             绑定关系临时数据,用于支持链式调用
             </summary>
+            <typeparam name="TReturn">返回类型</typeparam>
         </member>
         <member name="M:CatLib.IGivenData`1.Given(System.String)">
             <summary>
