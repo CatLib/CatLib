@@ -27,7 +27,7 @@ namespace CatLib
         /// <summary>
         /// CatLib Unity Application
         /// </summary>
-        private UnityApplication application;
+        private Application application;
 
         /// <summary>
         /// CatLib Unity Application
@@ -66,11 +66,21 @@ namespace CatLib
         protected virtual void Awake()
         {
             DontDestroyOnLoad(gameObject);
-            application = new UnityApplication(this)
+            application = CreateApplication(DebugLevel);
+            application.Bootstrap(GetBootstraps());
+        }
+
+        /// <summary>
+        /// 创建新的Application实例
+        /// </summary>
+        /// <param name="debugLevel">调试等级</param>
+        /// <returns>Application实例</returns>
+        protected virtual Application CreateApplication(DebugLevels debugLevel)
+        {
+            return new UnityApplication(this)
             {
                 DebugLevel = DebugLevel
             };
-            application.Bootstrap(GetBootstraps());
         }
 
         /// <summary>
