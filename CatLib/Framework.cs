@@ -1,7 +1,7 @@
 ﻿/*
  * This file is part of the CatLib package.
  *
- * (c) Yu Bin <support@catlib.io>
+ * (c) CatLib <support@catlib.io>
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -27,17 +27,20 @@ namespace CatLib
         /// <summary>
         /// CatLib Unity Application
         /// </summary>
-        private UnityApplication application;
+        private Application application;
 
         /// <summary>
         /// CatLib Unity Application
         /// </summary>
-        public IApplication Application => application;
+        public IApplication Application
+        {
+            get { return application; }
+        }
 
         /// <summary>
         /// 入口引导
         /// </summary>
-        [Priority]
+        [Priority(0)]
         public virtual void Bootstrap()
         {
             App.On<IServiceProvider>(ApplicationEvents.OnRegisterProvider, OnRegisterProvider);
@@ -63,11 +66,21 @@ namespace CatLib
         protected virtual void Awake()
         {
             DontDestroyOnLoad(gameObject);
-            application = new UnityApplication(this)
+            application = CreateApplication(DebugLevel);
+            application.Bootstrap(GetBootstraps());
+        }
+
+        /// <summary>
+        /// 创建新的Application实例
+        /// </summary>
+        /// <param name="debugLevel">调试等级</param>
+        /// <returns>Application实例</returns>
+        protected virtual Application CreateApplication(DebugLevels debugLevel)
+        {
+            return new UnityApplication(this)
             {
                 DebugLevel = DebugLevel
             };
-            application.Bootstrap(Arr.Reverse(GetBootstraps()));
         }
 
         /// <summary>
@@ -165,7 +178,10 @@ namespace CatLib
         /// </summary>
         protected virtual void OnDestroy()
         {
-            application.Terminate();
+            if (application != null)
+            {
+                application.Terminate();
+            }
         }
     }
 }

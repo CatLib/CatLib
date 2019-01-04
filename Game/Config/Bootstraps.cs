@@ -1,7 +1,7 @@
 ﻿/*
  * This file is part of the CatLib package.
  *
- * (c) Yu Bin <support@catlib.io>
+ * (c) CatLib <support@catlib.io>
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -21,10 +21,16 @@ namespace Game
         /// <summary>
         /// 项目注册的引导程序
         /// </summary>
-        public static IBootstrap[] Bootstrap => new IBootstrap[]
+        public static IBootstrap[] Bootstrap
         {
-            new TypeBootstrap(Assemblys.Assembly),
-            new ProviderBootstrap(Providers.ServiceProviders),
-        };
+            get
+            {
+                return new IBootstrap[]
+                {
+                    new BootstrapTypeFinder(Assemblys.Assembly),
+                    new BootstrapProviderRegister(Providers.ServiceProviders),
+                };
+            }
+        }
     }
 }

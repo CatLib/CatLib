@@ -1,7 +1,7 @@
 ﻿/*
  * This file is part of the CatLib package.
  *
- * (c) Yu Bin <support@catlib.io>
+ * (c) CatLib <support@catlib.io>
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -19,7 +19,7 @@ namespace CatLib
     /// </summary>
     [ExcludeFromCodeCoverage]
     [Priority(20)]
-    public sealed class ProviderBootstrap : IBootstrap
+    public sealed class BootstrapProviderRegister : IBootstrap
     {
         /// <summary>
         /// 允许从组件列表加载
@@ -35,7 +35,7 @@ namespace CatLib
         /// 构建一个服务提供者引导程序
         /// </summary>
         /// <param name="serviceProviders">服务提供者列表</param>
-        public ProviderBootstrap(IServiceProvider[] serviceProviders = null)
+        public BootstrapProviderRegister(IServiceProvider[] serviceProviders = null)
         {
             providers = Arr.Merge(Providers.ServiceProviders, serviceProviders);
             LoadFromComponents = true;

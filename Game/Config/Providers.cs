@@ -1,7 +1,7 @@
 ﻿/*
  * This file is part of the CatLib package.
  *
- * (c) Yu Bin <support@catlib.io>
+ * (c) CatLib <support@catlib.io>
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -21,9 +21,15 @@ namespace Game
         /// <summary>
         /// 项目注册的服务提供者
         /// </summary>
-        public static IServiceProvider[] ServiceProviders => new IServiceProvider[]
+        public static IServiceProvider[] ServiceProviders
         {
-            // todo: 在此处增加您项目的服务提供者
-        };
+            get
+            {
+                return new IServiceProvider[]
+                {
+                    // todo: 在此处增加您项目的服务提供者
+                };
+            }
+        }
     }
 }

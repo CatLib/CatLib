@@ -1,7 +1,7 @@
 ﻿/*
  * This file is part of the CatLib package.
  *
- * (c) Yu Bin <support@catlib.io>
+ * (c) CatLib <support@catlib.io>
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -14,15 +14,20 @@ namespace CatLib
     /// <summary>
     /// 框架默认的引导程序
     /// </summary>
-    [ExcludeFromCodeCoverage]
     internal class Bootstraps
     {
         /// <summary>
         /// 引导程序
         /// </summary>
-        public static IBootstrap[] Bootstrap => new IBootstrap[]
+        public static IBootstrap[] Bootstrap
         {
+            get
+            {
+                return new IBootstrap[]
+                {
 
-        };
+                };
+            }
+        }
     }
 }

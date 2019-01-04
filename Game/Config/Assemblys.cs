@@ -1,7 +1,7 @@
 ﻿/*
  * This file is part of the CatLib package.
  *
- * (c) Yu Bin <support@catlib.io>
+ * (c) CatLib <support@catlib.io>
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -22,9 +22,15 @@ namespace Game
         /// 项目自动添加的程序集自动加载方案
         /// <para>分数值越小越优先</para>
         /// </summary>
-        public static IDictionary<string, int> Assembly => new Dictionary<string, int>
+        public static IDictionary<string, int> Assembly
         {
-            //{ "Assembly-CSharp" , 0 },
-        };
+            get
+            {
+                return new Dictionary<string, int>
+                {
+                    //{ "Assembly-CSharp" , 0 },
+                };
+            }
+        }
     }
 }

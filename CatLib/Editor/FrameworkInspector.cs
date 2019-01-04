@@ -1,7 +1,7 @@
 ﻿/*
  * This file is part of the CatLib package.
  *
- * (c) Yu Bin <support@catlib.io>
+ * (c) CatLib <support@catlib.io>
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -52,7 +52,7 @@ namespace CatLib.Editor
         {
             EditorGUILayout.Separator();
             GUILayout.BeginHorizontal();
-            EditorGUILayout.LabelField($"CatLib Framework ({App.Version})", EditorStyles.largeLabel,
+            EditorGUILayout.LabelField("CatLib Framework ("+ App.Version + ")", EditorStyles.largeLabel,
                 GUILayout.Height(20));
             GUILayout.EndHorizontal();
         }
@@ -69,9 +69,14 @@ namespace CatLib.Editor
                     EditorStyles.popup);
             GUILayout.EndHorizontal();
 
-            if (old != debugLevel.enumValueIndex)
+            if (old == debugLevel.enumValueIndex)
             {
-                framework.Application.DebugLevel = (DebugLevels) debugLevel.enumValueIndex;
+                return;
+            }
+
+            if (framework.Application != null)
+            {
+                framework.Application.DebugLevel = (DebugLevels)debugLevel.enumValueIndex;
             }
         }
     }

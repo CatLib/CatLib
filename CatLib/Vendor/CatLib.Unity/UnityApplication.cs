@@ -1,7 +1,7 @@
 ﻿/*
  * This file is part of the CatLib package.
  *
- * (c) Yu Bin <support@catlib.io>
+ * (c) CatLib <support@catlib.io>
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -19,9 +19,9 @@ namespace CatLib
     public class UnityApplication : Application
     {
         /// <summary>
-        /// behaviour
+        /// Mono Behaviour
         /// </summary>
-        private readonly MonoBehaviour behaviour;
+        protected MonoBehaviour Behaviour { get; private set; }
 
         /// <summary>
         /// 构造一个 CatLib for unity application
@@ -29,9 +29,14 @@ namespace CatLib
         /// <param name="behaviour">驱动器</param>
         public UnityApplication(MonoBehaviour behaviour)
         {
-            this.Instance<MonoBehaviour>(behaviour);
-            this.Alias<Component, MonoBehaviour>();
-            this.behaviour = behaviour;
+            if (behaviour == null)
+            {
+                return;
+            }
+
+            this.Singleton<MonoBehaviour>(() => behaviour)
+                .Alias<Component>();
+            Behaviour = behaviour;
         }
 
         /// <summary>
@@ -39,7 +44,12 @@ namespace CatLib
         /// </summary>
         public override void Init()
         {
-            behaviour.StartCoroutine(CoroutineInit());
+            if (Behaviour)
+            {
+                Behaviour.StartCoroutine(CoroutineInit());
+                return;
+            }
+            base.Init();
         }
 
         /// <summary>
@@ -48,7 +58,12 @@ namespace CatLib
         /// <param name="provider">服务提供者</param>
         public override void Register(IServiceProvider provider)
         {
-            behaviour.StartCoroutine(CoroutineRegister(provider));
+            if (Behaviour)
+            {
+                Behaviour.StartCoroutine(CoroutineRegister(provider));
+                return;
+            }
+            base.Register(provider);
         }
     }
 }
