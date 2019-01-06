@@ -1,4 +1,4 @@
-<p align="center"><img width="173" height="57" src="http://catlib.io/images/logo.txt.png"></p>
+<p align="center"><img width="173" height="57" src="http://catlib.io/imgs/logo-txt.png"></p>
 
 <p align="center">
 <a href="https://github.com/CatLib/CatLib/blob/master/LICENSE"><img src="https://img.shields.io/badge/license-MIT-blue.svg" title="license-mit" /></a>
