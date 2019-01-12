@@ -1,0 +1,21 @@
+{
+  "name": "com.catlib.catlib",
+  "displayName" : "CatLib.CatLib",
+  "version": "1.3.1",
+  "description": "CatLib.CatLib is the service provider framework for Unity",
+  "license": "MIT",
+  "homepage": "https://github.com/catlib/catlib",
+  "keywords": [
+    "catlib",
+    "unity"
+  ],
+  "category": "framework",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:catlib/catlib.git"
+  },
+  "dependencies": {
+    "com.catlib.core" : "1.3.1"
+  },
+  "unity": "2017.1"
+}
