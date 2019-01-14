@@ -1,6 +1,4 @@
 *.meta
 .vs
 *.dll.mdb
-.dist/**/*.cs
-.dist/**/*.meta
-.dist/**/*.md
+.dist/
