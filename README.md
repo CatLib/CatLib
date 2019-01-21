@@ -41,7 +41,7 @@ CatLib一直都在建立新的组件来降低开发者的工作量，进入 [Cat
 
 ## 贡献
 
-CatLib还是一个年轻的框架，她的成长和你们的贡献是分不开的，如果您想要为项目进行贡献请参考： [CatLib 贡献文档](http://catlib.io/v1/guide/contribution.html) 您的贡献将会被列入贡献者名单，我们欢迎任何形式的`Pull Request`!
+CatLib还是一个年轻的框架，她的成长和你们的贡献是分不开的，如果您想要为项目进行贡献请参考： [CatLib 贡献文档](https://catlib.io/v1/contribution.html) 您的贡献将会被列入贡献者名单，我们欢迎任何形式的`Pull Request`!
 
 issues 不仅仅只是用于bug跟踪 , 如果您有好的意见或者想法，也欢迎创建 issues 一起讨论。
 
