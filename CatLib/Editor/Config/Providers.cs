@@ -11,7 +11,7 @@
 
 using CatLib;
 
-namespace Game
+namespace CatLib.Editor
 {
     /// <summary>
     /// 项目注册的服务提供者

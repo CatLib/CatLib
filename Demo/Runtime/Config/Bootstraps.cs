@@ -11,7 +11,7 @@
 
 using CatLib;
 
-namespace Game
+namespace Demo
 {
     /// <summary>
     /// 项目注册的引导程序

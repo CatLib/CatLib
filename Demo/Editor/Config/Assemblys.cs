@@ -11,7 +11,7 @@
 
 using System.Collections.Generic;
 
-namespace Game
+namespace Demo.Editor
 {
     /// <summary>
     /// 项目自动添加的程序集自动加载方案
