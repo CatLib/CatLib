@@ -9,6 +9,7 @@
  * Document: http://catlib.io/
  */
 
+using System;
 using UnityEngine;
 
 namespace CatLib
@@ -64,6 +65,16 @@ namespace CatLib
                 return;
             }
             base.Register(provider);
+        }
+
+        /// <summary>
+        /// 是否是无法被构建的类型
+        /// </summary>
+        /// <param name="type">类型</param>
+        /// <returns>是否是无法被构建的</returns>
+        protected override bool IsUnableType(Type type)
+        {
+            return typeof(Component).IsAssignableFrom(type) || base.IsUnableType(type);
         }
     }
 }
