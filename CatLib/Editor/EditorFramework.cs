@@ -37,7 +37,7 @@ namespace CatLib.Editor
                 return;
             }
 
-            CreateEditorApplication();
+            ApplyEditorApplication();
         }
 
         /// <summary>
@@ -45,7 +45,7 @@ namespace CatLib.Editor
         /// </summary>
         private static void Quitted()
         {
-            CreateEditorApplication();
+            ApplyEditorApplication();
         }
 
         /// <summary>
@@ -97,12 +97,13 @@ namespace CatLib.Editor
         }
 
         /// <summary>
-        /// 创建编辑器应用程序
+        /// 应用编辑器应用程序
         /// </summary>
-        private static void CreateEditorApplication()
+        private static void ApplyEditorApplication()
         {
             var editorFramework = GetEditorFramework();
             editorApplication = editorFramework.CreateApplication();
+            editorFramework.BeforeBootstrap(editorApplication);
             editorApplication.Bootstrap(editorFramework.GetBootstraps());
             editorApplication.Init();
         }
@@ -113,6 +114,23 @@ namespace CatLib.Editor
         public IApplication Application
         {
             get { return editorApplication; }
+        }
+
+        /// <summary>
+        /// 在引导开始之前
+        /// </summary>
+        /// <param name="application">应用程序</param>
+        protected virtual void BeforeBootstrap(IApplication application)
+        {
+            application.On(ApplicationEvents.OnStartCompleted, OnStartCompleted);
+        }
+
+        /// <summary>
+        /// 在启动完成之后
+        /// </summary>
+        protected virtual void OnStartCompleted()
+        {
+
         }
 
         /// <summary>
