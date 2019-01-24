@@ -83,7 +83,7 @@ namespace CatLib.Editor
         /// 测试是否处于需要检查的程序集列表
         /// </summary>
         /// <param name="assembly">测试程序集</param>
-        /// <returns>是否处于忽略程序集列表</returns>
+        /// <returns>是否处于需要检查的程序集列表</returns>
         private static bool TestCheckInAssembiles(Assembly assembly)
         {
             foreach (var pattern in checkInAssembiles)
