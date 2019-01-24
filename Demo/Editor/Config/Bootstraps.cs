@@ -28,10 +28,7 @@ namespace Demo.Editor
                 return new IBootstrap[]
                 {
                     new BootstrapTypeFinder(Assemblys.Assembly),
-                    new BootstrapProviderRegister(Providers.ServiceProviders)
-                    {
-                        LoadFromComponents = false
-                    },
+                    new BootstrapProviderRegister(Providers.ServiceProviders),
                 };
             }
         }

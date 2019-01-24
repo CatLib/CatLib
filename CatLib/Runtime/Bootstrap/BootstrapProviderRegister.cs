@@ -68,6 +68,11 @@ namespace CatLib
                 return;
             }
 
+            if (!App.CanMake<Component>())
+            {
+                return;
+            }
+
             var root = App.Make<Component>();
             if (root == null)
             {
