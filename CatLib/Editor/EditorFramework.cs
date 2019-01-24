@@ -139,7 +139,7 @@ namespace CatLib.Editor
         /// <returns>创建框架实例</returns>
         protected virtual Application CreateApplication()
         {
-            return new Application();
+            return new UnityApplication(null);
         }
 
         /// <summary>
