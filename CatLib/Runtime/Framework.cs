@@ -89,7 +89,7 @@ namespace CatLib
         /// <returns>引导脚本</returns>
         protected virtual IBootstrap[] GetBootstraps()
         {
-            return Arr.Merge(GetComponents<IBootstrap>(), Bootstraps.Bootstrap);
+            return Arr.Merge(GetComponents<IBootstrap>(), Bootstraps.GetBoostraps(this));
         }
 
         /// <summary>

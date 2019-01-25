@@ -148,7 +148,7 @@ namespace CatLib.Editor
         /// <returns>引导脚本</returns>
         protected virtual IBootstrap[] GetBootstraps()
         {
-            return Bootstraps.Bootstrap;
+            return Bootstraps.GetBoostraps(null);
         }
     }
 }

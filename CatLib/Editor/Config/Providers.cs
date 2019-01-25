@@ -9,14 +9,12 @@
  * Document: http://catlib.io/
  */
 
-using CatLib;
-
 namespace CatLib.Editor
 {
     /// <summary>
     /// 项目注册的服务提供者
     /// </summary>
-    public static class Providers
+    internal static class Providers
     {
         /// <summary>
         /// 项目注册的服务提供者

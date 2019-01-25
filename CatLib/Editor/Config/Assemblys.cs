@@ -16,7 +16,7 @@ namespace CatLib.Editor
     /// <summary>
     /// 项目自动添加的程序集自动加载方案
     /// </summary>
-    public static class Assemblys
+    internal static class Assemblys
     {
         /// <summary>
         /// 项目自动添加的程序集自动加载方案

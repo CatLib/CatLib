@@ -42,7 +42,7 @@ namespace Demo
         /// <returns>引导脚本</returns>
         protected override IBootstrap[] GetBootstraps()
         {
-            return Arr.Merge(base.GetBootstraps(), Bootstraps.Bootstrap);
+            return Arr.Merge(base.GetBootstraps(), Bootstraps.GetBoostraps(this));
         }
     }
 }

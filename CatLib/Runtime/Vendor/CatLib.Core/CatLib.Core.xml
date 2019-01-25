@@ -1359,6 +1359,17 @@
             </summary>
             <param name="coroutine">迭代程序</param>
         </member>
+        <member name="M:CatLib.Application.Resolve``1(System.Object[])">
+            <summary>
+            解决服务(不会进行GuardConstruct检查)
+            </summary>
+            <typeparam name="TService">服务名</typeparam>
+            <param name="userParams">用户传入的构造参数</param>
+            <returns>服务实例，如果构造失败那么返回null</returns>
+            <exception cref="T:CatLib.LogicException">出现循环依赖</exception>
+            <exception cref="T:CatLib.UnresolvableException">无法解决服务</exception>
+            <returns>服务实例</returns>
+        </member>
         <member name="M:CatLib.Application.RegisterCoreAlias">
             <summary>
             注册核心别名
@@ -3603,7 +3614,7 @@
         </member>
         <member name="M:CatLib.Container.Resolve(System.String,System.Object[])">
             <summary>
-            解决服务
+            解决服务(不会进行GuardConstruct检查)
             </summary>
             <param name="service">服务名或别名</param>
             <param name="userParams">用户传入的构造参数</param>
@@ -8230,6 +8241,16 @@
             <param name="completed">所有回调完成后</param>
             <param name="rollback">回滚回调</param>
         </member>
+        <member name="M:CatLib.Arr.Test``1(``0[],System.Predicate{``0})">
+            <summary>
+            将规定数组传递给检查器进行检查。
+            <para>只有当所有元素通过检查器均为false，那么函数返回false。</para>
+            </summary>
+            <typeparam name="T">数组类型</typeparam>
+            <param name="source">规定数组</param>
+            <param name="predicate">检查器</param>
+            <returns>是否通过检查</returns>
+        </member>
         <member name="T:CatLib.Enum">
             <summary>
             自定义枚举
@@ -8377,6 +8398,16 @@
             <param name="pattern">匹配表达式</param>
             <param name="value">规定字符串</param>
             <returns>是否匹配</returns>
+        </member>
+        <member name="M:CatLib.Str.Is``1(System.String[],``0)">
+            <summary>
+            通过星号匹配表达式来对规定数组进行匹配。
+            <para>任意匹配式符合则返回true。</para>
+            </summary>
+            <typeparam name="T">数组类型</typeparam>
+            <param name="patterns">匹配表达式</param>
+            <param name="source">规定数组</param>
+            <returns>是否通过检查</returns>
         </member>
         <member name="M:CatLib.Str.AsteriskWildcard(System.String)">
             <summary>

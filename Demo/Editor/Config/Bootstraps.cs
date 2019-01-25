@@ -10,6 +10,7 @@
  */
 
 using CatLib;
+using UnityEngine;
 
 namespace Demo.Editor
 {
@@ -19,18 +20,17 @@ namespace Demo.Editor
     public static class Bootstraps
     {
         /// <summary>
-        /// 项目注册的引导程序
+        /// 获取引导程序
         /// </summary>
-        public static IBootstrap[] Bootstrap
+        /// <param name="component">Unity组件</param>
+        /// <returns>引导程序</returns>
+        public static IBootstrap[] GetBoostraps(Component component)
         {
-            get
+            return new IBootstrap[]
             {
-                return new IBootstrap[]
-                {
-                    new BootstrapTypeFinder(Assemblys.Assembly),
-                    new BootstrapProviderRegister(Providers.ServiceProviders),
-                };
-            }
+                new BootstrapTypeFinder(Assemblys.Assembly),
+                new BootstrapProviderRegister(component, Providers.ServiceProviders),
+            };
         }
     }
 }

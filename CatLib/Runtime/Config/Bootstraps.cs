@@ -9,6 +9,8 @@
  * Document: http://catlib.io/
  */
 
+ using UnityEngine;
+
 namespace CatLib
 {
     /// <summary>
@@ -17,17 +19,17 @@ namespace CatLib
     internal class Bootstraps
     {
         /// <summary>
-        /// 引导程序
+        /// 获取引导程序
         /// </summary>
-        public static IBootstrap[] Bootstrap
+        /// <param name="component">Unity组件</param>
+        /// <returns>引导程序</returns>
+        public static IBootstrap[] GetBoostraps(Component component)
         {
-            get
+            return new IBootstrap[]
             {
-                return new IBootstrap[]
-                {
-
-                };
-            }
+                new BootstrapTypeFinder(Assemblys.Assembly),
+                new BootstrapProviderRegister(component, Providers.ServiceProviders),
+            };
         }
     }
 }
