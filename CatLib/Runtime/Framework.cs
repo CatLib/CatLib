@@ -17,6 +17,7 @@ namespace CatLib
     /// 框架入口
     /// </summary>
     [DisallowMultipleComponent]
+    [HelpURL("https://catlib.io/lasted")]
     public abstract class Framework : MonoBehaviour
     {
         /// <summary>
