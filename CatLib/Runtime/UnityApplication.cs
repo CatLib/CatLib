@@ -59,6 +59,14 @@ namespace CatLib
         /// <param name="provider">服务提供者</param>
         public override void Register(IServiceProvider provider)
         {
+            var component = provider as Component;
+            if (component != null
+                && !component)
+            {
+                throw new CodeStandardException(
+                    "Service providers inherited from MonoBehaviour only be registered mounting on the GameObject.");
+            }
+
             if (Behaviour)
             {
                 Behaviour.StartCoroutine(CoroutineRegister(provider));
