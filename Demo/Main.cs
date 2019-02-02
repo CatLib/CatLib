@@ -12,7 +12,7 @@
 using CatLib;
 using UnityEngine;
 
-namespace Game
+namespace Demo
 {
     /// <summary>
     /// 项目入口

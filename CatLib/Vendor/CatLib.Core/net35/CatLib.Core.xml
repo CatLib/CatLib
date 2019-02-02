@@ -1062,6 +1062,12 @@
             版本号
             </summary>
         </member>
+        <member name="M:CatLib.Application.GetVersion">
+            <summary>
+            获取版本号
+            </summary>
+            <returns></returns>
+        </member>
         <member name="T:CatLib.Application.StartProcess">
             <summary>
             框架启动流程

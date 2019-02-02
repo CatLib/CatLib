@@ -9,26 +9,25 @@
  * Document: http://catlib.io/
  */
 
-using System.Collections.Generic;
+using CatLib;
 
-namespace Game
+namespace Demo
 {
     /// <summary>
-    /// 项目自动添加的程序集自动加载方案
+    /// 项目注册的服务提供者
     /// </summary>
-    public static class Assemblys
+    public static class Providers
     {
         /// <summary>
-        /// 项目自动添加的程序集自动加载方案
-        /// <para>分数值越小越优先</para>
+        /// 项目注册的服务提供者
         /// </summary>
-        public static IDictionary<string, int> Assembly
+        public static IServiceProvider[] ServiceProviders
         {
             get
             {
-                return new Dictionary<string, int>
+                return new IServiceProvider[]
                 {
-                    //{ "Assembly-CSharp" , 0 },
+                    // todo: 在此处增加您项目的服务提供者
                 };
             }
         }
