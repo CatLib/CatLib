@@ -24,10 +24,10 @@ CatLib提供了构建一个游戏所必备的基础组件 , 您可以通过接�
 
 - 解压`unitypackage`到unity项目。
 - 创建一个GameObject。
-- 将`Game/Main.cs`入口文件拖拽到GameObject上。
+- 将`Demo/Main.cs`入口文件拖拽到GameObject上。
 - 运行您的unity场景，您将会看到控制台输出欢迎字符串：`Hello CatLib`。
 
-> Game文件夹下的内容（或文件夹的命名）可以由您进行修改。
+> Demo文件夹下的内容（或文件夹的命名）可以由您进行修改。
 
 ## 学习CatLib
 
