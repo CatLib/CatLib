@@ -8,7 +8,7 @@
   <img src="https://codecov.io/gh/CatLib/Core/branch/master/graph/badge.svg" alt="Codecov" />
 </a>
 
-> English version is coming soon in version 1.4
+> English version is coming soon in version 2.0
 
 > 了解 [CatLib/Core](https://github.com/CatLib/Core) 源码
 
