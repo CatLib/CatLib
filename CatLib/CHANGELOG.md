@@ -7,7 +7,7 @@
 - 编辑器增加服务提供者的可视化选择支持([#24](https://github.com/CatLib/CatLib/issues/24) )
 - 增加了`CHANGELOG.md`([#29](https://github.com/CatLib/CatLib/issues/29) )
 
-**Change**
+**Changed**
 
 - 同步了[CatLib.Core v1.4.0-beta](https://github.com/CatLib/Core/releases/tag/v1.4.0)版本([#22](https://github.com/CatLib/CatLib/issues/22) )
 - 所有继承自`Component`的类型会被判定为不可以被构建的类型([#18](https://github.com/CatLib/CatLib/issues/18) )
