@@ -22,10 +22,11 @@ CatLib提供了构建一个游戏所必备的基础组件 , 您可以通过接�
 
 ## 快速开始
 
-- 解压`unitypackage`到unity项目。
-- 创建一个GameObject。
-- 将`Demo/Runtime/Main.cs`入口文件拖拽到GameObject上。
+- [下载](https://github.com/CatLib/CatLib/releases/tag/v1.4.0)并解压`unitypackage`到unity项目。
+- 创建一个`GameObject`。
+- 将`Demo/Runtime/Main.cs`入口文件拖拽到`GameObject`上。
 - 运行您的unity场景，您将会看到控制台输出欢迎字符串：`Hello CatLib`。
+- 恭喜您，框架已经正确安装，查看`CatLib/CHANGELOG.md`了解变更记录。
 
 > Demo文件夹下的内容（或文件夹的命名）可以由您进行修改。
 
