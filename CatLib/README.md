@@ -32,18 +32,20 @@ protected override IBootstrap[] GetBootstraps()
 - 建立引导文件`Bootstraps.cs`
 
 ```csharp
+using CatLib;
+using UnityEngine;
+```
+
+```csharp
 public static class Bootstraps
 {
-    public static IBootstrap[] Bootstrap
+    public static IBootstrap[] GetBoostraps(Component component)
     {
-        get
+        return new IBootstrap[]
         {
-            return new IBootstrap[]
-            {
-                new BootstrapTypeFinder(Assemblys.Assembly),
-                new BootstrapProviderRegister(Providers.ServiceProviders),
-            };
-        }
+            new BootstrapTypeFinder(Assemblys.Assembly),
+            new BootstrapProviderRegister(component, Providers.ServiceProviders),
+        };
     }
 }
 ```
