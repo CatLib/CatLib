@@ -1,4 +1,4 @@
-﻿/*
+/*
  * This file is part of the CatLib package.
  *
  * (c) CatLib <support@catlib.io>
