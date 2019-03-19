@@ -11,12 +11,12 @@
 
  using UnityEngine;
 
-namespace CatLib
+namespace CatLib.Editor
 {
     /// <summary>
-    /// 框架默认的引导程序
+    /// 项目注册的引导程序
     /// </summary>
-    internal class Bootstraps
+    internal static class Bootstraps
     {
         /// <summary>
         /// 获取引导程序

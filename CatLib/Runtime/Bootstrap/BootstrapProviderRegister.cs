@@ -22,23 +22,24 @@ namespace CatLib
     public sealed class BootstrapProviderRegister : IBootstrap
     {
         /// <summary>
-        /// 允许从组件列表加载
-        /// </summary>
-        public bool LoadFromComponents { get; set; }
-
-        /// <summary>
         /// 服务提供者列表
         /// </summary>
         private readonly IServiceProvider[] providers;
 
         /// <summary>
+        /// Unity根组件
+        /// </summary>
+        private readonly Component component;
+
+        /// <summary>
         /// 构建一个服务提供者引导程序
         /// </summary>
+        /// <param name="component">Unity根组件</param>
         /// <param name="serviceProviders">服务提供者列表</param>
-        public BootstrapProviderRegister(IServiceProvider[] serviceProviders = null)
+        public BootstrapProviderRegister(Component component, IServiceProvider[] serviceProviders = null)
         {
             providers = Arr.Merge(Providers.ServiceProviders, serviceProviders);
-            LoadFromComponents = true;
+            this.component = component;
         }
 
         /// <summary>
@@ -63,18 +64,12 @@ namespace CatLib
         /// </summary>
         private void LoadUnityComponentProvider()
         {
-            if (!LoadFromComponents)
+            if (!component)
             {
                 return;
             }
 
-            var root = App.Make<Component>();
-            if (root == null)
-            {
-                return;
-            }
-
-            RegisterProviders(root.GetComponentsInChildren<IServiceProvider>());
+            RegisterProviders(component.GetComponentsInChildren<IServiceProvider>());
         }
 
         /// <summary>
