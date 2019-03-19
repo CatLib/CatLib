@@ -1,4 +1,4 @@
-﻿/*
+/*
  * This file is part of the CatLib package.
  *
  * (c) CatLib <support@catlib.io>
@@ -9,6 +9,7 @@
  * Document: http://catlib.io/
  */
 
+using System;
 using UnityEngine;
 
 namespace CatLib
@@ -56,14 +57,33 @@ namespace CatLib
         /// 注册服务提供者
         /// </summary>
         /// <param name="provider">服务提供者</param>
-        public override void Register(IServiceProvider provider)
+        /// <param name="force">为true则强制注册</param>
+        public override void Register(IServiceProvider provider, bool force = false)
         {
+            var component = provider as Component;
+            if (component != null
+                && !component)
+            {
+                throw new CodeStandardException(
+                    "Service providers inherited from MonoBehaviour only be registered mounting on the GameObject.");
+            }
+
             if (Behaviour)
             {
-                Behaviour.StartCoroutine(CoroutineRegister(provider));
+                Behaviour.StartCoroutine(CoroutineRegister(provider, force));
                 return;
             }
-            base.Register(provider);
+            base.Register(provider, force);
+        }
+
+        /// <summary>
+        /// 是否是无法被构建的类型
+        /// </summary>
+        /// <param name="type">类型</param>
+        /// <returns>是否是无法被构建的</returns>
+        protected override bool IsUnableType(Type type)
+        {
+            return typeof(Component).IsAssignableFrom(type) || base.IsUnableType(type);
         }
     }
 }

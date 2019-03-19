@@ -12,7 +12,7 @@
 using CatLib;
 using UnityEngine;
 
-namespace Game
+namespace Demo
 {
     /// <summary>
     /// 项目入口
@@ -42,7 +42,7 @@ namespace Game
         /// <returns>引导脚本</returns>
         protected override IBootstrap[] GetBootstraps()
         {
-            return Arr.Merge(base.GetBootstraps(), Bootstraps.Bootstrap);
+            return Arr.Merge(base.GetBootstraps(), Bootstraps.GetBoostraps(this));
         }
     }
 }

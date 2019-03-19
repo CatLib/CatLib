@@ -9,26 +9,26 @@
  * Document: http://catlib.io/
  */
 
-using CatLib;
+using System.Collections.Generic;
 
-namespace Game
+namespace Demo.Editor
 {
     /// <summary>
-    /// 项目注册的引导程序
+    /// 项目自动添加的程序集自动加载方案
     /// </summary>
-    public static class Bootstraps
+    public static class Assemblys
     {
         /// <summary>
-        /// 项目注册的引导程序
+        /// 项目自动添加的程序集自动加载方案
+        /// <para>分数值越小越优先</para>
         /// </summary>
-        public static IBootstrap[] Bootstrap
+        public static IDictionary<string, int> Assembly
         {
             get
             {
-                return new IBootstrap[]
+                return new Dictionary<string, int>
                 {
-                    new BootstrapTypeFinder(Assemblys.Assembly),
-                    new BootstrapProviderRegister(Providers.ServiceProviders),
+                    //{ "Assembly-CSharp" , 0 },
                 };
             }
         }

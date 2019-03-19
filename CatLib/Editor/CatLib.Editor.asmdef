@@ -1,5 +1,5 @@
 {
-    "name": "CatLib.Unity.Editor",
+    "name": "CatLib.Editor",
     "references": [
         "CatLib.Unity"
     ],

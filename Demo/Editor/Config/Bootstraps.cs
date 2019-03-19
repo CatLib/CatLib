@@ -9,14 +9,15 @@
  * Document: http://catlib.io/
  */
 
- using UnityEngine;
+using CatLib;
+using UnityEngine;
 
-namespace CatLib
+namespace Demo.Editor
 {
     /// <summary>
-    /// 框架默认的引导程序
+    /// 项目注册的引导程序
     /// </summary>
-    internal class Bootstraps
+    public static class Bootstraps
     {
         /// <summary>
         /// 获取引导程序

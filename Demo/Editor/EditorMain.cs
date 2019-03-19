@@ -10,26 +10,22 @@
  */
 
 using CatLib;
+using CatLib.Editor;
 
-namespace Game
+namespace Demo.Editor
 {
     /// <summary>
-    /// 项目注册的服务提供者
+    /// 编辑器项目入口
     /// </summary>
-    public static class Providers
+    public class EditorMain : EditorFramework
     {
         /// <summary>
-        /// 项目注册的服务提供者
+        /// 获取引导程序
         /// </summary>
-        public static IServiceProvider[] ServiceProviders
+        /// <returns>引导脚本</returns>
+        protected override IBootstrap[] GetBootstraps()
         {
-            get
-            {
-                return new IServiceProvider[]
-                {
-                    // todo: 在此处增加您项目的服务提供者
-                };
-            }
+            return Arr.Merge(base.GetBootstraps(), Bootstraps.GetBoostraps(null));
         }
     }
 }
