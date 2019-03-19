@@ -73,7 +73,7 @@ namespace CatLib
                 Behaviour.StartCoroutine(CoroutineRegister(provider, force));
                 return;
             }
-            base.Register(provider);
+            base.Register(provider, force);
         }
 
         /// <summary>
