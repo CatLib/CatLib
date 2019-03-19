@@ -39,11 +39,12 @@
             终止CatLib框架
             </summary>
         </member>
-        <member name="M:CatLib.App.Register(CatLib.IServiceProvider)">
+        <member name="M:CatLib.App.Register(CatLib.IServiceProvider,System.Boolean)">
             <summary>
             注册服务提供者
             </summary>
             <param name="provider">服务提供者</param>
+            <param name="force">为true则强制注册</param>
         </member>
         <member name="M:CatLib.App.IsRegisted(CatLib.IServiceProvider)">
             <summary>
@@ -1225,18 +1226,20 @@
             </summary>
             <exception cref="T:CatLib.CodeStandardException">没有调用<c>Bootstrap(...)</c>就尝试初始化时触发</exception>
         </member>
-        <member name="M:CatLib.Application.Register(CatLib.IServiceProvider)">
+        <member name="M:CatLib.Application.Register(CatLib.IServiceProvider,System.Boolean)">
             <summary>
             注册服务提供者
             </summary>
             <param name="provider">注册服务提供者</param>
+            <param name="force">为true则强制注册</param>
             <exception cref="T:CatLib.LogicException">服务提供者被重复注册时触发</exception>
         </member>
-        <member name="M:CatLib.Application.CoroutineRegister(CatLib.IServiceProvider)">
+        <member name="M:CatLib.Application.CoroutineRegister(CatLib.IServiceProvider,System.Boolean)">
             <summary>
             注册服务提供者
             </summary>
             <param name="provider">注册服务提供者</param>
+            <param name="force">为true则强制注册</param>
             <exception cref="T:CatLib.LogicException">服务提供者被重复注册时触发</exception>
         </member>
         <member name="M:CatLib.Application.AddSortedList``1(System.Collections.Generic.IDictionary{System.Int32,System.Collections.Generic.List{``0}},``0,System.String)">
@@ -1364,6 +1367,17 @@
             启动迭代器
             </summary>
             <param name="coroutine">迭代程序</param>
+        </member>
+        <member name="M:CatLib.Application.Resolve``1(System.Object[])">
+            <summary>
+            解决服务(不会进行GuardConstruct检查)
+            </summary>
+            <typeparam name="TService">服务名</typeparam>
+            <param name="userParams">用户传入的构造参数</param>
+            <returns>服务实例，如果构造失败那么返回null</returns>
+            <exception cref="T:CatLib.LogicException">出现循环依赖</exception>
+            <exception cref="T:CatLib.UnresolvableException">无法解决服务</exception>
+            <returns>服务实例</returns>
         </member>
         <member name="M:CatLib.Application.RegisterCoreAlias">
             <summary>
@@ -1857,11 +1871,12 @@
             应用程序接口
             </summary>
         </member>
-        <member name="M:CatLib.IApplication.Register(CatLib.IServiceProvider)">
+        <member name="M:CatLib.IApplication.Register(CatLib.IServiceProvider,System.Boolean)">
             <summary>
             注册服务提供者
             </summary>
             <param name="provider">服务提供者</param>
+            <param name="force">为true则强制注册</param>
         </member>
         <member name="M:CatLib.IApplication.IsRegisted(CatLib.IServiceProvider)">
             <summary>
@@ -3609,7 +3624,7 @@
         </member>
         <member name="M:CatLib.Container.Resolve(System.String,System.Object[])">
             <summary>
-            解决服务
+            解决服务(不会进行GuardConstruct检查)
             </summary>
             <param name="service">服务名或别名</param>
             <param name="userParams">用户传入的构造参数</param>
@@ -8068,22 +8083,24 @@
             <param name="predicate">回调函数</param>
             <returns>被移除的数组</returns>
         </member>
-        <member name="M:CatLib.Arr.Filter``1(``0[],System.Predicate{``0})">
+        <member name="M:CatLib.Arr.Filter``1(``0[],System.Predicate{``0},System.Boolean)">
             <summary>
-            输入数组中的每个值传给回调函数,如果回调函数返回 true，则把输入数组中的当前值加入结果数组中
+            输入数组中的每个值传给回调函数,如果回调函数和期望值(<paramref name="expected"/>)相等，则把输入数组中的当前值加入结果数组中
             </summary>
             <typeparam name="T">数组类型</typeparam>
             <param name="source">规定数组</param>
             <param name="predicate">回调函数</param>
+            <param name="expected">回调函数的期望值</param>
             <returns>需求数组</returns>
         </member>
-        <member name="M:CatLib.Arr.Filter``1(System.Collections.Generic.IEnumerable{``0},System.Predicate{``0})">
+        <member name="M:CatLib.Arr.Filter``1(System.Collections.Generic.IEnumerable{``0},System.Predicate{``0},System.Boolean)">
             <summary>
-            将规定迭代器中的每个值传给回调函数,如果回调函数返回 true，则把规定迭代器中的当前值加入结果数组中
+            将规定迭代器中的每个值传给回调函数,如果回调函数和期望值(<paramref name="expected"/>)相等，则把规定迭代器中的当前值加入结果数组中
             </summary>
             <typeparam name="T">数组类型</typeparam>
             <param name="source">规定迭代器</param>
             <param name="predicate">回调函数</param>
+            <param name="expected">回调函数的期望值</param>
             <returns>需求数组</returns>
         </member>
         <member name="M:CatLib.Arr.Map``2(``0[],System.Func{``0,``1})">
@@ -8236,6 +8253,25 @@
             <param name="completed">所有回调完成后</param>
             <param name="rollback">回滚回调</param>
         </member>
+        <member name="M:CatLib.Arr.Test``1(``0[],System.Predicate{``0})">
+            <summary>
+            将规定数组传递给检查器进行检查。
+            <para>只有当所有元素通过检查器均为false，那么函数返回false。</para>
+            </summary>
+            <typeparam name="T">数组类型</typeparam>
+            <param name="source">规定数组</param>
+            <param name="predicate">检查器</param>
+            <returns>是否通过检查</returns>
+        </member>
+        <member name="M:CatLib.Arr.Set``1(``0[]@,System.Predicate{``0},``0)">
+            <summary>
+            查找规定数组中的指定元素，如果找到了则使用替代值替换，否则在规定数组尾部增加替换值。
+            </summary>
+            <typeparam name="T">数组类型</typeparam>
+            <param name="source">规定数组</param>
+            <param name="predicate">返回true则覆盖当前元素内容</param>
+            <param name="value">替换值</param>
+        </member>
         <member name="T:CatLib.Enum">
             <summary>
             自定义枚举
@@ -8368,6 +8404,11 @@
             填充字符串的右侧。默认。
             </summary>
         </member>
+        <member name="F:CatLib.Str.Space">
+            <summary>
+            空格字符串
+            </summary>
+        </member>
         <member name="M:CatLib.Str.Method(System.String)">
             <summary>
             获取字符串所表达的函数名
@@ -8383,6 +8424,16 @@
             <param name="pattern">匹配表达式</param>
             <param name="value">规定字符串</param>
             <returns>是否匹配</returns>
+        </member>
+        <member name="M:CatLib.Str.Is``1(System.String[],``0)">
+            <summary>
+            通过星号匹配表达式来对规定数组进行匹配。
+            <para>任意匹配式符合则返回true。</para>
+            </summary>
+            <typeparam name="T">数组类型</typeparam>
+            <param name="patterns">匹配表达式</param>
+            <param name="source">规定数组</param>
+            <returns>是否通过检查</returns>
         </member>
         <member name="M:CatLib.Str.AsteriskWildcard(System.String)">
             <summary>
@@ -8441,6 +8492,25 @@
             </summary>
             <param name="str">规定要填充的字符串</param>
             <param name="length">规定新的字符串长度。如果该值小于字符串的原始长度，则不进行任何操作。</param>
+            <param name="padStr">
+            规定供填充使用的字符串。默认是空白。
+            <para>如果传入的字符串长度小于等于0那么会使用空白代替。</para>
+            <para>注释：空白不是空字符串</para>
+            </param>
+            <param name="type">
+            规定填充字符串的哪边。
+            <para><see cref="F:CatLib.Str.PadTypes.Both"/>填充字符串的两侧。如果不是偶数，则右侧获得额外的填充。</para>
+            <para><see cref="F:CatLib.Str.PadTypes.Left"/>填充字符串的左侧。</para>
+            <para><see cref="F:CatLib.Str.PadTypes.Right"/>填充字符串的右侧。默认。</para>
+            </param>
+            <returns>被填充的字符串</returns>
+        </member>
+        <member name="M:CatLib.Str.Pad(System.Int32,System.String,System.String,CatLib.Str.PadTypes)">
+            <summary>
+            把字符串填充为新的长度。
+            </summary>
+            <param name="length">规定新的字符串长度。如果该值小于字符串的原始长度，则不进行任何操作。</param>
+            <param name="str">原始字符串,如果为null则为空值</param>
             <param name="padStr">
             规定供填充使用的字符串。默认是空白。
             <para>如果传入的字符串长度小于等于0那么会使用空白代替。</para>
@@ -8513,13 +8583,42 @@
         <member name="M:CatLib.Str.Truncate(System.String,System.Int32,System.Object,System.String)">
             <summary>
             如果长度超过给定的最大字符串长度，则截断字符串。 截断的字符串的最后一个字符将替换为缺省字符串
-            <para>eg: Str.Truncate("hello world , the sun is shine",15," ") => hello world...</para>
+            <para>eg: Str.Truncate("hello world , the sun is shine", 15, Str.Space) => hello world...</para>
             </summary>
             <param name="str">要截断的字符串</param>
             <param name="length">截断长度(含缺省字符长度)</param>
             <param name="separator">临近的分隔符，如果设定则截断长度为截断长度最近的分隔符位置,如果传入的是一个正则表达式那么使用正则匹配。</param>
             <param name="mission">缺省字符</param>
             <returns>截断后的字符串</returns>
+        </member>
+        <member name="M:CatLib.Str.Levenshtein(System.String,System.String)">
+            <summary>
+            计算两个字符串之间的相似度。
+            </summary>
+            <param name="str1">字符串 1.</param>
+            <param name="str2">字符串 2.</param>
+            <returns>
+            通过Levenshtein算法返回两个字符串的相似度。如果两个字符串之间的
+            任意一个参数长度大于255那么。将会返回-1。
+            </returns>
+        </member>
+        <member name="M:CatLib.Str.JoinList(System.String[],System.String)">
+            <summary>
+            Returns all sequential combination of the given array.
+            </summary>
+            <remarks>
+            v[0] = "hello"
+            v[1] = "world"
+            var result = Str.JoinList(v, "/"); 
+            result[0] == "hello";
+            result[1] == "hello/world";
+            </remarks>
+            <param name="source">The source array.</param>
+            <param name="separator">The separator.</param>
+            <returns>The sequential combination array.</returns>
+        </member>
+        <member name="M:CatLib.Str.JoinList(System.String[],System.Char)">
+            <inheritdoc cref="M:CatLib.Str.JoinList(System.String[],System.Char)"/>
         </member>
         <member name="T:CatLib.StreamExtension">
             <summary>
