@@ -31,13 +31,21 @@ namespace CatLib.Editor
         /// </summary>
         static EditorFramework()
         {
+            GC.Collect();
             if (EditorApplication.isPlayingOrWillChangePlaymode)
-            {
+            { 
                 UnityEngine.Application.quitting += Quitted;
                 return;
             }
-
             ApplyEditorApplication();
+        }
+
+        /// <summary>
+        /// 释放当前静态实例
+        /// </summary>
+        ~EditorFramework()
+        {
+            OnDestroy();
         }
 
         /// <summary>
@@ -149,6 +157,17 @@ namespace CatLib.Editor
         protected virtual IBootstrap[] GetBootstraps()
         {
             return Bootstraps.GetBoostraps(null);
+        }
+
+        /// <summary>
+        /// 释放框架
+        /// </summary>
+        protected virtual void OnDestroy()
+        {
+            if (Application != null)
+            {
+                Application.Terminate();
+            }
         }
     }
 }

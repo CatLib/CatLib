@@ -1,3 +1,9 @@
+## Unreleased
+
+**Fixed**
+
+- 修复`Editor`下框架无法引发`OnTerminate`事件([#32](https://github.com/CatLib/CatLib/issues/32) )
+
 ## [v1.4.0 (2019-03-20)](https://github.com/CatLib/CatLib/releases/tag/v1.4.0)
 
 **Added**
