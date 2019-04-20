@@ -2,25 +2,26 @@
 
 **Fixed**
 
-- ĞŞ¸´`Editor`ÏÂ¿ò¼ÜÎŞ·¨Òı·¢`OnTerminate`ÊÂ¼ş([#32](https://github.com/CatLib/CatLib/issues/32) )
+- ä¿®å¤`Editor`ä¸‹æ¡†æ¶æ— æ³•å¼•å‘`OnTerminate`äº‹ä»¶([#32](https://github.com/CatLib/CatLib/issues/32) )
+- Fixed the bootstrap always loads the runtime configuration in editor mode.([#35](https://github.com/CatLib/CatLib/issues/35) )
 
 ## [v1.4.0 (2019-03-20)](https://github.com/CatLib/CatLib/releases/tag/v1.4.0)
 
 **Added**
 
-- Ôö¼Ó¶ÔÓÚUnity±à¼­Æ÷ÏÂµÄÒıµ¼¿âÖ§³Ö([#14](https://github.com/CatLib/CatLib/issues/14) )
-- Ôö¼Ó`HelpURL`Á´½ÓµÄÖ§³Ö¿ÉÒÔÖ±½ÓÌø×ªµ½ÎÄµµÍøÒ³([#23](https://github.com/CatLib/CatLib/issues/23) )
-- ±à¼­Æ÷Ôö¼Ó·şÎñÌá¹©ÕßµÄ¿ÉÊÓ»¯Ñ¡ÔñÖ§³Ö([#24](https://github.com/CatLib/CatLib/issues/24) )
-- Ôö¼ÓÁË`CHANGELOG.md`([#29](https://github.com/CatLib/CatLib/issues/29) )
+- å¢åŠ å¯¹äºUnityç¼–è¾‘å™¨ä¸‹çš„å¼•å¯¼åº“æ”¯æŒ([#14](https://github.com/CatLib/CatLib/issues/14) )
+- å¢åŠ `HelpURL`é“¾æ¥çš„æ”¯æŒå¯ä»¥ç›´æ¥è·³è½¬åˆ°æ–‡æ¡£ç½‘é¡µ([#23](https://github.com/CatLib/CatLib/issues/23) )
+- ç¼–è¾‘å™¨å¢åŠ æœåŠ¡æä¾›è€…çš„å¯è§†åŒ–é€‰æ‹©æ”¯æŒ([#24](https://github.com/CatLib/CatLib/issues/24) )
+- å¢åŠ äº†`CHANGELOG.md`([#29](https://github.com/CatLib/CatLib/issues/29) )
 
 **Changed**
 
-- Í¬²½ÁË[CatLib.Core v1.4.0-beta](https://github.com/CatLib/Core/releases/tag/v1.4.0)°æ±¾([#22](https://github.com/CatLib/CatLib/issues/22) )
-- ËùÓĞ¼Ì³Ğ×Ô`Component`µÄÀàĞÍ»á±»ÅĞ¶¨Îª²»¿ÉÒÔ±»¹¹½¨µÄÀàĞÍ([#18](https://github.com/CatLib/CatLib/issues/18) )
-- Òıµ¼³ÌĞò½á¹¹ÓÅ»¯([#19](https://github.com/CatLib/CatLib/issues/19) )
-- `BootstrapProviderRegister` »á¼ì²é`Component`µÄ¹ÒÔØÊÇ·ñÔÊĞí±»»ñÈ¡£¬¶ø²»ÊÇÒı·¢Ò»¸öÒì³£([#20](https://github.com/CatLib/CatLib/issues/20) )
-- ½«¼Ì³Ğ×Ô`MonoBehaviour`µÄ·şÎñÌá¹©ÕßÒÔ´úÂëµÄĞÎÊ½½øĞĞ×¢²á»áÒı·¢Ò»¸öÒì³£([#25](https://github.com/CatLib/CatLib/issues/25) )
+- åŒæ­¥äº†[CatLib.Core v1.4.0-beta](https://github.com/CatLib/Core/releases/tag/v1.4.0)ç‰ˆæœ¬([#22](https://github.com/CatLib/CatLib/issues/22) )
+- æ‰€æœ‰ç»§æ‰¿è‡ª`Component`çš„ç±»å‹ä¼šè¢«åˆ¤å®šä¸ºä¸å¯ä»¥è¢«æ„å»ºçš„ç±»å‹([#18](https://github.com/CatLib/CatLib/issues/18) )
+- å¼•å¯¼ç¨‹åºç»“æ„ä¼˜åŒ–([#19](https://github.com/CatLib/CatLib/issues/19) )
+- `BootstrapProviderRegister` ä¼šæ£€æŸ¥`Component`çš„æŒ‚è½½æ˜¯å¦å…è®¸è¢«è·å–ï¼Œè€Œä¸æ˜¯å¼•å‘ä¸€ä¸ªå¼‚å¸¸([#20](https://github.com/CatLib/CatLib/issues/20) )
+- å°†ç»§æ‰¿è‡ª`MonoBehaviour`çš„æœåŠ¡æä¾›è€…ä»¥ä»£ç çš„å½¢å¼è¿›è¡Œæ³¨å†Œä¼šå¼•å‘ä¸€ä¸ªå¼‚å¸¸([#25](https://github.com/CatLib/CatLib/issues/25) )
 
 **Removed**
 
-- `Framework.cs` Ö÷Òıµ¼ÀàÒÆ³ıÁËÄ¬ÈÏ²»±ØÒªµÄÊÂ¼ş×¢²á¡£([#21](https://github.com/CatLib/CatLib/issues/21) )
+- `Framework.cs` ä¸»å¼•å¯¼ç±»ç§»é™¤äº†é»˜è®¤ä¸å¿…è¦çš„äº‹ä»¶æ³¨å†Œã€‚([#21](https://github.com/CatLib/CatLib/issues/21) )

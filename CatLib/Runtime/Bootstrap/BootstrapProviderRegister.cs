@@ -38,7 +38,7 @@ namespace CatLib
         /// <param name="serviceProviders">服务提供者列表</param>
         public BootstrapProviderRegister(Component component, IServiceProvider[] serviceProviders = null)
         {
-            providers = Arr.Merge(Providers.ServiceProviders, serviceProviders);
+            providers = serviceProviders;
             this.component = component;
         }
 
