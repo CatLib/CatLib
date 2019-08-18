@@ -7,45 +7,37 @@
 <a href="https://codecov.io/gh/CatLib/Core">
   <img src="https://codecov.io/gh/CatLib/Core/branch/master/graph/badge.svg" alt="Codecov" />
 </a>
+  
+> Learn about [CatLib/Core](https://github.com/CatLib/Core) source code
 
-> English version is coming soon in version 2.0
+## About CatLib for Unity
 
-> 了解 [CatLib/Core](https://github.com/CatLib/Core) 源码
+CatLib for Unity is a service provider framework developed for Unity3D that is very helpful for the development of some functional businesses. We also reduce the unnecessary work of developers by integrating common development components.
 
-## 关于CatLib for Unity
+## Getting Started
 
-CatLib for Unity 是为Unity3D开发的服务提供者框架，这个框架对于一些功能性业务的研发非常有帮助，我们还通过集成常见的开发组件来减少开发者们不必要的工作。
+- [Download](https://github.com/CatLib/CatLib/releases/tag/v1.4.0) and extract the `unitypackage` to the unity project.
+- Install the sample project under `CatLib/Example` and create a `GameObject` in the scene.
+- Drag and drop the `Demo/Runtime/Main.cs` entry file onto `GameObject`.
+- Run your unity scene and you will see the console output welcome string: `Hello CatLib`.
+- Congratulations, the framework has been installed correctly, check out `CatLib/CHANGELOG.md` for change history.
 
-CatLib提供了构建一个游戏所必备的基础组件 , 您可以通过接口简单的调用就可以访问这些组件的特性. 您也可以根据业务需求自由组合搭配，全新构建这些组件，来构建一个完整的项目。
+## Learning CatLib
 
-无论您是一个新的项目还是一个正在被开发的项目，您都可以轻松的嵌入CatLib。绝大多数的CatLib的组件都可以被单独使用和无感知替换的，我们也欢迎其他的框架开发者来使用这些组件。
+CatLib has full documentation support and you can learn from [CatLib Documentation](http://catlib.io).
 
-## 快速开始
+Or you can ask your question via [issues](https://github.com/CatLib/CatLib/issues) and we will respond to you in a timely manner.
 
-- [下载](https://github.com/CatLib/CatLib/releases/tag/v1.4.0)并解压`unitypackage`到unity项目。
-- 安装`CatLib/Example`下的示例项目，并在场景中创建一个`GameObject`。
-- 将`Demo/Runtime/Main.cs`入口文件拖拽到`GameObject`上。
-- 运行您的unity场景，您将会看到控制台输出欢迎字符串：`Hello CatLib`。
-- 恭喜您，框架已经正确安装，查看`CatLib/CHANGELOG.md`了解变更记录。
+## Contribution
 
-## 学习CatLib
+CatLib is still a young framework, and her growth and your contribution are inseparable. If you want to contribute to the project, please refer to: [CatLib Contribution Document](https://catlib.io/v2/contribution.html) Your contribution will be included in the contributor list, we welcome any form of `Pull Request`!
 
-CatLib拥有完整的文档支持，您可以访问 [CatLib文档](http://catlib.io) 进行学习。
+## License
 
-或者您也可以通过 [issues](https://github.com/CatLib/CatLib/issues) 来提出您的问题，我们及时为您解答。
+The open source license used by CatLib is: [MIT license](http://opensource.org/licenses/MIT).
 
-## 贡献
+## Support
 
-CatLib还是一个年轻的框架，她的成长和你们的贡献是分不开的，如果您想要为项目进行贡献请参考： [CatLib 贡献文档](https://catlib.io/v1/contribution.html) 您的贡献将会被列入贡献者名单，我们欢迎任何形式的`Pull Request`!
-
-issues 不仅仅只是用于bug跟踪 , 如果您有好的意见或者想法，也欢迎创建 issues 一起讨论。
-
-## 授权
-
-CatLib使用的开源许可是：[MIT license](http://opensource.org/licenses/MIT).
-
-## 技术支持
-
-* QQ群: 150371044 (验证: CatLib Support)
 * email: support@catlib.io
 * slack: [catlib.slack](https://catlib.slack.com/messages/internals/)
+* QQ group: 150371044 (Verification: CatLib Support)
