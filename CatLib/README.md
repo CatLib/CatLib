@@ -1,26 +1,26 @@
 
 # CatLib For Unity
 
-这是CatLib For Unity的引导框架，您不应该手动修改这个文件夹下的任何内容，这会导致未来升级框架变得困难。
+This is the boot framework for CatLib For Unity. You should not manually modify anything under this folder, which can make it difficult to upgrade the framework in the future.
 
-## 如何使用
+## Getting Started
 
-- 创建`<项目代码目录>/Main.cs`继承自`Framework.cs`,并实现`OnStartCompleted`方法。
+- Create `<project code directory>/Main.cs` inherited from `Framework.cs` and implement the `OnStartCompleted` method.
 
 ```csharp
 public sealed class Main : Framework
 {
-    protected override void OnStartCompleted()
+    protected override void OnStartCompleted(IApplication appliction, StartCompletedEventArgs args)
     {
     }
 }
 ```
 
-您的入口应该在这个函数中开始书写。
+Your entry should start writing in this function.
 
-## 自定义引导程序
+## Custom bootloader
 
-- 修改`<项目代码目录>/Main.cs`，覆盖`GetBootstraps`方法，加入自己的引导程序列表。
+- Modify `<project code directory>/Main.cs`, override the `GetBootstraps` method, and add your own bootstrap list.
 
 ```csharp
 protected override IBootstrap[] GetBootstraps()
@@ -29,7 +29,7 @@ protected override IBootstrap[] GetBootstraps()
 }
 ```
 
-- 建立引导文件`<项目代码目录>/Bootstraps.cs`
+- Create boot file `<project code directory>/Bootstraps.cs`
 
 ```csharp
 using CatLib;
@@ -50,23 +50,23 @@ public static class Bootstraps
 }
 ```
 
-> 其中`Assemblys`和`Providers`为对应的列表，请自行创建。
+> Where `Assemblys` and `Providers` are the corresponding lists, please create them yourself.
 
-**框架已经为您提供的引导程序**
+**Default provided bootloader**
 
-- `BootstrapProviderRegister`：服务提供者注册引导，可以将指定`服务提供者列表`和`GameObject下的服务提供者`注册到框架。
-- `BootstrapTypeFinder`: 类型查找器注册引导，允许开发者将指定的程序集加入服务容器的反射列表，这样在不进行任何绑定的情况下可以从服务容器生成指定类型。
+- `BootstrapProviderRegister`：The service provider registers the bootstrap and can register the specified `service provider list` and the service provider under `GameObject` to the framework.
+- `BootstrapTypeFinder`: The type finder registration bootstrap allows the developer to add the specified assembly to the reflection list of the service container so that the specified type can be generated from the service container without any binding.
 
-## 如何升级
+## Upgrade
 
-所有的次要版本升级，你只需要覆盖`CatLib`文件夹就可以完成。
+All minor versions are upgraded and you only need to overwrite the `CatLib` folder to complete.
 
-主要版本或特殊版本升级，请参考[迁移指南](https://catlib.io/v1/migration.html)
+For major or special version upgrades, please refer to the [Migration Guide](https://catlib.io/v2/migration.html)
 
-## 技术支持
+## Support
 
-* 通过[框架帮助文档](https://catlib.io)自行查找解决方案（推荐）
-* 通过[Issues](https://github.com/CatLib/CatLib/issues)直接发起问题（推荐）
-* QQ群: 150371044 (验证: CatLib Support)
+* Find your own solution via [Documentation](https://catlib.io)(recommended)
+* Initiate questions directly via [Issues] (https://github.com/CatLib/CatLib/issues)(recommended)
+* QQ group: 150371044 (Verification: CatLib Support)
 * email: support@catlib.io
 * slack: [catlib.slack](https://catlib.slack.com/messages/internals/)
