@@ -66,7 +66,7 @@ For major or special version upgrades, please refer to the [Migration Guide](htt
 ## Support
 
 * Find your own solution via [Documentation](https://catlib.io)(recommended)
-* Initiate questions directly via [Issues] (https://github.com/CatLib/CatLib/issues)(recommended)
+* Initiate questions directly via [Issues](https://github.com/CatLib/CatLib/issues)(recommended)
 * QQ group: 150371044 (Verification: CatLib Support)
 * email: support@catlib.io
 * slack: [catlib.slack](https://catlib.slack.com/messages/internals/)
