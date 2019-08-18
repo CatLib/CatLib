@@ -9,26 +9,26 @@
  * Document: http://catlib.io/
  */
 
+using CatLib.EventDispatcher;
+using CatLib.Util;
 using System;
 using System.Reflection;
 using UnityEditor;
+using Dispatcher = CatLib.EventDispatcher.EventDispatcher;
 
 namespace CatLib.Editor
 {
-    /// <summary>
-    /// CatLib For Unity Editor
-    /// </summary>
     [InitializeOnLoad]
     public class EditorFramework
     {
-        /// <summary>
-        /// 编辑器层的框架实例
-        /// </summary>
         private static Application editorApplication;
+        private static IEventDispatcher dispatcher;
+        private static readonly string[] checkInAssembiles = new string[]
+        {
+            "*-Editor",
+            "*.Editor",
+        };
 
-        /// <summary>
-        /// 创建一个新的CatLib For Unity Editor实例
-        /// </summary>
         static EditorFramework()
         {
             GC.Collect();
@@ -40,26 +40,21 @@ namespace CatLib.Editor
             ApplyEditorApplication();
         }
 
-        /// <summary>
-        /// 释放当前静态实例
-        /// </summary>
         ~EditorFramework()
         {
             OnDestroy();
         }
 
-        /// <summary>
-        /// 程序需要退出
-        /// </summary>
+        public IApplication Application
+        {
+            get { return editorApplication; }
+        }
+
         private static void Quitted()
         {
             ApplyEditorApplication();
         }
 
-        /// <summary>
-        /// 获取编辑器框架
-        /// </summary>
-        /// <returns>编辑器框架</returns>
         private static EditorFramework GetEditorFramework()
         {
             var target = typeof(EditorFramework);
@@ -78,20 +73,6 @@ namespace CatLib.Editor
             return new EditorFramework();
         }
 
-        /// <summary>
-        /// 需要检查的程序集
-        /// </summary>
-        private static readonly string[] checkInAssembiles = new string[]
-        {
-            "*-Editor",
-            "*.Editor",
-        };
-
-        /// <summary>
-        /// 测试是否处于需要检查的程序集列表
-        /// </summary>
-        /// <param name="assembly">测试程序集</param>
-        /// <returns>是否处于需要检查的程序集列表</returns>
         private static bool TestCheckInAssembiles(Assembly assembly)
         {
             foreach (var pattern in checkInAssembiles)
@@ -104,63 +85,53 @@ namespace CatLib.Editor
             return false;
         }
 
-        /// <summary>
-        /// 应用编辑器应用程序
-        /// </summary>
         private static void ApplyEditorApplication()
         {
             var editorFramework = GetEditorFramework();
-            editorApplication = editorFramework.CreateApplication();
+            App.That = editorApplication = editorFramework.CreateApplication();
+            editorApplication.SetDispatcher(dispatcher = editorFramework.CreateEventDispatcher());
             editorFramework.BeforeBootstrap(editorApplication);
             editorApplication.Bootstrap(editorFramework.GetBootstraps());
             editorApplication.Init();
         }
 
         /// <summary>
-        /// CatLib Unity Framework
+        /// Trigged before booting.
         /// </summary>
-        public IApplication Application
-        {
-            get { return editorApplication; }
-        }
-
-        /// <summary>
-        /// 在引导开始之前
-        /// </summary>
-        /// <param name="application">应用程序</param>
         protected virtual void BeforeBootstrap(IApplication application)
         {
-            application.On(ApplicationEvents.OnStartCompleted, OnStartCompleted);
+            dispatcher.AddListener(ApplicationEvents.OnStartCompleted, (sender, args) =>
+            {
+                OnStartCompleted((IApplication)sender, (StartCompletedEventArgs)args);
+            });
         }
 
         /// <summary>
-        /// 在启动完成之后
+        /// Triggered when the framework is started
         /// </summary>
-        protected virtual void OnStartCompleted()
+        protected virtual void OnStartCompleted(IApplication application, StartCompletedEventArgs args)
         {
-
+            // noop.
         }
 
         /// <summary>
-        /// 创建框架实例
+        /// Create a new Application instance.
         /// </summary>
-        /// <returns>创建框架实例</returns>
         protected virtual Application CreateApplication()
         {
             return new UnityApplication(null);
         }
 
         /// <summary>
-        /// 获取引导程序
+        /// Returns an array representing the bootstrap of the framework.
         /// </summary>
-        /// <returns>引导脚本</returns>
         protected virtual IBootstrap[] GetBootstraps()
         {
-            return Bootstraps.GetBoostraps(null);
+            return Array.Empty<IBootstrap>();
         }
 
         /// <summary>
-        /// 释放框架
+        /// Trigged when the framework will destroy.
         /// </summary>
         protected virtual void OnDestroy()
         {
@@ -168,6 +139,14 @@ namespace CatLib.Editor
             {
                 Application.Terminate();
             }
+        }
+
+        /// <summary>
+        /// Create a new event dispatcher instance.
+        /// </summary>
+        protected virtual IEventDispatcher CreateEventDispatcher()
+        {
+            return new Dispatcher();
         }
     }
 }

@@ -9,25 +9,21 @@
  * Document: http://catlib.io/
  */
 
- using UnityEngine;
+using CatLib;
+using UnityEngine;
 
-namespace CatLib.Editor
+namespace Demo.Editor
 {
-    /// <summary>
-    /// 项目注册的引导程序
-    /// </summary>
-    internal static class Bootstraps
+    public static class EditorBootstraps
     {
         /// <summary>
-        /// 获取引导程序
+        /// Returns an array representing the framework bootstrap.
         /// </summary>
-        /// <param name="component">Unity组件</param>
-        /// <returns>引导程序</returns>
+        /// <param name="component">Unity root GameObject object.</param>
         public static IBootstrap[] GetBoostraps(Component component)
         {
             return new IBootstrap[]
             {
-                new BootstrapTypeFinder(Assemblys.Assembly),
                 new BootstrapProviderRegister(component, Providers.ServiceProviders),
             };
         }

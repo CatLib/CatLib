@@ -9,8 +9,9 @@
  * Document: http://catlib.io/
  */
 
+using CatLib.Container;
+using CatLib.Exception;
 using System;
-using System.Collections;
 using UnityEngine;
 
 namespace CatLib
@@ -21,12 +22,7 @@ namespace CatLib
     public class UnityApplication : Application
     {
         /// <summary>
-        /// Mono Behaviour
-        /// </summary>
-        protected MonoBehaviour Behaviour { get; private set; }
-
-        /// <summary>
-        /// 构造一个 CatLib for unity application
+        /// Initializes a new instance of the <see cref="UnityApplication"/> class.
         /// </summary>
         /// <param name="behaviour">驱动器</param>
         public UnityApplication(MonoBehaviour behaviour)
@@ -38,78 +34,26 @@ namespace CatLib
 
             this.Singleton<MonoBehaviour>(() => behaviour)
                 .Alias<Component>();
-            Behaviour = behaviour;
         }
 
-        /// <summary>
-        /// 初始化服务提供者
-        /// </summary>
-        public override void Init()
-        {
-            if (Behaviour)
-            {
-                Behaviour.StartCoroutine(InitWithUnityCoroutine());
-                return;
-            }
-            base.Init();
-        }
-
-        /// <summary>
-        /// 注册服务提供者
-        /// </summary>
-        /// <param name="provider">服务提供者</param>
-        /// <param name="force">为true则强制注册</param>
+        /// <inheritdoc />
         public override void Register(IServiceProvider provider, bool force = false)
         {
             var component = provider as Component;
             if (component != null
                 && !component)
             {
-                throw new CodeStandardException(
+                throw new LogicException(
                     "Service providers inherited from MonoBehaviour only be registered mounting on the GameObject.");
             }
 
-            if (Behaviour)
-            {
-                Behaviour.StartCoroutine(CoroutineRegister(provider, force));
-                return;
-            }
             base.Register(provider, force);
         }
 
-        /// <summary>
-        /// 是否是无法被构建的类型
-        /// </summary>
-        /// <param name="type">类型</param>
-        /// <returns>是否是无法被构建的</returns>
+        /// <inheritdoc />
         protected override bool IsUnableType(Type type)
         {
             return typeof(Component).IsAssignableFrom(type) || base.IsUnableType(type);
-        }
-
-        /// <summary>
-        /// 使用Unity协同程序初始化服务提供者.
-        /// </summary>
-        /// <returns>协同程序</returns>
-        /// <see cref="https://github.com/CatLib/CatLib/issues/38"/>
-        private IEnumerator InitWithUnityCoroutine()
-        {
-            var coroutine = CoroutineInit();
-            while (coroutine.MoveNext())
-            {
-                if (!(coroutine.Current is IEnumerator frameworkCoroutine))
-                {
-                    continue;
-                }
-
-                while (frameworkCoroutine.MoveNext())
-                {
-                    if (frameworkCoroutine.Current is IEnumerator logicCoroutine)
-                    {
-                        yield return logicCoroutine;
-                    }
-                }
-            }
         }
     }
 }

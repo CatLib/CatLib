@@ -15,29 +15,21 @@ using System.Collections.Generic;
 namespace CatLib
 {
     /// <summary>
-    /// 类型查询器引导
+    /// Represents a type querier registrar.
     /// </summary>
-    [ExcludeFromCodeCoverage]
     public sealed class BootstrapTypeFinder : IBootstrap
     {
-        /// <summary>
-        /// 程序集列表
-        /// </summary>
         private readonly IDictionary<string, int> assemblies;
 
         /// <summary>
-        /// 构建一个类型查询器引导
+        /// Initializes a new instance of the <see cref="BootstrapTypeFinder"/> class.
         /// </summary>
-        /// <param name="assemblies">需要添加的程序集</param>
         public BootstrapTypeFinder(IDictionary<string, int> assemblies = null)
         {
             this.assemblies = new Dictionary<string, int>(assemblies);
         }
-         
-        /// <summary>
-        /// 引导程序接口
-        /// </summary>
-        [Priority(10)]
+
+        /// <inheritdoc />
         public void Bootstrap()
         {
             if (assemblies.Count <= 0)
@@ -47,8 +39,7 @@ namespace CatLib
 
             foreach (var assembly in AppDomain.CurrentDomain.GetAssemblies())
             {
-                int sort;
-                if (!assemblies.TryGetValue(assembly.GetName().Name, out sort))
+                if (!assemblies.TryGetValue(assembly.GetName().Name, out int sort))
                 {
                     continue;
                 }

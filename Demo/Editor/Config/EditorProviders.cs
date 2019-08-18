@@ -9,26 +9,23 @@
  * Document: http://catlib.io/
  */
 
-using System.Collections.Generic;
+using CatLib;
 
 namespace Demo.Editor
 {
-    /// <summary>
-    /// 项目自动添加的程序集自动加载方案
-    /// </summary>
-    public static class Assemblys
+    public static class Providers
     {
         /// <summary>
-        /// 项目自动添加的程序集自动加载方案
-        /// <para>分数值越小越优先</para>
+        /// An array represents the list of service providers,
+        /// and initialization will proceed in this order.
         /// </summary>
-        public static IDictionary<string, int> Assembly
+        public static IServiceProvider[] ServiceProviders
         {
             get
             {
-                return new Dictionary<string, int>
+                return new IServiceProvider[]
                 {
-                    //{ "Assembly-CSharp" , 0 },
+                    // todo: Add a service provider for your project here.
                 };
             }
         }

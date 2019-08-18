@@ -9,65 +9,50 @@
  * Document: http://catlib.io/
  */
 
+using CatLib.EventDispatcher;
+using CatLib.Util;
 using UnityEngine;
+using Dispatcher = CatLib.EventDispatcher.EventDispatcher;
 
 namespace CatLib
 {
     /// <summary>
-    /// 框架入口
+    /// The catlib for unity framework.
     /// </summary>
     [DisallowMultipleComponent]
     [HelpURL("https://catlib.io/lasted")]
     public abstract class Framework : MonoBehaviour
     {
-        /// <summary>
-        /// 调试等级
-        /// </summary>
-        public DebugLevels DebugLevel = DebugLevels.Production;
-
-        /// <summary>
-        /// CatLib Unity Application
-        /// </summary>
+        public DebugLevel DebugLevel = DebugLevel.Production;
         private Application application;
+        private IEventDispatcher dispatcher;
 
         /// <summary>
-        /// CatLib Unity Application
+        /// Gets a value represents a application instance.
         /// </summary>
         public IApplication Application
         {
             get { return application; }
         }
 
-        /// <summary>
-        /// 当框架启动完成时
-        /// </summary>
-        protected abstract void OnStartCompleted();
-
-        /// <summary>
-        /// Unity Awake
-        /// </summary>
         protected virtual void Awake()
         {
             DontDestroyOnLoad(gameObject);
-            application = CreateApplication(DebugLevel);
+            App.That = application = CreateApplication(DebugLevel);
+            application.SetDispatcher(dispatcher = CreateEventDispatcher());
             BeforeBootstrap(application);
             application.Bootstrap(GetBootstraps());
         }
 
-        /// <summary>
-        /// Unity Start
-        /// </summary>
         protected virtual void Start()
         {
             application.Init();
         }
 
         /// <summary>
-        /// 创建新的Application实例
+        /// Create a new Application instance.
         /// </summary>
-        /// <param name="debugLevel">调试等级</param>
-        /// <returns>Application实例</returns>
-        protected virtual Application CreateApplication(DebugLevels debugLevel)
+        protected virtual Application CreateApplication(DebugLevel debugLevel)
         {
             return new UnityApplication(this)
             {
@@ -76,32 +61,43 @@ namespace CatLib
         }
 
         /// <summary>
-        /// 在引导开始之前
+        /// Trigged before booting.
         /// </summary>
-        /// <param name="application">应用程序</param>
         protected virtual void BeforeBootstrap(IApplication application)
         {
-            application.On(ApplicationEvents.OnStartCompleted, OnStartCompleted);
+            dispatcher.AddListener(ApplicationEvents.OnStartCompleted, (sender, args)=>
+            {
+                OnStartCompleted((IApplication)sender, (StartCompletedEventArgs)args);
+            });
         }
 
         /// <summary>
-        /// 获取引导程序
+        /// Returns an array representing the bootstrap of the framework.
         /// </summary>
-        /// <returns>引导脚本</returns>
         protected virtual IBootstrap[] GetBootstraps()
         {
-            return Arr.Merge(GetComponents<IBootstrap>(), Bootstraps.GetBoostraps(this));
+            return GetComponents<IBootstrap>();
         }
 
         /// <summary>
-        /// 当被释放时
+        /// Trigged when the framework will destroy.
         /// </summary>
         protected virtual void OnDestroy()
         {
-            if (application != null)
-            {
-                application.Terminate();
-            }
+            application?.Terminate();
         }
+
+        /// <summary>
+        /// Create a new event dispatcher instance.
+        /// </summary>
+        protected virtual IEventDispatcher CreateEventDispatcher()
+        {
+            return new Dispatcher();
+        }
+
+        /// <summary>
+        /// Triggered when the framework is started
+        /// </summary>
+        protected abstract void OnStartCompleted(IApplication application, StartCompletedEventArgs args);
     }
 }

@@ -1,8 +1,8 @@
 {
   "name": "com.catlib.core",
   "displayName" : "CatLib.Core",
-  "version": "1.4.0",
-  "description": "CatLib Core is dependency injection container",
+  "version": "2.0.0",
+  "description": "CatLib lightweight dependency injection container",
   "license": "MIT",
   "homepage": "https://github.com/catlib/core",
   "keywords": [

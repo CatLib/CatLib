@@ -9,6 +9,7 @@
  * Document: http://catlib.io/
  */
 
+using CatLib.Util;
 using System;
 using System.Collections.Generic;
 using System.Reflection;
@@ -18,64 +19,65 @@ using UnityEngine;
 namespace CatLib.Editor
 {
     /// <summary>
-    /// 框架入口可视化图形界面
+    /// Visual graphical interface for <see cref="Framework"/>
     /// </summary>
     [CustomEditor(typeof(Framework), true)]
     public class InspectorFramework : UnityEditor.Editor
     {
-        /// <summary>
-        /// 调试等级
-        /// </summary>
         private SerializedProperty debugLevel;
-
-        /// <summary>
-        /// 已经安装了的服务提供者列表
-        /// </summary>
         private readonly Dictionary<Type, Component> serviceProviders = new Dictionary<Type, Component>();
+        private static readonly string[] ignoreAssembiles = new string[]
+        {
+            "mscorlib",
+            "UnityEngine",
+            "UnityEditor",
+            "netstandard",
+            "nunit.framework",
+            "System",
+            "ExCSS.Unity",
+            "CatLib.Core",
+            "UnityEditor.*",
+            "UnityEngine.*",
+            "*-Editor",
+            "*.Editor",
+            "System.*",
+            "Mono.*",
+            "Unity.*",
+            "SyntaxTree.*",
+            "Microsoft.*",
+        };
 
-        /// <summary>
-        /// 绘图界面时
-        /// </summary>
         public override void OnInspectorGUI()
         {
             var framework = (Framework)target;
             serializedObject.Update();
             DrawLogo();
-            DrawDebugLevels(framework);
+            DrawDebugLevel(framework);
             DrawServiceProvider(framework, serviceProviders);
             serializedObject.ApplyModifiedProperties();
         }
 
-        /// <summary>
-        /// 显示时
-        /// </summary>
         public void OnEnable()
         {
             debugLevel = serializedObject.FindProperty("DebugLevel");
             RefreshServiceProviders();
         }
 
-        /// <summary>
-        /// 绘制标题
-        /// </summary>
         private static void DrawLogo()
         {
             EditorGUILayout.Separator();
             GUILayout.BeginHorizontal();
-            EditorGUILayout.LabelField("CatLib Framework (" + App.Version + ")", EditorStyles.largeLabel,
-                GUILayout.Height(20));
+            EditorGUILayout.LabelField("CatLib Framework (" + Application.Version + ")", EditorStyles.largeLabel,
+                    GUILayout.Height(20));
             GUILayout.EndHorizontal();
         }
 
-        /// <summary>
-        /// 绘制调试等级
-        /// </summary>
-        private void DrawDebugLevels(Framework framework)
+        private void DrawDebugLevel(Framework framework)
         {
             var old = debugLevel.enumValueIndex;
             GUILayout.BeginHorizontal();
             debugLevel.enumValueIndex =
-                (int)(DebugLevels)EditorGUILayout.EnumPopup("Debug Level", (DebugLevels)debugLevel.enumValueIndex,
+                (int)(DebugLevel)EditorGUILayout.EnumPopup("Debug Level", (DebugLevel)debugLevel.enumValueIndex,
                     EditorStyles.popup);
             GUILayout.EndHorizontal();
 
@@ -86,15 +88,10 @@ namespace CatLib.Editor
 
             if (framework.Application != null)
             {
-                framework.Application.DebugLevel = (DebugLevels)debugLevel.enumValueIndex;
+                framework.Application.DebugLevel = (DebugLevel)debugLevel.enumValueIndex;
             }
         }
 
-        /// <summary>
-        /// 绘制服务提供者
-        /// </summary>
-        /// <param name="root">根节点信息</param>
-        /// <param name="serviceProviders">服务提供者列表</param>
         private void DrawServiceProvider(Component root, IDictionary<Type, Component> serviceProviders)
         {
             GUILayout.Space(5);
@@ -141,11 +138,8 @@ namespace CatLib.Editor
         }
 
         /// <summary>
-        /// 服务提供者开关
+        /// Draw service provider switch
         /// </summary>
-        /// <param name="root">根节点</param>
-        /// <param name="providerType">服务提供者类型</param>
-        /// <param name="master">宿主对象</param>
         private bool ToggleProvider(GameObject root, Type providerType, Component master)
         {
             if (EditorGUILayout.ToggleLeft(providerType.Name, master != null))
@@ -179,11 +173,6 @@ namespace CatLib.Editor
             return false;
         }
 
-        /// <summary>
-        /// 创建服务提供者
-        /// </summary>
-        /// <param name="root">根节点</param>
-        /// <param name="providerType">服务提供者类型</param>
         private static void CreateServiceProvider(Type providerType, GameObject root)
         {
             var go = new GameObject(providerType.Name);
@@ -191,9 +180,6 @@ namespace CatLib.Editor
             go.AddComponent(providerType);
         }
 
-        /// <summary>
-        /// 刷新服务提供者信息
-        /// </summary>
         private void RefreshServiceProviders()
         {
             serviceProviders.Clear();
@@ -201,12 +187,6 @@ namespace CatLib.Editor
             LoadInstalledServiceProviders(serviceProviders, (Component)target);
         }
 
-        /// <summary>
-        /// 获取已经安装了的服务提供者
-        /// </summary>
-        /// <param name="result">结果集</param>
-        /// <param name="target">扫描的根组件</param>
-        /// <returns>安装关系字典</returns>
         private static void LoadInstalledServiceProviders(IDictionary<Type, Component> result, Component target)
         {
             foreach (var serviceProvider in target.gameObject.GetComponentsInChildren<IServiceProvider>())
@@ -215,10 +195,6 @@ namespace CatLib.Editor
             }
         }
 
-        /// <summary>
-        /// 获取GUI支持的服务提供者
-        /// </summary>
-        /// <returns>编辑器框架</returns>
         private static void LoadAllServiceProviders(IDictionary<Type, Component> result)
         {
             var targetProvider = typeof(IServiceProvider);
@@ -238,35 +214,6 @@ namespace CatLib.Editor
             }
         }
 
-        /// <summary>
-        /// 需要忽略的程序集
-        /// </summary>
-        private static readonly string[] ignoreAssembiles = new string[]
-        {
-            "mscorlib",
-            "UnityEngine",
-            "UnityEditor",
-            "netstandard",
-            "nunit.framework",
-            "System",
-            "ExCSS.Unity",
-            "CatLib.Core",
-            "UnityEditor.*",
-            "UnityEngine.*",
-            "*-Editor",
-            "*.Editor",
-            "System.*",
-            "Mono.*",
-            "Unity.*",
-            "SyntaxTree.*",
-            "Microsoft.*",
-        };
-
-        /// <summary>
-        /// 测试是否处于需要检查的程序集列表
-        /// </summary>
-        /// <param name="assembly">测试程序集</param>
-        /// <returns>是否处于忽略程序集列表</returns>
         private static bool TestCheckInAssembiles(Assembly assembly)
         {
             foreach (var pattern in ignoreAssembiles)

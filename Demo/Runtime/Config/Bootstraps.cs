@@ -14,21 +14,16 @@ using UnityEngine;
 
 namespace Demo
 {
-    /// <summary>
-    /// 项目注册的引导程序
-    /// </summary>
     public static class Bootstraps
     {
         /// <summary>
-        /// 获取引导程序
+        /// Returns an array representing the framework bootstrap.
         /// </summary>
-        /// <param name="component">Unity组件</param>
-        /// <returns>引导程序</returns>
+        /// <param name="component">Unity root GameObject object.</param>
         public static IBootstrap[] GetBoostraps(Component component)
         {
             return new IBootstrap[]
             {
-                new BootstrapTypeFinder(Assemblys.Assembly),
                 new BootstrapProviderRegister(component, Providers.ServiceProviders),
             };
         }

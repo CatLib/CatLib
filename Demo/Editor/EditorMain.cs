@@ -11,21 +11,27 @@
 
 using CatLib;
 using CatLib.Editor;
+using CatLib.Util;
+using UnityEngine;
 
 namespace Demo.Editor
 {
     /// <summary>
-    /// 编辑器项目入口
+    /// Main project entrance for editor.
     /// </summary>
     public class EditorMain : EditorFramework
     {
-        /// <summary>
-        /// 获取引导程序
-        /// </summary>
-        /// <returns>引导脚本</returns>
+        /// <inheritdoc />
+        protected override void OnStartCompleted(IApplication application, StartCompletedEventArgs args)
+        {
+            Debug.Log("Hello Editor CatLib.");
+            base.OnStartCompleted(application, args);
+        }
+
+        /// <inheritdoc />
         protected override IBootstrap[] GetBootstraps()
         {
-            return Arr.Merge(base.GetBootstraps(), Bootstraps.GetBoostraps(null));
+            return Arr.Merge(base.GetBootstraps(), EditorBootstraps.GetBoostraps(null));
         }
     }
 }

@@ -13,13 +13,11 @@ using CatLib;
 
 namespace Demo
 {
-    /// <summary>
-    /// 项目注册的服务提供者
-    /// </summary>
     public static class Providers
     {
         /// <summary>
-        /// 项目注册的服务提供者
+        /// An array represents the list of service providers,
+        /// and initialization will proceed in this order.
         /// </summary>
         public static IServiceProvider[] ServiceProviders
         {
@@ -27,7 +25,7 @@ namespace Demo
             {
                 return new IServiceProvider[]
                 {
-                    // todo: 在此处增加您项目的服务提供者
+                    // todo: Add a service provider for your project here.
                 };
             }
         }

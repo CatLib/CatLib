@@ -15,52 +15,33 @@ using UnityEngine;
 namespace CatLib
 {
     /// <summary>
-    /// 服务提供者引导程序
+    /// Represents a service provider bootstrap.
     /// </summary>
-    [ExcludeFromCodeCoverage]
-    [Priority(20)]
     public sealed class BootstrapProviderRegister : IBootstrap
     {
-        /// <summary>
-        /// 服务提供者列表
-        /// </summary>
         private readonly IServiceProvider[] providers;
-
-        /// <summary>
-        /// Unity根组件
-        /// </summary>
         private readonly Component component;
 
         /// <summary>
-        /// 构建一个服务提供者引导程序
+        /// Initializes a new instance of the <see cref="BootstrapProviderRegister"/> class.
         /// </summary>
-        /// <param name="component">Unity根组件</param>
-        /// <param name="serviceProviders">服务提供者列表</param>
+        /// <param name="component">Unity root GameObject object.</param>
+        /// <param name="serviceProviders">An array of service providers.</param>
         public BootstrapProviderRegister(Component component, IServiceProvider[] serviceProviders = null)
         {
             providers = serviceProviders;
             this.component = component;
         }
 
-        /// <summary>
-        /// 引导程序接口
-        /// </summary>
+        /// <inheritdoc />
         public void Bootstrap()
         {
             LoadUnityComponentProvider();
-            LoadCodeProvider();
-        }
-
-        /// <summary>
-        /// 加载以代码形式提供的服务提供者
-        /// </summary>
-        private void LoadCodeProvider()
-        {
             RegisterProviders(providers);
         }
 
         /// <summary>
-        /// 加载Unity组件的服务提供者
+        /// Service provider that loads Unity components.
         /// </summary>
         private void LoadUnityComponentProvider()
         {
@@ -73,9 +54,8 @@ namespace CatLib
         }
 
         /// <summary>
-        /// 注册服务提供者
+        /// Register service provider to the framework.
         /// </summary>
-        /// <param name="providers">服务提供者</param>
         private static void RegisterProviders(IEnumerable<IServiceProvider> providers)
         {
             foreach (var provider in providers)
@@ -85,7 +65,7 @@ namespace CatLib
                     continue;
                 }
 
-                if (!App.IsRegisted(provider))
+                if (!App.IsRegistered(provider))
                 {
                     App.Register(provider);
                 }

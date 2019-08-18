@@ -10,36 +10,32 @@
  */
 
 using CatLib;
+using CatLib.Util;
 using UnityEngine;
 
 namespace Demo
 {
     /// <summary>
-    /// 项目入口
+    /// Main project entrance.
     /// </summary>
     [DisallowMultipleComponent]
     public sealed class Main : Framework
     {
-        /// <summary>
-        /// 项目入口
-        /// </summary>
-        protected override void OnStartCompleted()
+        /// <inheritdoc />
+        protected override void OnStartCompleted(IApplication application, StartCompletedEventArgs args)
         {
             // Application entry, Your code starts writing here
             // called this function after, use App.Make function to get service
             // ex: App.Make<IYourService>().Debug("hello world");
 
-            Debug.Log("Hello CatLib, Debug Level: " + App.Make<DebugLevels>());
-            App.Watch<DebugLevels>(newLevel =>
+            Debug.Log("Hello CatLib, Debug Level: " + App.Make<DebugLevel>());
+            App.Watch<DebugLevel>(newLevel =>
             {
                 Debug.Log("Change debug level: " + newLevel);
             });
         }
 
-        /// <summary>
-        /// 获取引导程序
-        /// </summary>
-        /// <returns>引导脚本</returns>
+        /// <inheritdoc />
         protected override IBootstrap[] GetBootstraps()
         {
             return Arr.Merge(base.GetBootstraps(), Bootstraps.GetBoostraps(this));
