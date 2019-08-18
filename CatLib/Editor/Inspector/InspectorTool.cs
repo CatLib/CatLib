@@ -97,7 +97,7 @@ namespace CatLib.Editor
                 return GUILayout.Button(new GUIContent(title, tooltip), style, widthOptions, heightOptions);
             }
 
-            return (bool) ApplyColor(
+            return (bool)ApplyColor(
                 () => GUILayout.Button(new GUIContent(title, tooltip), style, widthOptions,
                     heightOptions), new Color(1f, 1f, 1f, 0.25f));
         }

@@ -9,10 +9,7 @@
  * Document: http://catlib.io/
  */
 
-using CatLib.EventDispatcher;
-using CatLib.Util;
 using UnityEngine;
-using Dispatcher = CatLib.EventDispatcher.EventDispatcher;
 
 namespace CatLib
 {
@@ -25,7 +22,6 @@ namespace CatLib
     {
         public DebugLevel DebugLevel = DebugLevel.Production;
         private Application application;
-        private IEventDispatcher dispatcher;
 
         /// <summary>
         /// Gets a value represents a application instance.
@@ -39,7 +35,6 @@ namespace CatLib
         {
             DontDestroyOnLoad(gameObject);
             App.That = application = CreateApplication(DebugLevel);
-            application.SetDispatcher(dispatcher = CreateEventDispatcher());
             BeforeBootstrap(application);
             application.Bootstrap(GetBootstraps());
         }
@@ -65,7 +60,7 @@ namespace CatLib
         /// </summary>
         protected virtual void BeforeBootstrap(IApplication application)
         {
-            dispatcher.AddListener(ApplicationEvents.OnStartCompleted, (sender, args)=>
+            application.GetDispatcher()?.AddListener(ApplicationEvents.OnStartCompleted, (sender, args) =>
             {
                 OnStartCompleted((IApplication)sender, (StartCompletedEventArgs)args);
             });
@@ -85,14 +80,6 @@ namespace CatLib
         protected virtual void OnDestroy()
         {
             application?.Terminate();
-        }
-
-        /// <summary>
-        /// Create a new event dispatcher instance.
-        /// </summary>
-        protected virtual IEventDispatcher CreateEventDispatcher()
-        {
-            return new Dispatcher();
         }
 
         /// <summary>

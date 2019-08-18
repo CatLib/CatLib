@@ -9,12 +9,10 @@
  * Document: http://catlib.io/
  */
 
-using CatLib.EventDispatcher;
 using CatLib.Util;
 using System;
 using System.Reflection;
 using UnityEditor;
-using Dispatcher = CatLib.EventDispatcher.EventDispatcher;
 
 namespace CatLib.Editor
 {
@@ -22,7 +20,6 @@ namespace CatLib.Editor
     public class EditorFramework
     {
         private static Application editorApplication;
-        private static IEventDispatcher dispatcher;
         private static readonly string[] checkInAssembiles = new string[]
         {
             "*-Editor",
@@ -33,7 +30,7 @@ namespace CatLib.Editor
         {
             GC.Collect();
             if (EditorApplication.isPlayingOrWillChangePlaymode)
-            { 
+            {
                 UnityEngine.Application.quitting += Quitted;
                 return;
             }
@@ -89,7 +86,6 @@ namespace CatLib.Editor
         {
             var editorFramework = GetEditorFramework();
             App.That = editorApplication = editorFramework.CreateApplication();
-            editorApplication.SetDispatcher(dispatcher = editorFramework.CreateEventDispatcher());
             editorFramework.BeforeBootstrap(editorApplication);
             editorApplication.Bootstrap(editorFramework.GetBootstraps());
             editorApplication.Init();
@@ -100,7 +96,7 @@ namespace CatLib.Editor
         /// </summary>
         protected virtual void BeforeBootstrap(IApplication application)
         {
-            dispatcher.AddListener(ApplicationEvents.OnStartCompleted, (sender, args) =>
+            application.GetDispatcher()?.AddListener(ApplicationEvents.OnStartCompleted, (sender, args) =>
             {
                 OnStartCompleted((IApplication)sender, (StartCompletedEventArgs)args);
             });
@@ -139,14 +135,6 @@ namespace CatLib.Editor
             {
                 Application.Terminate();
             }
-        }
-
-        /// <summary>
-        /// Create a new event dispatcher instance.
-        /// </summary>
-        protected virtual IEventDispatcher CreateEventDispatcher()
-        {
-            return new Dispatcher();
         }
     }
 }

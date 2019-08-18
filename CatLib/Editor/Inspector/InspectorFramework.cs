@@ -164,7 +164,7 @@ namespace CatLib.Editor
             }
 
             if (!EditorUtility.DisplayDialog("Deleting",
-                "The " + providerType.Name + " will be Deleted"+ Environment.NewLine + "Configuration will be lost", "Delete", "Cancel"))
+                "The " + providerType.Name + " will be Deleted" + Environment.NewLine + "Configuration will be lost", "Delete", "Cancel"))
             {
                 return true;
             }
