@@ -28,12 +28,10 @@ namespace CatLib
         /// <summary>
         /// 构建一个类型查询器引导
         /// </summary>
-        /// <param name="assembly">需要添加的程序集</param>
-        public BootstrapTypeFinder(IDictionary<string, int> assembly = null)
+        /// <param name="assemblies">需要添加的程序集</param>
+        public BootstrapTypeFinder(IDictionary<string, int> assemblies = null)
         {
-            assemblies = new Dictionary<string, int>();
-            Dict.AddRange(assemblies, Assemblys.Assembly);
-            Dict.AddRange(assemblies, assembly);
+            this.assemblies = new Dictionary<string, int>(assemblies);
         }
          
         /// <summary>

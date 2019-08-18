@@ -71,7 +71,7 @@ namespace CatLib
         {
             return new UnityApplication(this)
             {
-                DebugLevel = DebugLevel
+                DebugLevel = debugLevel
             };
         }
 

@@ -10,6 +10,7 @@
  */
 
 using System;
+using System.Collections;
 using UnityEngine;
 
 namespace CatLib
@@ -47,7 +48,7 @@ namespace CatLib
         {
             if (Behaviour)
             {
-                Behaviour.StartCoroutine(CoroutineInit());
+                Behaviour.StartCoroutine(InitWithUnityCoroutine());
                 return;
             }
             base.Init();
@@ -84,6 +85,31 @@ namespace CatLib
         protected override bool IsUnableType(Type type)
         {
             return typeof(Component).IsAssignableFrom(type) || base.IsUnableType(type);
+        }
+
+        /// <summary>
+        /// 使用Unity协同程序初始化服务提供者.
+        /// </summary>
+        /// <returns>协同程序</returns>
+        /// <see cref="https://github.com/CatLib/CatLib/issues/38"/>
+        private IEnumerator InitWithUnityCoroutine()
+        {
+            var coroutine = CoroutineInit();
+            while (coroutine.MoveNext())
+            {
+                if (!(coroutine.Current is IEnumerator frameworkCoroutine))
+                {
+                    continue;
+                }
+
+                while (frameworkCoroutine.MoveNext())
+                {
+                    if (frameworkCoroutine.Current is IEnumerator logicCoroutine)
+                    {
+                        yield return logicCoroutine;
+                    }
+                }
+            }
         }
     }
 }
