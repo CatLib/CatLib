@@ -14,6 +14,14 @@
 
 CatLib for Unity is a service provider framework developed for Unity3D that is very helpful for the development of some functional businesses. We also reduce the unnecessary work of developers by integrating common development components.
 
+## Install CatLib for Unity
+
+**Installed with Bucket**
+
+```shell
+$ bucket require catlib/unity
+```
+
 ## Getting Started
 
 - [Download](https://github.com/CatLib/CatLib/releases) and extract the `unitypackage` to the unity project.
