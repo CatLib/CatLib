@@ -22,14 +22,6 @@ CatLib for Unity is a service provider framework developed for Unity3D that is v
 $ bucket require catlib/catlib
 ```
 
-**Installed with Github Release**
-
-- [Download](https://github.com/CatLib/CatLib/releases) and extract the `unitypackage` to the unity project.
-- Install the sample project under `src/Example` and create a `GameObject` in the scene.
-- Drag and drop the `Demo/Runtime/Main.cs` entry file onto `GameObject`.
-- Run your unity scene and you will see the console output welcome string: `Hello CatLib`.
-- Congratulations, the framework has been installed correctly, check out `src/CHANGELOG.md` for change history.
-
 ## Learning CatLib
 
 CatLib has full documentation support and you can learn from [CatLib Documentation](http://catlib.io).
