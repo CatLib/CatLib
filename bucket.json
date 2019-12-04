@@ -17,7 +17,5 @@
 			"name": "Meng han Yu",
 			"email": "menghanyu1994@gmail.com"
 		}
-	],
-	"minimum-stability": "dev",
-	"prefer-stable": true
+	]
 }

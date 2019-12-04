@@ -1,4 +1,7 @@
 *.meta
 .vs
 *.dll.mdb
-.dist/
+bucket.lock
+vendor/
+vendor.meta
+bucket.lock.meta
