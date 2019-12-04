@@ -19,11 +19,5 @@
     }
   ],
   "minimum-stability": "dev",
-  "prefer-stable": true,
-  "repositories": [
-    {
-      "type": "github",
-      "url": "https://github.com/catlib/core"
-    }
-  ]
+  "prefer-stable": true
 }

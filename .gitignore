@@ -3,3 +3,5 @@
 *.dll.mdb
 bucket.lock
 vendor/
+vendor.meta
+bucket.lock.meta
