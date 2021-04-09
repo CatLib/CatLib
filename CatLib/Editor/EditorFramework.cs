@@ -23,7 +23,7 @@ namespace CatLib.Editor
     {
         private static Application editorApplication;
         private static IEventDispatcher dispatcher;
-        private static readonly string[] checkInAssembiles = new string[]
+        private static readonly string[] checkInAssemblies = new string[]
         {
             "*-Editor",
             "*.Editor",
@@ -58,8 +58,8 @@ namespace CatLib.Editor
         private static EditorFramework GetEditorFramework()
         {
             var target = typeof(EditorFramework);
-            var assembiles = Arr.Filter(AppDomain.CurrentDomain.GetAssemblies(), TestCheckInAssembiles);
-            foreach (var assembly in assembiles)
+            var Assemblies = Arr.Filter(AppDomain.CurrentDomain.GetAssemblies(), TestCheckInAssemblies);
+            foreach (var assembly in Assemblies)
             {
                 foreach (var type in assembly.GetTypes())
                 {
@@ -73,9 +73,9 @@ namespace CatLib.Editor
             return new EditorFramework();
         }
 
-        private static bool TestCheckInAssembiles(Assembly assembly)
+        private static bool TestCheckInAssemblies(Assembly assembly)
         {
-            foreach (var pattern in checkInAssembiles)
+            foreach (var pattern in checkInAssemblies)
             {
                 if (Str.Is(pattern, assembly.GetName().Name))
                 {

@@ -26,7 +26,7 @@ namespace CatLib.Editor
     {
         private SerializedProperty debugLevel;
         private readonly Dictionary<Type, Component> serviceProviders = new Dictionary<Type, Component>();
-        private static readonly string[] ignoreAssembiles = new string[]
+        private static readonly string[] ignoreAssemblies = new string[]
         {
             "mscorlib",
             "UnityEngine",
@@ -199,9 +199,9 @@ namespace CatLib.Editor
         {
             var targetProvider = typeof(IServiceProvider);
             var targetComponent = typeof(Component);
-            var assembiles = Arr.Filter(AppDomain.CurrentDomain.GetAssemblies(), TestCheckInAssembiles);
+            var Assemblies = Arr.Filter(AppDomain.CurrentDomain.GetAssemblies(), TestCheckInAssemblies);
 
-            foreach (var assembly in assembiles)
+            foreach (var assembly in Assemblies)
             {
                 foreach (var type in assembly.GetTypes())
                 {
@@ -214,9 +214,9 @@ namespace CatLib.Editor
             }
         }
 
-        private static bool TestCheckInAssembiles(Assembly assembly)
+        private static bool TestCheckInAssemblies(Assembly assembly)
         {
-            foreach (var pattern in ignoreAssembiles)
+            foreach (var pattern in ignoreAssemblies)
             {
                 if (Str.Is(pattern, assembly.GetName().Name))
                 {
