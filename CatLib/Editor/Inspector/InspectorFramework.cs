@@ -199,9 +199,9 @@ namespace CatLib.Editor
         {
             var targetProvider = typeof(IServiceProvider);
             var targetComponent = typeof(Component);
-            var Assemblies = Arr.Filter(AppDomain.CurrentDomain.GetAssemblies(), TestCheckInAssemblies);
+            var assemblies = Arr.Filter(AppDomain.CurrentDomain.GetAssemblies(), TestCheckInAssemblies);
 
-            foreach (var assembly in Assemblies)
+            foreach (var assembly in assemblies)
             {
                 foreach (var type in assembly.GetTypes())
                 {

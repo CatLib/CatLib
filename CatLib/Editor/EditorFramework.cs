@@ -58,8 +58,8 @@ namespace CatLib.Editor
         private static EditorFramework GetEditorFramework()
         {
             var target = typeof(EditorFramework);
-            var Assemblies = Arr.Filter(AppDomain.CurrentDomain.GetAssemblies(), TestCheckInAssemblies);
-            foreach (var assembly in Assemblies)
+            var assemblies = Arr.Filter(AppDomain.CurrentDomain.GetAssemblies(), TestCheckInAssemblies);
+            foreach (var assembly in assemblies)
             {
                 foreach (var type in assembly.GetTypes())
                 {
